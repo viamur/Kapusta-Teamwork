@@ -5,6 +5,7 @@ import Header from 'components/Header/Header';
 import Container from 'components/Container/Container';
 import s from './SharedLayout.module.scss';
 import { useSelector } from 'react-redux';
+import Balance from 'components/Balance/Balance';
 
 const SharedLayout = () => {
   // const token = useSelector();
@@ -16,6 +17,7 @@ const SharedLayout = () => {
         <section>
           <Container>
             <Suspense fallback={<Loader />}>
+              <Balance />
               <Outlet />
             </Suspense>
           </Container>
