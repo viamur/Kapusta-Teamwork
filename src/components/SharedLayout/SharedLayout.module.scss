@@ -18,3 +18,19 @@
     background-position: top 28px left 10px, bottom 50px left 230px, top calc(70% - 220px) left;
   }
 }
+.mainAuth {
+  min-height: 90vh;
+  background-repeat: no-repeat;
+  background-image: url(../../vremeno/mobd.png);
+  background-position: top left;
+  background-size: 100% 320px;
+  @include mq(tab) {
+    background-image: url(../../vremeno/tabbottom.svg), url(../../vremeno/blueTab.svg);
+    background-position: bottom 59px right 88px, top calc(30% - 220px) left;
+    background-size: auto, 100%;
+  }
+  @include mq(desk) {
+    background-image: url(../../vremeno/tabtop.svg), url(../../vremeno/blueDesc.svg);
+    background-position: bottom -38px left 10px, top calc(50% - 220px) left;
+  }
+}
