@@ -7,6 +7,7 @@ import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
 
+
 export const App = () => {
   return (
     <Routes>
@@ -37,6 +38,7 @@ export const App = () => {
           }
         />
       </Route>
+
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
