@@ -6,12 +6,12 @@ import ReportsPage from 'pages/ReportsPage';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
-import MyDate from './MyDate/MyDate';
+
 
 export const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<MyDate />}>
+      <Route path="/" element={<SharedLayout />}>
         <Route
           path="auth"
           index
