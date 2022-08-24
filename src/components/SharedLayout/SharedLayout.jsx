@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 const SharedLayout = () => {
   // const token = useSelector();
-  const token = true;
+  const token = false;
   return (
     <>
       <Header />

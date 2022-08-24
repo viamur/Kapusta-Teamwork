@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
+import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
-import logo from '../../vremeno/logo.svg';
-import logout from '../../vremeno/logout.svg';
 import { useMediaQuery } from 'react-responsive';
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,7 +18,9 @@ const Header = () => {
     <header className={s.header}>
       <div className={s.container}>
         <Link to="/" className={s.link}>
-          <img src={logo} className={s.imgLogo} />
+          <svg width={90} height={31}>
+            <use href={`${icon}#icon-logo_kapusta`} />
+          </svg>
         </Link>
         {auth && (
           <div className={s.wrap}>
@@ -27,7 +28,9 @@ const Header = () => {
             {!mob && <p className={s.name}>{email}</p>}
             <button type="button" className={s.btn}>
               {mob ? (
-                <img src={logout} alt="logout" className={s.imgBtn} />
+                <svg width={16} height={16}>
+                  <use href={`${icon}#icon-logout1`} />
+                </svg>
               ) : (
                 <p className={s.exit}>Exit</p>
               )}
