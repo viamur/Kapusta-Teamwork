@@ -1,3 +1,4 @@
+
 import Loader from '../Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -15,7 +16,7 @@ const SharedLayout = () => {
       <main className={token ? s.mainAuth : s.main}>
         <section>
           <Container>
-            <Suspense fallback={Loader}>
+            <Suspense fallback={<Loader/>}>
               <Outlet />
             </Suspense>
           </Container>
