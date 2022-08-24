@@ -1,0 +1,67 @@
+@import '../../sass/mixin';
+
+.pagContainer {
+  margin-left: 200px;
+  width: 128px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.paragraph {
+  display: inline-flex;
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+  color: var(--descr-gray);
+}
+
+.btnContainer {
+  position: relative;
+  display: inline-flex;
+}
+
+.btnLeft {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  top: -1.5px;
+  left: -13px;
+
+  transform: translate;
+  transition: transform var(--transition);
+
+  &:hover {
+    transform: translate(-5px);
+  }
+}
+
+.btnRigth {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  top: -1.5px;
+  right: 3px;
+
+  transform: translate;
+  transition: transform var(--transition);
+
+
+  &:hover {
+    transform: translate(5px);
+  }
+}
+
+.month {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+}
