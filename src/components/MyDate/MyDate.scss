@@ -1,0 +1,22 @@
+.my-date-picker {
+  .react-date-picker__wrapper {
+    flex-direction: row-reverse;
+    border: none;
+    cursor: pointer;
+  }
+  .react-date-picker__clear-button {
+    display: none;
+  }
+  .react-date-picker__inputGroup__input {
+    pointer-events: none;
+  }
+}
+
+// .ant-picker,
+// .ant-picker:hover,
+// .ant-picker-focused {
+//   border: none !important;
+//   box-shadow: none;
+// }
+// .ant-picker-input {
+// }
