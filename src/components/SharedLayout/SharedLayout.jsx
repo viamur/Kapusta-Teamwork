@@ -1,4 +1,3 @@
-
 import Loader from '../Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -9,14 +8,14 @@ import { useSelector } from 'react-redux';
 
 const SharedLayout = () => {
   // const token = useSelector();
-  const token = false;
+  const token = true;
   return (
     <>
       <Header />
       <main className={token ? s.mainAuth : s.main}>
         <section>
           <Container>
-            <Suspense fallback={<Loader/>}>
+            <Suspense fallback={<Loader />}>
               <Outlet />
             </Suspense>
           </Container>
