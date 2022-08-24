@@ -1,22 +1,21 @@
+// @import normalize; /* bring in normalize.css styles */
 @import './sass/fonts';
 @import './sass/variables';
 @import './sass/mixin';
 
-@import-normalize; /* bring in normalize.css styles */
-
 body {
   margin: 0;
-  font-family: 'Roboto Regular' ,sans-serif;
+  font-family: 'Roboto Regular', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-ul,li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;

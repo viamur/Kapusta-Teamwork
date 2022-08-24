@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import s from './Header.module.scss';
 import logo from '../../vremeno/logo.svg';
 import logout from '../../vremeno/logout.svg';
+import { useMediaQuery } from 'react-responsive';
 // import { useDispatch, useSelector } from 'react-redux';
 
 const Header = () => {
@@ -13,7 +14,7 @@ const Header = () => {
   const auth = true;
   const emailNormaliza = email.split('')[0];
 
-  const mob = window.outerWidth < 768;
+  const mob = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <header className={s.header}>
       <div className={s.container}>
