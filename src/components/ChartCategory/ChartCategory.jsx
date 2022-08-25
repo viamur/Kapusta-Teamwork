@@ -114,7 +114,9 @@ export const data = {
 export default function ChartCategory() {
   return (
     <div className={s.backgroundChartCategory}>
+      {/* <div className={s.categoryListContainer}> */}
       <Bar className={s.canvas} options={options} data={data} />
+      {/* </div> */}
     </div>
   );
 }

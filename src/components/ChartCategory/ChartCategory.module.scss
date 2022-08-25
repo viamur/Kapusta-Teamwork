@@ -3,13 +3,16 @@
     margin-bottom: 40px;
     border-radius: 30px;
     background-color: #FFFFFF;
+    padding-top: 50px;
 }
 
 canvas {
     display: block;
     box-sizing: border-box;
     height: 328px;
-    width: 605px;
-    padding: 100px;
+    // max-width: 605px;
+    // max-height: 328px;
     text-align: center;
+    margin: 0 auto;
 }
+
