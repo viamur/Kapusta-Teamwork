@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
 import { useMediaQuery } from 'react-responsive';
@@ -38,6 +39,7 @@ const Header = () => {
           </div>
         )}
       </div>
+    
     </header>
   );
 };
