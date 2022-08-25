@@ -1,16 +1,14 @@
+import { useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import AuthPage from '../pages/AuthPage/AuthPage';
-import ExpensesPage from 'pages/ExpensesPage';
-// import IncomePage from 'pages/IncomePage';
-import IncomePage from '../pages/IncomePage';
-// import ReportsPage from 'pages/ReportsPage';
+import { useDispatch, useSelector } from 'react-redux';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import AuthPage from '../pages/AuthPage/AuthPage';
 import { getAuthToken } from 'redux/auth/AuthSelectors';
 import { getAuthUser } from 'redux/auth/authOperations';
+import TransactionsPage from '../pages/TransactionsPage/TransactionsPage';
+import ReportsPage from '../pages/ReportsPage/ReportsPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -37,8 +35,7 @@ export const App = () => {
           path="transactions"
           element={
             <PrivateRoute>
-              {/*переименовать transactions */}
-              <ExpensesPage />
+              <TransactionsPage />
             </PrivateRoute>
           }
         />
@@ -46,8 +43,7 @@ export const App = () => {
           path="transactions/:transType"
           element={
             <PrivateRoute>
-              {/*переименовать transactions */}
-              <ExpensesPage />
+              <TransactionsPage />
             </PrivateRoute>
           }
         />
@@ -55,7 +51,7 @@ export const App = () => {
           path="reports"
           element={
             <PrivateRoute>
-              <IncomePage />
+              <ReportsPage />
             </PrivateRoute>
           }
         />
@@ -63,7 +59,7 @@ export const App = () => {
           path="reports/:repotsType"
           element={
             <PrivateRoute>
-              <IncomePage />
+              <ReportsPage />
             </PrivateRoute>
           }
         />
