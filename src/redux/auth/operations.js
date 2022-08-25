@@ -33,6 +33,19 @@ const login = createAsyncThunk('auth/login', async (credentials, { rejectWithVal
   }
 });
 
+const googleLogin = createAsyncThunk('auth/google', async (credentials, { rejectWithValue }) => {
+  try {
+    const { data } = await api.googleAuth();
+    api.token.set(data.accessToken);
+    return data;
+  } catch (error) {
+    if (error.message === 'Request failed with status code 403') {
+      return rejectWithValue("Email doesn't exist / Password is wrong");
+    }
+    return rejectWithValue(Error.UNKNOWN);
+  }
+});
+
 const refresh = createAsyncThunk('auth/refresh', async (_, { getState, rejectWithValue }) => {
   try {
     api.token(getState().auth.refreshToken);
@@ -47,10 +60,10 @@ const refresh = createAsyncThunk('auth/refresh', async (_, { getState, rejectWit
 const logOut = createAsyncThunk('auth/logOut', async (_, { rejectWithValue }) => {
   try {
     await api.logout();
-    api.token('');
+    api.token.unset();
   } catch (error) {
     return rejectWithValue(Error.UNKNOWN);
   }
 });
 
-export { register, login, refresh, logOut };
+export { register, login, refresh, logOut, googleLogin };

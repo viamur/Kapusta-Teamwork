@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { login, register } from '../../redux/auth/operations';
+import s from './AuthForm.module.scss';
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -78,16 +78,17 @@ const AuthForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <p>
+    <form onSubmit={handleSubmit} className={s.form} autoComplete={false}>
+      <label className={s.emailLabel}>
+        <p className={s.text}>
           {formErrors.email && <span>*</span>}
-          Электронная почта:
+          Email:
         </p>
         <input
           type="email"
           name="email"
           value={email}
+          className={s.input}
           placeholder="your@email.com"
           onChange={handleChangeEmail}
           onKeyDown={canceler}
@@ -95,27 +96,32 @@ const AuthForm = () => {
         />
         {formErrors.email && <p>{formErrors.email}</p>}
       </label>
-      <label>
-        <p>
+      <label className={s.passwordlLabel}>
+        <p className={s.text}>
           {formErrors.password && <span>*</span>}
-          Пароль:
+          Password:
         </p>
         <input
           type="password"
           name="password"
           value={password}
-          placeholder="Пароль"
+          className={s.inputpassword}
+          placeholder="Password"
           onChange={handleChangePassword}
           onKeyDown={canceler}
           autoComplete="off"
         />
         {formErrors.password && <p>{formErrors.password}</p>}
       </label>
-      <div>
-        <button type="button" onClick={() => dispatch(login({ email, password }))}>
-          Login
+      <div className={s.btns}>
+        <button
+          type="button"
+          className={s.login}
+          onClick={() => dispatch(login({ email, password }))}
+        >
+          Log in
         </button>
-        <button type="submit" onClick={onBtnClick}>
+        <button type="submit" className={s.registration} onClick={onBtnClick}>
           Registration
         </button>
       </div>

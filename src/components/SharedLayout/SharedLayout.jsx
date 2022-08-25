@@ -9,7 +9,7 @@ import s from './SharedLayout.module.scss';
 const SharedLayout = () => {
   // const tokenT = useSelector();
 
-  const token = true;
+  const token = false;
   return (
     <>
       <Header />

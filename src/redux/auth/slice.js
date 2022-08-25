@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, refresh, logOut } from './operations';
+import { register, login, refresh, logOut, googleLogin } from './operations';
 import * as api from '../../utils/api';
 
 const initialState = {
@@ -25,9 +25,14 @@ const slice = createSlice({
       state.error = null;
     },
     [register.fulfilled]: (state, { payload }) => {
-      const { email, id } = payload;
-      state.email = email;
-      state.idUser = id;
+      const { accessToken, refreshToken, sid, userData } = payload;
+      state.accessToken = accessToken;
+      state.refreshToken = refreshToken;
+      state.sid = sid;
+      state.idUser = userData.id;
+      state.email = userData.email;
+      state.balance = userData.balance;
+      state.transactions = userData.transactions;
       state.isLoading = false;
     },
     [register.rejected]: (state, { payload }) => {
@@ -54,6 +59,26 @@ const slice = createSlice({
       state.isLogining = false;
       state.error = payload;
     },
+    /* ======================GOOGLE===================  */
+    [googleLogin.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [googleLogin.fulfilled]: (state, { payload }) => {
+      const { accessToken, refreshToken, sid, userData } = payload;
+      state.accessToken = accessToken;
+      state.refreshToken = refreshToken;
+      state.sid = sid;
+      state.idUser = userData.id;
+      state.email = userData.email;
+      state.balance = userData.balance;
+      state.transactions = userData.transactions;
+      state.isLoading = false;
+    },
+    [googleLogin.rejected]: (state, { payload }) => {
+      state.isLogining = false;
+      state.error = payload;
+    },
     /* ================LOGOUT======================= */
     [logOut.pending]: state => {
       state.isLoading = true;
@@ -68,17 +93,18 @@ const slice = createSlice({
     },
     /* ================= REFRESH ======================*/
     [refresh.pending]: (state, _) => {
-      state.isRefreshing = true;
+      state.isLoading = true;
       state.error = null;
     },
     [refresh.fulfilled]: (state, { payload }) => {
-      const { newAccessToken, newRefreshToken: refreshToken, newSid: sid } = payload;
-      state.isRefreshing = false;
-      state.isLoggedIn = true;
-      state.error = null;
+      const { newAccessToken, newRefreshToken, newSid } = payload;
+      state.accessToken = newAccessToken;
+      state.sid = newSid;
+      state.refreshToken = newRefreshToken;
+      state.isLoading = false;
     },
     [refresh.rejected]: (state, { payload }) => {
-      state.isRefreshing = false;
+      state.isLoading = false;
       state.error = payload;
     },
   },
