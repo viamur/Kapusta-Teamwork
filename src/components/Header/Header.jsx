@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom';
 import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
 import { useMediaQuery } from 'react-responsive';
-// import { useDispatch, useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../utils/api';
 const Header = () => {
-  // const dispatch = useDispatch();
-  // const email = useSelector();
-  // const auth = useSelector();
+  const dispatch = useDispatch();
+  const email = useSelector(getUser);
+  const auth = useSelector(getUser);
   /* email и auth снизу это заглушки после подкл useSelector удалить */
-  const email = 'viamur@gmail.com';
-  const auth = true;
+  // const email = 'viamur@gmail.com';
+  // const auth = true;
   const emailNormaliza = email.split('')[0];
 
   const mob = useMediaQuery({ query: '(max-width: 768px)' });
