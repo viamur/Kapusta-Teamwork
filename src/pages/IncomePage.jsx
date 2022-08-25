@@ -1,4 +1,4 @@
-const InccomePage = () => {
+const IncomePage = () => {
   return <h2>InccomePage</h2>;
 };
-export default InccomePage;
+export default IncomePage;

@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom';
+
 import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
 import { useMediaQuery } from 'react-responsive';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../utils/api';
+import { getAuthEmail, getAuthToken } from 'redux/auth/AuthSelectors';
+import { logOut } from 'redux/auth/authOperations';
 
 const Header = () => {
-  // const dispatch = useDispatch();
-  // const email = useSelector();
-  // const auth = useSelector();
-  /* email и auth снизу это заглушки после подкл useSelector удалить */
-  const email = 'viamur@gmail.com';
-  const auth = true;
-  const emailNormaliza = email.split('')[0];
+  const dispatch = useDispatch();
+  const email = useSelector(getAuthEmail);
+
+  const emailNormaliza = email && email.split('')[0];
 
   const mob = useMediaQuery({ query: '(max-width: 768px)' });
   return (
@@ -22,11 +23,11 @@ const Header = () => {
             <use href={`${icon}#icon-logo_kapusta`} />
           </svg>
         </Link>
-        {auth && (
+        {email && (
           <div className={s.wrap}>
             <span className={s.span}>{emailNormaliza}</span>
             {!mob && <p className={s.name}>{email}</p>}
-            <button type="button" className={s.btn}>
+            <button type="button" className={s.btn} onClick={() => dispatch(logOut())}>
               {mob ? (
                 <svg width={16} height={16}>
                   <use href={`${icon}#icon-logout1`} />
@@ -38,6 +39,7 @@ const Header = () => {
           </div>
         )}
       </div>
+    
     </header>
   );
 };
