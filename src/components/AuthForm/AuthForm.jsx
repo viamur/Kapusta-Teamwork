@@ -112,7 +112,7 @@ const AuthForm = () => {
         {formErrors.password && <p>{formErrors.password}</p>}
       </label>
       <div>
-        <button type="submit" onClick={onBtnClick(e => 'log')}>
+        <button type="button" onClick={() => dispatch(login({ email, password }))}>
           Login
         </button>
         <button type="submit" onClick={onBtnClick}>

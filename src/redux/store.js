@@ -1,4 +1,4 @@
-import { createLogger } from 'redux-logger';
+// import { createLogger } from 'redux-logger';
 import { authReducer } from './auth/slice';
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -24,10 +24,10 @@ const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
 });
 
-const logger = createLogger({
-  collapsed: (getState, action, logEntry) => !logEntry.error,
-  timestamp: false,
-});
+// const logger = createLogger({
+//   collapsed: (getState, action, logEntry) => !logEntry.error,
+//   timestamp: false,
+// });
 
 const store = configureStore({
   reducer: rootReducer,
@@ -36,7 +36,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(logger),
+    }),
   devTools: process.env.NODE_ENV !== 'production',
 });
 
