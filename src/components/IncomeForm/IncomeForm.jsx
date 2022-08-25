@@ -1,15 +1,13 @@
 import ProductCategoryFilter from 'components/ProductCategoryFilter/ProductCategoryFilter';
+import GooBack from 'components/GooBack/GooBack';
 import icon from '../../images/icon.svg';
 import s from './IncomeForm.module.scss';
 
 const IncomeForm = () => {
   return (
-    <div className={s.formBox}>
-      <button type="button" className={s.btnBack}>
-        <svg width={18} height={12}>
-          <use href={`${icon}#icon-left_orange`} />
-        </svg>
-      </button>
+    <div className={s.box}>
+   <GooBack/>
+        <div className={s.formBox}>
       <form className={s.form}>
         <label>
           <input
@@ -35,6 +33,8 @@ const IncomeForm = () => {
             </svg>
           </div>
         </div>
+      </form>
+    </div>
         <div className={s.btnBox}>
           <button type="input" className={s.btn}>
             input
@@ -43,7 +43,6 @@ const IncomeForm = () => {
             clear
           </button>
         </div>
-      </form>
     </div>
   );
 };
