@@ -23,9 +23,9 @@ const BalanceForm = () => {
           allowLeadingZeros={true}
           thousandSeparator={' '}
           decimalScale={2}
+          placeholder={'00.00 UAH'}
           fixedDecimalScale={true}
           allowNegative={false}
-          allowEmptyFormatting={true}
           onChange={formik.handleChange}
           value={formik.values.balance}
         />
