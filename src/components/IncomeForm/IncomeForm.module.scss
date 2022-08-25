@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+
+  @include mq(desk){
+    flex-direction: row;
+  }
 }
 
 .btnBack {
@@ -24,16 +28,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   width: 280px;
 
   @include mq(tab) {
     flex-direction: row;
+    margin-bottom: 50px;
     width: 280px;
   }
 
   @include mq(desk) {
-    padding: 0 16px;
+   margin-right:0px 32px 0px 0px;
   }
 }
 
@@ -57,19 +61,18 @@
 
   @include mq(tab) {
     width: 185px;
-    border-radius: 25px  0px 0px;
+    border-radius: 25px 0px 0px;
     flex-direction: row;
-
   }
 
   @include mq(desk) {
-    padding: 0 16px;
+    width: 298px; 
   }
 }
 
 .inputNumber {
   width: 140px;
-  padding: 12.5px 20px;
+  padding: 13.5px 20px;
   border-radius: 25px 0px 0px 25px;
   background-color: transparent;
   border: 2px solid #ffffff;
@@ -84,17 +87,30 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--black);
+
+    @include mq(tab) {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.02em;
+
+      color: #c7ccdc;
+    }
   }
 
   @include mq(tab) {
-    width: 110px;
-    border-radius:0px;
+    width: 52px;
+    padding: 10.5px 10px;
+    border-radius: 0px;
     border-left: none;
-
+    border-right: none;
   }
 
   @include mq(desk) {
-   
+    padding: 10.8px 10px;
   }
 }
 
@@ -104,12 +120,12 @@
   margin-bottom: 80px;
 
   @include mq(tab) {
-  
-
+    margin-top: 0;
+    margin-bottom: 0px;
   }
 
   @include mq(desk) {
-    padding: 0 16px;
+   
   }
 }
 
@@ -123,12 +139,12 @@
   border-left: none;
 
   @include mq(tab) {
+    padding: 0px 20px 0px 0px;
     flex-direction: row;
-
   }
 
   @include mq(desk) {
-    padding: 0 16px;
+  
   }
 }
 
@@ -146,11 +162,10 @@
 
   @include mq(tab) {
     flex-direction: row;
-
   }
 
   @include mq(desk) {
-    padding: 0 16px;
+   
   }
 }
 
@@ -165,11 +180,10 @@
 
   @include mq(tab) {
     flex-direction: row;
-
   }
 
   @include mq(desk) {
-    padding: 0 16px;
+    
   }
 }
 
@@ -203,16 +217,19 @@
     color: var(--white);
   }
 
-  &:not(:last-child){
+  &:not(:last-child) {
     margin-right: 20px;
   }
 
   @include mq(tab) {
     flex-direction: row;
-
   }
 
-  @include mq(desk) {
-    padding: 0 16px;
-  }
+}
+
+.box{
+@include mq(desk) {
+  height: 44px;
+  display: flex;
+}
 }

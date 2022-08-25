@@ -1,0 +1,13 @@
+.btnBack {
+    width: 45px;
+    margin-bottom: 22px;
+    border: none;
+    background-color: transparent;
+  
+    transform: translate;
+    transition: transform var(--transition);
+  
+    &:hover {
+      transform: translate(-5px);
+    }
+  }
