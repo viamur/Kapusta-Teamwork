@@ -50,7 +50,7 @@ const refresh = createAsyncThunk('auth/refresh', async (_, { getState, rejectWit
   try {
     api.token.set(getState().auth.refreshToken);
     const { data } = await api.refresh({ sid: getState().auth.sid });
-    api.token(data.newAccessToken);
+    api.token.set(data.newAccessToken);
     return data;
   } catch (error) {
     return rejectWithValue(Error.UNKNOWN);
@@ -66,4 +66,15 @@ const logOut = createAsyncThunk('auth/logOut', async (_, { rejectWithValue }) =>
   }
 });
 
-export { register, login, refresh, logOut, googleLogin };
+const getAuthUser = createAsyncThunk('auth/getUser', async (_, { getState, rejectWithValue }) => {
+  const token = getState().auth.accessToken;
+  api.token.set(token);
+  try {
+    const { data } = await api.getUser();
+    return data;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
+export { register, login, refresh, logOut, googleLogin, getAuthUser };

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, refresh, logOut, googleLogin } from './authOperations';
+import { register, login, refresh, logOut, googleLogin, getAuthUser } from './authOperations';
 import * as api from '../../utils/api';
 
 const initialState = {
@@ -75,8 +75,24 @@ const slice = createSlice({
       state.transactions = userData.transactions;
       state.isLoading = false;
     },
-    [googleLogin.rejected]: (state, { payload }) => {
-      state.isLogining = false;
+    [googleLogin.rejected]: (state, { payload }) => ({
+      ...initialState,
+      error: payload,
+    }),
+    /* ======================GET USER===================  */
+    [getAuthUser.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [getAuthUser.fulfilled]: (state, { payload }) => {
+      const { email, balance, transactions } = payload;
+      state.email = email;
+      state.balance = balance;
+      state.transactions = transactions;
+      state.isLoading = false;
+    },
+    [getAuthUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
       state.error = payload;
     },
     /* ================LOGOUT======================= */
@@ -89,7 +105,7 @@ const slice = createSlice({
     }),
     [logOut.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.state.error = payload;
     },
     /* ================= REFRESH ======================*/
     [refresh.pending]: (state, _) => {
