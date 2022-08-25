@@ -4,7 +4,6 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Header from 'components/Header/Header';
 import Container from 'components/Container/Container';
 import s from './SharedLayout.module.scss';
-import Balance from 'components/Balance/Balance';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthToken } from 'redux/auth/AuthSelectors';
 import { useEffect } from 'react';
@@ -27,7 +26,6 @@ const SharedLayout = () => {
         <section>
           <Container>
             <Suspense fallback={<Loader />}>
-              <Balance />
               <Outlet />
             </Suspense>
           </Container>

@@ -4,7 +4,6 @@ import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../utils/api';
 import { getAuthEmail, getAuthToken } from 'redux/auth/AuthSelectors';
 import { logOut } from 'redux/auth/authOperations';
 
@@ -18,7 +17,7 @@ const Header = () => {
   return (
     <header className={s.header}>
       <div className={s.container}>
-        <Link to="/" className={s.link}>
+        <Link to={email ? '/transactions' : '/auth'} className={s.link}>
           <svg width={90} height={31}>
             <use href={`${icon}#icon-logo_kapusta`} />
           </svg>
@@ -39,7 +38,6 @@ const Header = () => {
           </div>
         )}
       </div>
-    
     </header>
   );
 };

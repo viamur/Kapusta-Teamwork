@@ -33,7 +33,8 @@ const BalanceForm = () => {
           Confirm
         </button>
       </form>
-      {formik.values.balance.length === 0 && <BalanceModal />}
+      {/* временно сделал так */}
+      {formik.values.balance.length === 1 && <BalanceModal />}
     </div>
   );
 };

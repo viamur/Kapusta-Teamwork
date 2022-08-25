@@ -1,5 +1,3 @@
-import BalanceModal from 'components/BalanceModal/BalanceModal';
-
 import { Link } from 'react-router-dom';
 import icon from '../../images/icon.svg';
 import s from './Balance.module.scss';
@@ -14,7 +12,7 @@ const Balance = () => {
           <use href={`${icon}#icon-bar_chart-24px1`} />
         </svg>
       </Link>
-      <BalanceForm/>
+      <BalanceForm />
     </section>
   );
 };
