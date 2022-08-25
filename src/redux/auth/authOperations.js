@@ -10,7 +10,7 @@ const register = createAsyncThunk('auth/register', async (credentials, { rejectW
   try {
     await api.register(credentials);
     const { data } = await api.login(credentials);
-    api.token(data.accessToken);
+    api.token.set(data.accessToken);
     return data;
   } catch (error) {
     if (error.message === 'Request failed with status code 409') {
@@ -48,7 +48,7 @@ const googleLogin = createAsyncThunk('auth/google', async (credentials, { reject
 
 const refresh = createAsyncThunk('auth/refresh', async (_, { getState, rejectWithValue }) => {
   try {
-    api.token(getState().auth.refreshToken);
+    api.token.set(getState().auth.refreshToken);
     const { data } = await api.refresh({ sid: getState().auth.sid });
     api.token(data.newAccessToken);
     return data;

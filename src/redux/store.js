@@ -1,5 +1,5 @@
 // import { createLogger } from 'redux-logger';
-import { authReducer } from './auth/slice';
+import { authReducer } from './auth/AuthSlice';
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
@@ -17,7 +17,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['isLoggedIn', 'sid', 'refreshToken'],
+  whitelist: ['sid', 'refreshToken', 'accessToken'],
 };
 
 const rootReducer = combineReducers({

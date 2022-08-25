@@ -4,17 +4,13 @@ import icon from '../../images/icon.svg';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import s from './AuthPage.module.scss';
+import { getAuthIsLoading } from 'redux/auth/AuthSelectors';
+import Loader from 'components/Loader/Loader';
 
 // import Notiflix from 'notiflix';
 
 const AuthPage = () => {
-  const errorAlert = useSelector(state => state?.auth?.error);
-  useEffect(() => {
-    if (!errorAlert) {
-      return;
-    }
-    // Notiflix.Notify.failure(errorAlert);
-  }, [errorAlert]);
+  const isLoading = useSelector(getAuthIsLoading);
   return (
     <section className={s.section}>
       <div className={s.wrap}>
@@ -25,10 +21,16 @@ const AuthPage = () => {
           <h2 className={s.subtitle}>Smart Finance</h2>
         </div>
         <div className={s.authBlock}>
-          <p className={s.textA}>You can log in with your Google Account:</p>
-          <AuthGoogle />
-          <p className={s.textB}>Or log in using an email and password, after registering:</p>
-          <AuthForm />
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <p className={s.textA}>You can log in with your Google Account:</p>
+              <AuthGoogle />
+              <p className={s.textB}>Or log in using an email and password, after registering:</p>
+              <AuthForm />
+            </>
+          )}
         </div>
       </div>
     </section>
