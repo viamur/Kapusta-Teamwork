@@ -1,11 +1,15 @@
-// .canvas {
-// }
-// @media (min-width: $mobile) {
-//   .canvas {
-//   }
-// }
+.backgroundChartCategory {
+    margin-top: 32px;
+    margin-bottom: 40px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+}
 
-// @media (min-width: $desktop) {
-//   .canvas {
-//   }
-// }
+canvas {
+    display: block;
+    box-sizing: border-box;
+    height: 328px;
+    width: 605px;
+    padding: 100px;
+    text-align: center;
+}

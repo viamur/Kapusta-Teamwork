@@ -1,0 +1,42 @@
+.expenses {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin: 20px 16px 20px 16px;
+    Font-size: 14px; 
+    Line-height: 1.14;
+    text-align: center; 
+    text-transform: uppercase;
+}
+
+.titleBtn {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.backgroundCategoryList {
+    margin-top: 32px;
+    margin-bottom: 40px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+}
+
+.categoryList {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.categoryListItem {
+    text-align: center;
+    margin-right: 20px;
+    margin-bottom: 40px;
+}

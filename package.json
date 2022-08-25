@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://VladMasl.github.io/kapusta/",
   "dependencies": {
+    "@faker-js/faker": "^7.4.0",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
@@ -30,6 +31,12 @@
     "sass": "^1.54.5",
     "web-vitals": "^2.1.3",
     "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/faker": "5.5.3",
+    "@types/react": "18.0.0",
+    "@types/react-dom": "18.0.0",
+    "typescript": "4.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
