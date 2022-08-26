@@ -1,6 +1,6 @@
 // import { createLogger } from 'redux-logger';
 import authReducer from './auth/AuthSlice';
-
+import  reportsReducer  from '../redux/reports/reportsSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
@@ -22,6 +22,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
+  reports: reportsReducer,
+
 });
 
 // const logger = createLogger({
