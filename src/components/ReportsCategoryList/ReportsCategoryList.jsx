@@ -1,21 +1,31 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getExpenseCategories } from '../../utils/api';
-import categories from '../../utils/catigores.json';
+import categoriesExpens from '../../utils/categoriesExpens.json';
+import categoriesIncome from '../../utils/categoriesIncome.json';
 
 export default function ReportsCategoryList({ incomes, expenses }) {
   const [expensesArr, setExpensesArr] = useState([]);
+  // const [incomesArr, setIncomesArr] = useState([]);
 
-  const transleteCategory = () => {
-    return categories.map(el => ({
+  const getTransleteExpensesCategory = () => {
+    console.log(expenses);
+    return categoriesExpens.map(el => ({
       ...el,
       data: expenses.expensesData[el.ru] || { total: 0 },
     }));
   };
+  const getTransleteIncomesCategory = () => {
+    // return categoriesIncome.map(el => ({
+    //   ...el,
+    //   data: incomes.incomesData[el.ru] || { total: 0 },
+    // }));
+  };
+
   useEffect(() => {
     if (Object.keys(expenses).length)
-      setExpensesArr(transleteCategory(expenses));
+      setExpensesArr(getTransleteExpensesCategory(expenses));
+    console.log(incomes);
     console.log(expensesArr);
   }, [expenses]);
 

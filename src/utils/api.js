@@ -39,7 +39,7 @@ const getExpenseCategories = async credentials =>
 
 const getTransactionReportApi = async () => {
   axios.defaults.headers.common.Authorization =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzA2NDYzMGRiN2E4MTA4MTQwMzBiMzAiLCJzaWQiOiI2MzA4YTFiMGRiN2E4MTA4MTQwMzBlNGEiLCJpYXQiOjE2NjE1MTAwNjQsImV4cCI6MTY2MTUxMzY2NH0.u7Foigwej1ILE0OEg5ULzNsBDotI0PQE1YK8zs4uRDQ';
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzA2NDYzMGRiN2E4MTA4MTQwMzBiMzAiLCJzaWQiOiI2MzA4YjIyY2RiN2E4MTA4MTQwMzBlNmYiLCJpYXQiOjE2NjE1MTQyODQsImV4cCI6MTY2MTUxNzg4NH0.Pk2pDiU5KWilXXn349lLfQC2cAeb_7DhU31wTPJUlpM';
   return axios
     .get('/transaction/period-data', {
       params: {
