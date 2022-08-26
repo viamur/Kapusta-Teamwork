@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getAuthToken} from '../../redux/auth/AuthSelectors';
-import {getPeriod} from '../../utils/reportsApi';
+import { getAuthToken } from '../../redux/auth/AuthSelectors';
+import { getPeriod } from '../../utils/reportsApi';
 import icon from '../../images/icon.svg';
 import s from './Pagination.module.scss';
 
-const  monthsArr = [
+const month = [
   { id: 1, label: 'January' },
   { id: 2, label: 'February' },
   { id: 3, label: 'March' },
@@ -22,28 +22,28 @@ const  monthsArr = [
 
 const Pagination = () => {
   const dispatch = useDispatch();
- const accessToken = useSelector(getAuthToken);
+  const accessToken = useSelector(getAuthToken);
 
   const [nameMonth, setNameMonth] = useState(
-    monthsArr.find(el => el.id === new Date().getMonth() + 1)
+    month.find(el => el.id === new Date().getMonth() + 1)
   );
   const [year, setYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState(`${year}-${nameMonth.id}`);
 
   const nextMnth = () => {
-    if (nameMonth.id < monthsArr.length) {
-      setNameMonth(monthsArr[nameMonth.id]);
+    if (nameMonth.id < month.length) {
+      setNameMonth(month[nameMonth.id]);
     } else {
-      setNameMonth(monthsArr[0]);
+      setNameMonth(month[0]);
       setYear(year + 1);
     }
   };
 
   const prevNext = () => {
-    const dateIndex = monthsArr.indexOf(nameMonth);
-    if (dateIndex > 0) setNameMonth(monthsArr[dateIndex - 1]);
+    const dateIndex = month.indexOf(nameMonth);
+    if (dateIndex > 0) setNameMonth(month[dateIndex - 1]);
     else {
-      setNameMonth(monthsArr[monthsArr.length - 1]);
+      setNameMonth(month[month.length - 1]);
       setYear(year - 1);
     }
   };
@@ -54,10 +54,8 @@ const Pagination = () => {
 
   useEffect(() => {
     dispatch(getPeriod(selectedDate));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [selectedDate, accessToken]);
-
-
 
   return (
     <div className={s.pagContainer}>
@@ -68,12 +66,12 @@ const Pagination = () => {
             <use href={`${icon}#icon-vector_leftorange`} />
           </svg>
         </button>
-        <div className={s.nomthBox}> 
+        <div className={s.nomthBox}>
           <h2 className={s.month}>
-          {nameMonth?.label} {year}
-        </h2>
+            {nameMonth?.label} {year}
+          </h2>
         </div>
-       
+
         <button onClick={nextMnth} type="button" className={s.btnRigth}>
           <svg width={10} height={10}>
             <use href={`${icon}#icon-vector_rightorange`} />
@@ -83,25 +81,5 @@ const Pagination = () => {
     </div>
   );
 };
-
-//   return (
-//     <div className={s.pagContainer}>
-//       <p className={s.paragraph}>Current period:</p>
-//       <div className={s.btnContainer}>
-//         <button type="button" className={s.btnLeft}>
-//           <svg width={10} height={10}>
-//             <use href={`${icon}#icon-vector_leftorange`} />
-//           </svg>
-//         </button>
-//         <h2 className={s.month}>{month}</h2>
-//         <button type="button" className={s.btnRigth}>
-//           <svg width={10} height={10}>
-//             <use href={`${icon}#icon-vector_rightorange`} />
-//           </svg>
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Pagination;
