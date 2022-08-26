@@ -1,7 +1,6 @@
 @import '../../sass/mixin';
 
 .pagContainer {
-  margin-left: 200px;
   width: 128px;
   display: flex;
   text-align: center;
@@ -10,7 +9,8 @@
 
 .paragraph {
   display: inline-flex;
-  margin-left: 10px;
+  justify-content: center;
+
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
@@ -29,8 +29,8 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
-  top: -1.5px;
-  left: -13px;
+  top: -3px;
+  left: -12px;
 
   transform: translate;
   transition: transform var(--transition);
@@ -45,12 +45,11 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
-  top: -1.5px;
-  right: 3px;
+  top: -2.5px;
+  right: -1px;
 
   transform: translate;
   transition: transform var(--transition);
-
 
   &:hover {
     transform: translate(5px);
@@ -64,4 +63,10 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--black);
+}
+
+.nomthBox {
+  display: flex;
+  width: 118px;
+  justify-content: center;
 }

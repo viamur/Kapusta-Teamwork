@@ -1,0 +1,46 @@
+[
+  {
+    "ru": "Продукты",
+    "en": "Products"
+  },
+  {
+    "ru": "Алкоголь",
+    "en": "Alcohol"
+  },
+  {
+    "ru": "Развлечения",
+    "en": "Entertainment"
+  },
+  {
+    "ru": "Здоровье",
+    "en": "Health"
+  },
+  {
+    "ru": "Транспорт",
+    "en": "Transport"
+  },
+  {
+    "ru": "Всё для дома",
+    "en": "Housing"
+  },
+  {
+    "ru": "Техника",
+    "en": "Technique"
+  },
+  {
+    "ru": "Коммуналка и связь",
+    "en": "Communal, communications"
+  },
+  {
+    "ru": "Спорт и хобби",
+    "en": "Sports, hobbies"
+  },
+  {
+    "ru": "Образование",
+    "en": "Education"
+  },
+  {
+    "ru": "Прочее",
+    "en": "Other"
+  }
+]
