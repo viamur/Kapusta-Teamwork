@@ -4,10 +4,10 @@ import BalanceModal from 'components/BalanceModal/BalanceModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { getAuthBalance } from 'redux/auth/AuthSelectors';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { newBalance } from 'redux/auth/authOperations';
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const BalanceForm = ({ isReportsPage }) => {
   const [balance, setBalance] = useState();
