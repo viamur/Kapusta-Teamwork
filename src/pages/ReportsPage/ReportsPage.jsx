@@ -1,10 +1,11 @@
 import Balance from 'components/Balance/Balance';
+import Reports from 'components/Reports/Reports';
 
 const ReportsPage = () => {
   return (
     <>
       <Balance />
-      <h2>This ReportsPage</h2>
+      <Reports />
     </>
   );
 };
