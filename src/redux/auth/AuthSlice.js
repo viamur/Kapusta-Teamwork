@@ -1,13 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  register,
-  login,
-  refresh,
-  logOut,
-  googleLogin,
-  getAuthUser,
-  newBalance,
-} from './authOperations';
+import { logOutAction } from './authActions';
+import { register, login, refreshToken, logOut, getAuthUser, newBalance } from './authOperations';
 import * as api from '../../utils/api';
 
 const initialState = {
@@ -25,7 +18,11 @@ const initialState = {
 const slice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    googleAuth(state, { payload }) {
+      return { ...state, ...payload };
+    },
+  },
   extraReducers: {
     /* =====================REGISTER==================== */
     [register.pending]: state => {
@@ -67,26 +64,6 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    /* ======================GOOGLE===================  */
-    [googleLogin.pending]: state => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    [googleLogin.fulfilled]: (state, { payload }) => {
-      const { accessToken, refreshToken, sid, userData } = payload;
-      state.accessToken = accessToken;
-      state.refreshToken = refreshToken;
-      state.sid = sid;
-      state.idUser = userData.id;
-      state.email = userData.email;
-      state.balance = userData.balance;
-      state.transactions = userData.transactions;
-      state.isLoading = false;
-    },
-    [googleLogin.rejected]: (state, { payload }) => ({
-      ...initialState,
-      error: payload,
-    }),
     /* ======================GET USER===================  */
     [getAuthUser.pending]: state => {
       state.isLoading = true;
@@ -116,18 +93,18 @@ const slice = createSlice({
       state.state.error = payload;
     },
     /* ================= REFRESH ======================*/
-    [refresh.pending]: (state, _) => {
+    [refreshToken.pending]: (state, _) => {
       state.isLoading = true;
       state.error = null;
     },
-    [refresh.fulfilled]: (state, { payload }) => {
+    [refreshToken.fulfilled]: (state, { payload }) => {
       const { newAccessToken, newRefreshToken, newSid } = payload;
       state.accessToken = newAccessToken;
       state.sid = newSid;
       state.refreshToken = newRefreshToken;
       state.isLoading = false;
     },
-    [refresh.rejected]: (state, { payload }) => {
+    [refreshToken.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
@@ -144,8 +121,12 @@ const slice = createSlice({
       state.error = payload;
       state.isLoading = false;
     },
+    /* =================ACTION============== */
+    [logOutAction]: () => {
+      return { ...initialState };
+    },
   },
 });
 
-export const { reducer: authReducer } = slice;
-export const { token, resetAuthState } = slice.actions;
+export const { googleAuth } = slice.actions;
+export default slice.reducer;
