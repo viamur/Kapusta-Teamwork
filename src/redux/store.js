@@ -1,5 +1,5 @@
 // import { createLogger } from 'redux-logger';
-import { authReducer } from './auth/AuthSlice';
+import authReducer from './auth/AuthSlice';
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {

@@ -1,13 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  register,
-  login,
-  refresh,
-  logOut,
-  googleLogin,
-  getAuthUser,
-  newBalance,
-} from './authOperations';
+import { logOutAction } from './authActions';
+import { register, login, refreshToken, logOut, getAuthUser, newBalance } from './authOperations';
 import * as api from '../../utils/api';
 
 const initialState = {
@@ -100,18 +93,18 @@ const slice = createSlice({
       state.state.error = payload;
     },
     /* ================= REFRESH ======================*/
-    [refresh.pending]: (state, _) => {
+    [refreshToken.pending]: (state, _) => {
       state.isLoading = true;
       state.error = null;
     },
-    [refresh.fulfilled]: (state, { payload }) => {
+    [refreshToken.fulfilled]: (state, { payload }) => {
       const { newAccessToken, newRefreshToken, newSid } = payload;
       state.accessToken = newAccessToken;
       state.sid = newSid;
       state.refreshToken = newRefreshToken;
       state.isLoading = false;
     },
-    [refresh.rejected]: (state, { payload }) => {
+    [refreshToken.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
@@ -128,8 +121,12 @@ const slice = createSlice({
       state.error = payload;
       state.isLoading = false;
     },
+    /* =================ACTION============== */
+    [logOutAction]: () => {
+      return { ...initialState };
+    },
   },
 });
 
-export const { reducer: authReducer } = slice;
 export const { googleAuth } = slice.actions;
+export default slice.reducer;

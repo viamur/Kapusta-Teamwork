@@ -1,4 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { logOutAction } from './authActions';
+import hendlerError from '../error/handleError';
 import * as api from '../../utils/api';
 
 const Error = {
@@ -33,44 +35,68 @@ const login = createAsyncThunk('auth/login', async (credentials, { rejectWithVal
   }
 });
 
-const refresh = createAsyncThunk('auth/refresh', async (_, { getState, rejectWithValue }) => {
-  try {
-    api.token.set(getState().auth.refreshToken);
-    const { data } = await api.refresh({ sid: getState().auth.sid });
-    api.token.set(data.newAccessToken);
-    return data;
-  } catch (error) {
-    return rejectWithValue(Error.UNKNOWN);
-  }
-});
-
-const logOut = createAsyncThunk('auth/logOut', async (_, { rejectWithValue }) => {
+const logOut = createAsyncThunk('auth/logOut', async (_, { rejectWithValue, dispatch }) => {
   try {
     await api.logout();
     api.token.unset();
   } catch (error) {
+    setTimeout(() => {
+      dispatch(hendlerError({ error, cb: logOut }));
+    }, 0);
     return rejectWithValue(Error.UNKNOWN);
   }
 });
 
-const getAuthUser = createAsyncThunk('auth/getUser', async (_, { getState, rejectWithValue }) => {
-  const token = getState().auth.accessToken;
-  api.token.set(token);
-  try {
-    const { data } = await api.getUser();
-    return data;
-  } catch (error) {
-    return rejectWithValue(error.message);
+const getAuthUser = createAsyncThunk(
+  'auth/getUser',
+  async (_, { getState, rejectWithValue, dispatch }) => {
+    const token = getState().auth.accessToken;
+    api.token.set(token);
+    try {
+      const { data } = await api.getUser();
+      return data;
+    } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: getAuthUser }));
+      }, 0);
+      return rejectWithValue(error.message);
+    }
   }
-});
+);
 
-const newBalance = createAsyncThunk('auth/newBalance', async (balance, { rejectWithValue }) => {
-  try {
-    const { data } = await api.updateBalance(balance);
-    return data;
-  } catch (error) {
-    return rejectWithValue(error.message);
+const newBalance = createAsyncThunk(
+  'auth/newBalance',
+  async (balance, { rejectWithValue, dispatch }) => {
+    try {
+      const { data } = await api.updateBalance(balance);
+      return data;
+    } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: newBalance }));
+      }, 0);
+      return rejectWithValue(error.message);
+    }
   }
-});
+);
 
-export { register, login, refresh, logOut, getAuthUser, newBalance };
+const refreshToken = createAsyncThunk(
+  'auth/refreshToken',
+  async (cb, { getState, rejectWithValue, dispatch }) => {
+    const { refreshToken, sid } = getState().auth;
+    try {
+      api.token.set(refreshToken);
+      const { data } = await api.refresh({ sid });
+      setTimeout(() => {
+        dispatch(cb());
+      }, 0);
+      return data;
+    } catch (error) {
+      setTimeout(() => {
+        dispatch(logOutAction());
+      }, 0);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export { register, login, logOut, getAuthUser, newBalance, refreshToken };
