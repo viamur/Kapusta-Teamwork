@@ -3,17 +3,9 @@ import { Link } from 'react-router-dom';
 import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
 import { useMediaQuery } from 'react-responsive';
-<<<<<<< HEAD
-// import Modal from 'components/Modal/Modal';
-
-
-
-// import { useDispatch, useSelector } from 'react-redux';
-=======
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthEmail, getAuthToken } from 'redux/auth/AuthSelectors';
 import { logOut } from 'redux/auth/authOperations';
->>>>>>> f3943e4fc3fbfdf9d9abdbffe152c112bcd662b2
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -4,16 +4,11 @@ import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-
 import Header from 'components/Header/Header';
 import Container from 'components/Container/Container';
 import s from './SharedLayout.module.scss';
-<<<<<<< HEAD
-import { useSelector } from 'react-redux';
-import Modal from 'components/Modal/Modal';
-=======
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthToken } from 'redux/auth/AuthSelectors';
 import { useEffect } from 'react';
 import { getAuthUser } from 'redux/auth/authOperations';
 import { googleAuth } from '../../redux/auth/AuthSlice';
->>>>>>> f3943e4fc3fbfdf9d9abdbffe152c112bcd662b2
 
 const SharedLayout = () => {
   const [searchParams, setSearchParams] = useSearchParams();
