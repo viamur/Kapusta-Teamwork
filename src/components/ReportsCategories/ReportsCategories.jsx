@@ -6,10 +6,14 @@ import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryL
 
 export default function ReportsCategories({ incomes, expenses }) {
   const [pickedState, setPickedState] = useState('EXPENSES');
+  const [test, setTest] = useState(true);
+  // let test = true;
 
   const togglePickedState = () => {
     setPickedState(prev => (prev === 'EXPENSES' ? 'INCOMES' : 'EXPENSES'));
+    setTest(prev => (prev = !test));
   };
+  console.log(test);
   return (
     <div className={s.reportsCategories}>
       <div className={s.toggle}>
@@ -25,7 +29,7 @@ export default function ReportsCategories({ incomes, expenses }) {
           </svg>
         </span>
       </div>
-      <ReportsCategoryList incomes={incomes} expenses={expenses} />
+      <ReportsCategoryList test={test} incomes={incomes} expenses={expenses} />
     </div>
   );
 }
