@@ -1,7 +1,15 @@
 .backgroundChartCategory {
-  margin-top: 32px;
-  margin-bottom: 40px;
+  // margin-top: 32px;
+  // margin-bottom: 40px;
   border-radius: 30px;
   background-color: #ffffff;
-  padding-top: 50px;
+  box-sizing: border-box;
+  display: block;
+  height: 220px;
+  width: 400px;
+  margin-left: -100px;
+}
+
+canvas {
+  min-height: 300px;
 }
