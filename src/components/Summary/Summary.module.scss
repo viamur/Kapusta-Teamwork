@@ -1,0 +1,47 @@
+@import "../../index.scss";
+
+.summaryTable {
+  display: none;
+
+  .summaryItem {
+    cursor: pointer;
+
+    &:focus, &:hover {
+      td {
+        background-color: $accent-color-light;
+      }
+    }
+    &.active td{
+      background-color: $accent-color-dark;
+      color: $bg-main;
+    }
+  }
+}
+
+.containerSummary {
+display: none;
+}
+
+.titleSummary {
+  text-align: center;
+  font-weight: 700;
+  padding: 10px;
+  background-color: #f4f6fb;
+  border-bottom: 1px solid white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.listSummary {
+  background-color: #f4f6fb;
+}
+.listSummary:last-child {
+  border-bottom-right-radius: 15px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid white;
+}

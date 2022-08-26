@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
 import { useMediaQuery } from 'react-responsive';
+// import Modal from 'components/Modal/Modal';
+
+
 
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -39,6 +42,7 @@ const Header = () => {
           </div>
         )}
       </div>
+      <Modal title={"leave"} onClose={onClose}/>
     </header>
   );
 };

@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import AuthPage from '../pages/AuthPage';
 import ExpensesPage from 'pages/ExpensesPage';
@@ -6,7 +7,10 @@ import ReportsPage from 'pages/ReportsPage';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
+import Modal from './Modal/Modal';
 
+
+//  const [forModal, setForModal] = useState({});
 
 export const App = () => {
   return (

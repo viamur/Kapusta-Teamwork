@@ -5,6 +5,7 @@ import Header from 'components/Header/Header';
 import Container from 'components/Container/Container';
 import s from './SharedLayout.module.scss';
 import { useSelector } from 'react-redux';
+import Modal from 'components/Modal/Modal';
 
 const SharedLayout = () => {
   // const token = useSelector();
@@ -21,6 +22,7 @@ const SharedLayout = () => {
           </Container>
         </section>
       </main>
+      <Modal/>
     </>
   );
 };
