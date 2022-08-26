@@ -1,8 +1,24 @@
-.filterBox{
+@import '../../sass/mixin';
+
+.filterBox {
+  width: 280px;
+  height: 44px;
+  padding: 2px 20px;
+  border-radius: 0px 0px 25px 0px;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+
+  @include mq(tab) {
     width: 280px;
-    height: 44px;
-    // padding: 2px 20px;
-    //  border-radius: 0px 0px 25px 0px; 
-    // background-color: transparent;
-    // border: 2px solid #FFFFFF;
+    padding: 2px;
+    border-left: none;
+    border-radius: 0px;
+    flex-direction: row;
+  }
+}
+
+.selected {
+  @include mq(tab) {
+    width: 180px;
+  }
 }
