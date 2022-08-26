@@ -4,22 +4,6 @@ import s from './CategoryList.module.scss';
 export default function CategoryList() {
   return (
     <div className={s.backgroundCategoryList}>
-      <div className={s.expenses}>
-        <button className={s.titleBtn}>
-          <svg className={s.iconsExpenses} width={4} height={10}>
-            <use href={`${icon}#icon-vector_leftorange`} />
-          </svg>
-        </button>
-
-        <h2 className={s.title}>Expenses</h2>
-
-        <button className={s.titleBtn}>
-          <svg className={s.iconsExpenses} width={4} height={10}>
-            <use href={`${icon}#icon-vector_rightorange`} />
-          </svg>
-        </button>
-      </div>
-
       <div className={s.categoryListContainer}>
         <ul className={s.categoryList}>
           <li className={s.categoryListItem}>
