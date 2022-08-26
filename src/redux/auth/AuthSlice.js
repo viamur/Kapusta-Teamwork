@@ -25,7 +25,11 @@ const initialState = {
 const slice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    googleAuth(state, { payload }) {
+      return { ...state, ...payload };
+    },
+  },
   extraReducers: {
     /* =====================REGISTER==================== */
     [register.pending]: state => {
@@ -67,26 +71,6 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    /* ======================GOOGLE===================  */
-    [googleLogin.pending]: state => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    [googleLogin.fulfilled]: (state, { payload }) => {
-      const { accessToken, refreshToken, sid, userData } = payload;
-      state.accessToken = accessToken;
-      state.refreshToken = refreshToken;
-      state.sid = sid;
-      state.idUser = userData.id;
-      state.email = userData.email;
-      state.balance = userData.balance;
-      state.transactions = userData.transactions;
-      state.isLoading = false;
-    },
-    [googleLogin.rejected]: (state, { payload }) => ({
-      ...initialState,
-      error: payload,
-    }),
     /* ======================GET USER===================  */
     [getAuthUser.pending]: state => {
       state.isLoading = true;
@@ -148,4 +132,4 @@ const slice = createSlice({
 });
 
 export const { reducer: authReducer } = slice;
-export const { token, resetAuthState } = slice.actions;
+export const { googleAuth } = slice.actions;

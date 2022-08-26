@@ -33,19 +33,6 @@ const login = createAsyncThunk('auth/login', async (credentials, { rejectWithVal
   }
 });
 
-const googleLogin = createAsyncThunk('auth/google', async (credentials, { rejectWithValue }) => {
-  try {
-    const { data } = await api.googleAuth();
-    api.token.set(data.accessToken);
-    return data;
-  } catch (error) {
-    if (error.message === 'Request failed with status code 403') {
-      return rejectWithValue("Email doesn't exist / Password is wrong");
-    }
-    return rejectWithValue(Error.UNKNOWN);
-  }
-});
-
 const refresh = createAsyncThunk('auth/refresh', async (_, { getState, rejectWithValue }) => {
   try {
     api.token.set(getState().auth.refreshToken);
@@ -86,4 +73,4 @@ const newBalance = createAsyncThunk('auth/newBalance', async (balance, { rejectW
   }
 });
 
-export { register, login, refresh, logOut, googleLogin, getAuthUser, newBalance };
+export { register, login, refresh, logOut, getAuthUser, newBalance };
