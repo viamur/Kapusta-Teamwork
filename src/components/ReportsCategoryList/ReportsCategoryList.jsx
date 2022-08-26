@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import categoriesExpens from '../../utils/categoriesExpens.json';
 import categoriesIncome from '../../utils/categoriesIncome.json';
 
-export default function ReportsCategoryList({ incomes, expenses }) {
+export default function ReportsCategoryList({ incomes, expenses, test }) {
   const [expensesArr, setExpensesArr] = useState([]);
-  // const [incomesArr, setIncomesArr] = useState([]);
+  const [incomesArr, setIncomesArr] = useState([]);
 
   const getTransleteExpensesCategory = () => {
     console.log(expenses);
@@ -16,30 +16,53 @@ export default function ReportsCategoryList({ incomes, expenses }) {
     }));
   };
   const getTransleteIncomesCategory = () => {
-    // return categoriesIncome.map(el => ({
-    //   ...el,
-    //   data: incomes.incomesData[el.ru] || { total: 0 },
-    // }));
+    return categoriesIncome.map(el => ({
+      ...el,
+      data: incomes.incomesData[el.ru] || { total: 0 },
+    }));
   };
 
   useEffect(() => {
     if (Object.keys(expenses).length)
       setExpensesArr(getTransleteExpensesCategory(expenses));
-    console.log(incomes);
+    console.log(expenses);
     console.log(expensesArr);
   }, [expenses]);
 
+  useEffect(() => {
+    if (Object.keys(incomes).length)
+      setIncomesArr(getTransleteIncomesCategory(incomes));
+    console.log(incomes);
+    console.log(incomesArr);
+  }, [expenses]);
+
   return (
-    <div>
-      <ul>
-        {expensesArr.map((el, id) => (
-          <li key={id}>
-            <span>{el.data.total} - </span>
-            <span>ICON - </span>
-            <span>{el.en} </span>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {test ? (
+        <div>
+          <ul>
+            {expensesArr.map((el, id) => (
+              <li key={id}>
+                <span>{el.data.total} - </span>
+                <span>ICON - </span>
+                <span>{el.en} </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div>
+          <ul>
+            {incomesArr.map((el, id) => (
+              <li key={id}>
+                <span>!!!!!! - </span>
+                <span>ICON - </span>
+                <span>!!!</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
   );
 }

@@ -1,7 +1,7 @@
 import Container from 'components/Container/Container';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getTransactionReportApi } from '../../utils/api';
+import { getPeriodTransactions } from '../../utils/api';
 import ReportsHeader from '../ReportsHeader/ReportsHeader';
 import ReportsCategories from '../ReportsCategories/ReportsCategories';
 
@@ -13,7 +13,7 @@ export default function Reports() {
   // const []
 
   useEffect(() => {
-    getTransactionReportApi()
+    getPeriodTransactions()
       .then(res => {
         setIncomes(res.incomes);
         setExpenses(res.expenses);
