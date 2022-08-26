@@ -63,6 +63,14 @@ export const App = () => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="reports"
+          element={
+            <PublicRoute restricted>
+              <ReportsPage />
+            </PublicRoute>
+          }
+        />
       </Route>
 
       <Route path="*" element={<Navigate to="/" />} />
