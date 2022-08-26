@@ -13,20 +13,22 @@ export default function Reports() {
   // const []
 
   useEffect(() => {
-    getPeriodTransactions()
+    getPeriodTransactions('2022-07')
       .then(res => {
-        setIncomes(res.incomes);
-        setExpenses(res.expenses);
+        setIncomes(res.data.incomes);
+        setExpenses(res.data.expenses);
       })
       .catch(error => console.log(error));
   }, []);
-
   return (
-    <div style={{ backgroundColor: '#eee' }}>
-      <Container>
-        <ReportsHeader incomes={incomes} expenses={expenses} />
-        <ReportsCategories incomes={incomes} expenses={expenses} />
-      </Container>
-    </div>
+    <>
+      {console.log(incomes)}
+      <div style={{ backgroundColor: '#eee' }}>
+        <Container>
+          <ReportsHeader incomes={incomes} expenses={expenses} />
+          <ReportsCategories incomes={incomes} expenses={expenses} />
+        </Container>
+      </div>
+    </>
   );
 }
