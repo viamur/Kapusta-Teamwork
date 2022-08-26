@@ -1,19 +1,30 @@
+import { useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import AuthPage from '../pages/AuthPage';
-import ExpensesPage from 'pages/ExpensesPage';
-import IncomePage from 'pages/IncomePage';
-import ReportsPage from 'pages/ReportsPage';
+import { useDispatch, useSelector } from 'react-redux';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
+import AuthPage from '../pages/AuthPage/AuthPage';
+import { getAuthToken } from 'redux/auth/AuthSelectors';
+import { getAuthUser } from 'redux/auth/authOperations';
+import TransactionsPage from '../pages/TransactionsPage/TransactionsPage';
+import ReportsPage from '../pages/ReportsPage/ReportsPage';
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(getAuthToken);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getAuthUser());
+    }
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route
           path="auth"
-          index
           element={
             <PublicRoute restricted>
               <AuthPage />
@@ -21,19 +32,35 @@ export const App = () => {
           }
         />
         <Route
-          path="expenses"
+          path="transactions"
           element={
-            <PublicRoute restricted>
-              <ExpensesPage />
-            </PublicRoute>
+            <PrivateRoute>
+              <TransactionsPage />
+            </PrivateRoute>
           }
         />
         <Route
-          path="incomes"
+          path="transactions/:transType"
           element={
-            <PublicRoute restricted>
-              <IncomePage />
-            </PublicRoute>
+            <PrivateRoute>
+              <TransactionsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="reports"
+          element={
+            <PrivateRoute>
+              <ReportsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="reports/:repotsType"
+          element={
+            <PrivateRoute>
+              <ReportsPage />
+            </PrivateRoute>
           }
         />
       </Route>

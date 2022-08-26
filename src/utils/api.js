@@ -13,46 +13,25 @@ const token = {
 
 /* auth */
 const googleAuth = async () => await axios.get('auth/google');
-const register = async credentials =>
-  await axios.post('auth/register', credentials);
+const register = async credentials => await axios.post('auth/register', credentials);
 
 const login = async credentials => await axios.post('auth/login', credentials);
-const refresh = async credentials =>
-  await axios.post('auth/refresh', credentials);
+const refresh = async credentials => await axios.post('auth/refresh', credentials);
 
 const logout = async () => await axios.post('auth/logout');
 
 /* transaction */
-const addTransactionIncomeApi = async credentials =>
-  await axios.post('transaction/income', credentials);
-// const getTransactionIncomeApi = async () =>
-//   await axios.get('transaction/income');
-const getTransactionIncomeApi = () => {
-  return axios.get('/transaction/income').then(response => response.data);
-};
-
-const addTransactionExpenseApi = async credentials =>
-  await axios.post('transaction/expense', credentials);
-// const getTransactionExpenseApi = async () =>
-//   await axios.get('transaction/expense');
-const getTransactionExpenseApi = () => {
-  return axios.get('/transaction/expense').then(response => response.data);
-};
-
-const removeTransactionApi = async id =>
-  await axios.delete(`transaction/${id}`);
-
-const getIncomeCategories = async credentials =>
-  await axios.get('transaction/income-categories');
-const getExpenseCategories = async credentials =>
-  await axios.get('transaction/expense-categories');
-
-const getPeriodTransactions = async date =>
-  await axios.get(`transaction/period-data?date=${date}`);
+const addIncome = async credentials => await axios.post('transaction/income', credentials);
+const getIncome = async () => await axios.get('transaction/income');
+const addExpense = async credentials => await axios.post('transaction/expense', credentials);
+const getExpense = async () => await axios.get('transaction/expense');
+const removeTransaction = async id => await axios.delete(`transaction/${id}`);
+const getIncomeCategories = async credentials => await axios.get('transaction/income-categories');
+const getExpenseCategories = async credentials => await axios.get('transaction/expense-categories');
+const getPeriodTransactions = async date => await axios.get(`transaction/period-data?date=${date}`);
 
 /* user */
-const updateBalance = async credentials =>
-  await axios.patch('user/balance', credentials);
+const updateBalance = async credentials => await axios.patch('user/balance', credentials);
 const getUser = async () => await axios.get('user');
 
 export {
@@ -64,11 +43,11 @@ export {
   refresh,
   googleAuth,
   /* transaction */
-  addTransactionIncomeApi,
-  getTransactionIncomeApi,
-  addTransactionExpenseApi,
-  getTransactionExpenseApi,
-  removeTransactionApi,
+  addIncome,
+  getIncome,
+  addExpense,
+  getExpense,
+  removeTransaction,
   getIncomeCategories,
   getExpenseCategories,
   getPeriodTransactions,

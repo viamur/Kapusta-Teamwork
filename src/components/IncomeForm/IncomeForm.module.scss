@@ -1,0 +1,235 @@
+@import '../../sass/mixin';
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  @include mq(desk){
+    flex-direction: row;
+  }
+}
+
+.btnBack {
+  width: 45px;
+  margin-bottom: 22px;
+  border: none;
+  background-color: transparent;
+
+  transform: translate;
+  transition: transform var(--transition);
+
+  &:hover {
+    transform: translate(-5px);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+
+  @include mq(tab) {
+    flex-direction: row;
+    margin-bottom: 50px;
+    width: 280px;
+  }
+
+  @include mq(desk) {
+   margin-right:0px 32px 0px 0px;
+  }
+}
+
+.input {
+  width: 280px;
+  height: 44px;
+  padding: 2px 20px;
+  border-radius: 25px 25px 0px 0px;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #c7ccdc;
+  }
+
+  @include mq(tab) {
+    width: 185px;
+    border-radius: 25px 0px 0px;
+    flex-direction: row;
+  }
+
+  @include mq(desk) {
+    width: 298px; 
+  }
+}
+
+.inputNumber {
+  width: 140px;
+  padding: 13.5px 20px;
+  border-radius: 25px 0px 0px 25px;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+
+  &::placeholder {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--black);
+
+    @include mq(tab) {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.02em;
+
+      color: #c7ccdc;
+    }
+  }
+
+  @include mq(tab) {
+    width: 52px;
+    padding: 10.5px 10px;
+    border-radius: 0px;
+    border-left: none;
+    border-right: none;
+  }
+
+  @include mq(desk) {
+    padding: 10.8px 10px;
+  }
+}
+
+.numberBox {
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 80px;
+
+  @include mq(tab) {
+    margin-top: 0;
+    margin-bottom: 0px;
+  }
+
+  @include mq(desk) {
+   
+  }
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 0px 25px 25px 0px;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  border-left: none;
+
+  @include mq(tab) {
+    padding: 0px 20px 0px 0px;
+    flex-direction: row;
+  }
+
+  @include mq(desk) {
+  
+  }
+}
+
+.btnCategory {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  width: 280px;
+  height: 44px;
+  padding: 2px 20px;
+  border-radius: 0px 0px 25px 0px;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+
+  @include mq(tab) {
+    flex-direction: row;
+  }
+
+  @include mq(desk) {
+   
+  }
+}
+
+.btnText {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+  color: #c7ccdc;
+
+  @include mq(tab) {
+    flex-direction: row;
+  }
+
+  @include mq(desk) {
+    
+  }
+}
+
+.btn {
+  width: 130px;
+  height: 44px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 12px 26px;
+  border-radius: 16px;
+  border: none;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: #f5f6fb;
+  color: #52555f;
+  box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+
+  transition-property: transform, color, background-color;
+  transition: var(--transition);
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--accent-color);
+    color: var(--white);
+  }
+
+  &:active {
+    background-color: var(--accent-color);
+    color: var(--white);
+  }
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  @include mq(tab) {
+    flex-direction: row;
+  }
+
+}
+
+.box{
+@include mq(desk) {
+  height: 44px;
+  display: flex;
+}
+}
