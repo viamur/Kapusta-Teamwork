@@ -1,5 +1,4 @@
 import s from './BalanceForm.module.scss';
-import { useFormik } from 'formik';
 import NumberFormat from 'react-number-format';
 import BalanceModal from 'components/BalanceModal/BalanceModal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,7 +38,7 @@ const BalanceForm = ({ isReportsPage }) => {
     dispatch(newBalance({ newBalance: balance }));
   };
   return (
-    <div className={s.balance}>
+    <div className={isReportsPage ? s.balanceReports : s.balance}>
       <p className={s.title}>Balance:</p>
       <form onSubmit={handleSubmit} className={s.form}>
         <NumberFormat
