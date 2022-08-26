@@ -7,13 +7,13 @@ export default function ReportsHeader({ incomes, expenses }) {
       <div className={`${s.total} ${s.total__expenses}`}>
         <p>
           Expenses:
-          <span>{expenses.total} uah</span>
+          <span>{expenses.expenseTotal} uah</span>
         </p>
       </div>
       <div className={`${s.total} ${s.total__incomes}`}>
         <p>
           Income:
-          <span>{incomes.total} uah</span>
+          <span>{incomes.incomeTotal} uah</span>
         </p>
       </div>
     </div>

@@ -4,8 +4,9 @@ import s from './ReportsCategories.module.scss';
 import icon from '../../images/icon.svg';
 import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryList';
 
-export default function ReportsCategories() {
+export default function ReportsCategories({ incomes, expenses }) {
   const [pickedState, setPickedState] = useState('EXPENSES');
+
   const togglePickedState = () => {
     setPickedState(prev => (prev === 'EXPENSES' ? 'INCOMES' : 'EXPENSES'));
   };
@@ -24,7 +25,7 @@ export default function ReportsCategories() {
           </svg>
         </span>
       </div>
-      {/* <ReportsCategoryList /> */}
+      <ReportsCategoryList incomes={incomes} expenses={expenses} />
     </div>
   );
 }
