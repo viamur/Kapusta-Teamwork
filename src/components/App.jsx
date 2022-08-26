@@ -2,11 +2,10 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import AuthPage from '../pages/AuthPage';
 import ExpensesPage from 'pages/ExpensesPage';
 import IncomePage from 'pages/IncomePage';
-import ReportsPage from 'pages/ReportPage/ReportsPage';
+import ReportsPage from 'pages/ReportsPage';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
-
 
 export const App = () => {
   return (

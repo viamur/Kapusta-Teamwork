@@ -1,3 +1,5 @@
+@import '../../sass/mixin';
+
 .expenses {
   display: flex;
   align-content: center;
@@ -19,35 +21,56 @@
 }
 
 .backgroundCategoryList {
-  margin-top: 32px;
-  margin-bottom: 40px;
-  border-radius: 30px;
   background-color: #ffffff;
-  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+
+  @include mq(tab) {
+    margin-top: 32px;
+    margin-bottom: 40px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  }
 }
 
 .categoryList {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  justify-content: space-around;
+  // margin: 20px;
+
+  @include mq(tab) {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 .categoryListItem {
+  width: 93px;
   text-align: center;
   margin-bottom: 40px;
+  @include mq(tab) {
+    width: auto;
+  }
 }
 
 .categoryListItem:not(:last-child) {
-  margin-right: 20px;
+  @include mq(tab) {
+    margin-right: 20px;
+  }
 }
 
 .categoryListContainer {
-  max-width: 623px;
+  max-width: 280px;
   margin: 0 auto;
+  @include mq(tab) {
+    max-width: 623px;
+  }
 }
 
 .iconFill {
@@ -62,12 +85,15 @@
   fill: var(--accent-color);
 }
 
-.discriptionItem {
+.discriptionItem,
+.priceItem {
   font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  // display: flex;
+  // justify-content: center;
 }
 
 .borderForIconRelative {
@@ -76,118 +102,198 @@
 
 .borderForIcon {
   position: absolute;
-  bottom: 17%;
+  bottom: 15%;
   width: 52.68px;
   height: 46px;
   border-radius: 20px;
-  left: 5%;
+  left: 19%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 17%;
+    width: 52.68px;
+    height: 46px;
+    border-radius: 20px;
+    left: 5%;
+  }
 }
 
 .borderForIconAlcohol {
   position: absolute;
-  bottom: 8%;
-  width: 51.27px;
-  height: 46.41px;
+  bottom: 13%;
+  width: 59px;
+  height: 46px;
   border-radius: 20px;
-  left: 10%;
+  left: 14%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 8%;
+    width: 51.27px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 10%;
+  }
 }
 
 .borderForIconEntertainment {
   position: absolute;
-  bottom: 9%;
-  width: 58.4px;
-  height: 46.41px;
+  bottom: 16%;
+  width: 59px;
+  height: 46px;
   border-radius: 20px;
-  left: 20%;
-}
-
-.borderForIconEntertainment {
-  position: absolute;
-  bottom: 9%;
-  width: 58.4px;
-  height: 46.41px;
-  border-radius: 20px;
-  left: 20%;
+  left: 17%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 9%;
+    width: 58.4px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 20%;
+  }
 }
 
 .borderForIconHealth {
   position: absolute;
-  bottom: 9%;
-  width: 52.68px;
-  height: 46.41px;
+  bottom: 14%;
+  width: 59px;
+  height: 46px;
   border-radius: 20px;
-  left: 10%;
+  left: 18%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 9%;
+    width: 52.68px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 10%;
+  }
 }
 
 .borderForIconTransport {
   position: absolute;
-  bottom: 9%;
-  width: 51.98px;
-  height: 46.41px;
+  bottom: 13%;
+  width: 59px;
+  height: 46px;
   border-radius: 20px;
-  left: 12%;
+  left: 17%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 9%;
+    width: 51.98px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 12%;
+  }
 }
 
 .borderForIconHousing {
   position: absolute;
-  bottom: 11%;
+  bottom: 13%;
   width: 59px;
-  height: 46.41px;
+  height: 46px;
   border-radius: 20px;
-  left: 5%;
+  left: 17%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 11%;
+    width: 59px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 5%;
+  }
 }
 
 .borderForIconTechnique {
   position: absolute;
-  bottom: 6%;
+  bottom: 14%;
   width: 59px;
-  height: 46.41px;
+  height: 46px;
   border-radius: 20px;
-  left: 6%;
+  left: 18%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 6%;
+    width: 59px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 6%;
+  }
 }
 
 .borderForIconCommunalAndCommunication {
   position: absolute;
-  bottom: 8%;
+  bottom: 15%;
   width: 59px;
-  height: 46.41px;
+  height: 46px;
   border-radius: 20px;
-  left: 21%;
+  left: 17%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 8%;
+    width: 59px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 21%;
+  }
 }
 
 .borderForIconSportsAndHobbies {
   position: absolute;
-  bottom: 7%;
+  bottom: 15%;
   width: 59px;
-  height: 46.41px;
+  height: 46px;
   border-radius: 20px;
-  left: 5%;
+  left: 18%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 7%;
+    width: 59px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 5%;
+  }
 }
 
 .borderForIconEducation {
   position: absolute;
-  bottom: 7%;
+  bottom: 14%;
   width: 59px;
-  height: 46.41px;
+  height: 46px;
   border-radius: 20px;
-  left: 5%;
+  left: 18%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 7%;
+    width: 59px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 5%;
+  }
 }
 
 .borderForIconOther {
   position: absolute;
-  bottom: 7%;
+  bottom: 14%;
   width: 59px;
-  height: 46.41px;
+  height: 46px;
   border-radius: 20px;
-  left: 4%;
+  left: 18%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 7%;
+    width: 59px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 4%;
+  }
 }
 
 .borderForHover {
-  background-color: #f5f6fb;
+  background-color: var(--grey);
+  // background-color: red;
 }
 
 .borderForHover:hover {
   transform: scale(1.05);
-  background-color: var(--accent-color);
+  background-color: var(--persik);
   color: var(--white);
 }

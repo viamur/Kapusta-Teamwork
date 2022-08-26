@@ -25,9 +25,9 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>5000.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIcon}></div>
+              <div className={`${s.borderForIcon} ${s.borderForHover}`}></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-eda61`} />
+                <use href={`${icon}#icon-products`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Products</p>
@@ -35,9 +35,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>200.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconAlcohol}></div>
+              <div
+                className={`${s.borderForIconAlcohol} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-cocktail1`} />
+                <use href={`${icon}#icon-alcohol`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Alcohol</p>
@@ -45,9 +47,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>800.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconEntertainment}></div>
+              <div
+                className={`${s.borderForIconEntertainment} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-airletter1`} />
+                <use href={`${icon}#icon-entertainment`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Entertainment</p>
@@ -55,9 +59,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>900.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconHealth}></div>
+              <div
+                className={`${s.borderForIconHealth} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-hands_heart1`} />
+                <use href={`${icon}#icon-health`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Health</p>
@@ -65,9 +71,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>2 000.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconTransport}></div>
+              <div
+                className={`${s.borderForIconTransport} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-car1`} />
+                <use href={`${icon}#icon-transport`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Transport</p>
@@ -75,9 +83,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>1 500.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconHousing}></div>
+              <div
+                className={`${s.borderForIconHousing} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-sofa1`} />
+                <use href={`${icon}#icon-housing`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Housing</p>
@@ -85,9 +95,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>800.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconTechnique}></div>
+              <div
+                className={`${s.borderForIconTechnique} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-tools1`} />
+                <use href={`${icon}#icon-technique`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Technique</p>
@@ -95,9 +107,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>2 200.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconCommunalAndCommunication}></div>
+              <div
+                className={`${s.borderForIconCommunalAndCommunication} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-invoice1`} />
+                <use href={`${icon}#icon-communal`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>
@@ -107,9 +121,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>1 800.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconSportsAndHobbies}></div>
+              <div
+                className={`${s.borderForIconSportsAndHobbies} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-kuvshin1`} />
+                <use href={`${icon}#icon-sports`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>
@@ -119,9 +135,11 @@ export default function CategoryList() {
           <li className={s.categoryListItem}>
             <p className={s.priceItem}>2 400.00</p>
             <div className={s.borderForIconRelative}>
-              <div className={s.borderForIconEducation}></div>
+              <div
+                className={`${s.borderForIconEducation} ${s.borderForHover}`}
+              ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-book1`} />
+                <use href={`${icon}#icon-education`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Education</p>
@@ -133,7 +151,7 @@ export default function CategoryList() {
                 className={`${s.borderForIconOther} ${s.borderForHover}`}
               ></div>
               <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-ufo1`} />
+                <use href={`${icon}#icon-other`} />
               </svg>
             </div>
             <p className={s.discriptionItem}>Other</p>
