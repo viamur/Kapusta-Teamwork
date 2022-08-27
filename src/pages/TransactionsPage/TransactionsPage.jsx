@@ -18,6 +18,17 @@ import {
   getTransactionsIsLoading,
 } from 'redux/transactions/transactionsSelector';
 
+const dat = {
+  'Доп. доход': 'dop dohod',
+  'З/П': 'Z/P',
+};
+
+const product = {
+  Продукты: 'Product',
+  Транспорт: 'Transport',
+  Здоровье: 'Zdorove',
+  'Спорт и хобби': 'Sport i Hobby',
+};
 const TransactionsPage = () => {
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
   const location = useLocation();
@@ -67,10 +78,13 @@ const TransactionsPage = () => {
       }
     }
   }, [transType, email]);
+
   return (
     <>
       {mob && !pageExpenses && !pageIncome && <Balance />}
       {!mob && <Balance />}
+
+      {/* изменять данные снизу только! */}
       {!mob && (
         <>
           <NavLink style={{ fontSize: '20px' }} to={'/transactions/income'}>
@@ -85,10 +99,12 @@ const TransactionsPage = () => {
         <p>Loading...</p>
       ) : (
         <>
-          {pageIncome && incomesData && incomesData.map(el => <p key={el['_id']}>{el.category}</p>)}
+          {pageIncome &&
+            incomesData &&
+            incomesData.map(el => <p key={el['_id']}>{dat[el.category]} </p>)}
           {pageExpenses &&
             expensesData &&
-            expensesData.map(el => <p key={el['_id']}>{el.category}</p>)}
+            expensesData.map(el => <p key={el['_id']}>{product[el.category]}</p>)}
         </>
       )}
     </>
