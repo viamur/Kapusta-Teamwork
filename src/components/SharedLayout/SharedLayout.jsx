@@ -42,7 +42,6 @@ const SharedLayout = () => {
           </Container>
         </section>
       </main>
-      <Modal/>
     </>
   );
 };

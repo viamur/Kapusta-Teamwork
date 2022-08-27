@@ -1,17 +1,21 @@
 import { Link } from 'react-router-dom';
-
 import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
+import { useState, useCallback  } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthEmail, getAuthToken } from 'redux/auth/AuthSelectors';
 import { logOut } from 'redux/auth/authOperations';
+import Modal from 'components/Modal/Modal';
+
 
 const Header = () => {
   const dispatch = useDispatch();
   const email = useSelector(getAuthEmail);
 
   const emailNormaliza = email && email.split('')[0];
+
+  const [showModal, setShowModal] = useState(false);
 
   const mob = useMediaQuery({ query: '(max-width: 768px)' });
   return (
@@ -29,7 +33,7 @@ const Header = () => {
             <button
               type="button"
               className={s.btn}
-              onClick={() => dispatch(logOut())}
+              onClick={() => setShowModal(true)}
             >
               {mob ? (
                 <svg width={16} height={16}>
@@ -39,11 +43,19 @@ const Header = () => {
                 <p className={s.exit}>Exit</p>
               )}
             </button>
+            {showModal && (
+        <Modal
+          ChildComponent
+          title={"Do you really want to leave?"}
+          setShowModal={setShowModal}
+          cb={logOut}
+        />
+      )}
           </div>
         )}
       </div>
-      <Modal title={"leave"} onClose={onClose}/>
     </header>
   );
 };
+
 export default Header;
