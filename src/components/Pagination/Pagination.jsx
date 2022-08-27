@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAuthToken } from '../../redux/auth/AuthSelectors';
-import { getPeriod } from '../../utils/reportsApi';
+import { getAuthEmail, getAuthToken } from '../../redux/auth/AuthSelectors';
+import { getPeriod } from '../../redux/reports/reportsOperation';
 import icon from '../../images/icon.svg';
 import s from './Pagination.module.scss';
 
@@ -23,12 +23,16 @@ const month = [
 const Pagination = () => {
   const dispatch = useDispatch();
   const accessToken = useSelector(getAuthToken);
+  const email = useSelector(getAuthEmail);
 
   const [nameMonth, setNameMonth] = useState(
     month.find(el => el.id === new Date().getMonth() + 1)
   );
+
   const [year, setYear] = useState(new Date().getFullYear());
-  const [selectedDate, setSelectedDate] = useState(`${year}-${nameMonth.id}`);
+  const [selectedDate, setSelectedDate] = useState(
+    `${year}-${nameMonth.id.toString().padStart(2, '0')}`
+  );
 
   const nextMnth = () => {
     if (nameMonth.id < month.length) {
@@ -51,8 +55,10 @@ const Pagination = () => {
   useEffect(() => {
     setSelectedDate(`${year}-${nameMonth.id.toString().padStart(2, '0')}`);
   }, [nameMonth, year]);
-
   useEffect(() => {
+    if (!email) {
+      return;
+    }
     dispatch(getPeriod(selectedDate));
     // eslint-disable-next-line
   }, [selectedDate, accessToken]);
