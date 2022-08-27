@@ -26,12 +26,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  padding-right: 7px;
   height: 46px;
   @include mq(tab) {
     height: 40px;
     padding-left: 20px;
     padding-right: 27px;
+  }
+  @include mq(desk) {
+    padding-right: 40px;
   }
 }
 .item:not(:last-child) {
@@ -61,12 +64,14 @@
   margin-bottom: 3px;
   @include mq(tab) {
     margin-bottom: 0px;
-    font-size: 14px;
     line-height: 1.16;
     font-weight: 400;
     width: 168px;
     overflow: hidden;
     margin-right: 7px;
+  }
+  @include mq(desk) {
+    margin-right: 55px;
   }
 }
 
@@ -79,7 +84,7 @@
 
   color: var(--descr-gray);
   @include mq(tab) {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.16;
   }
 }
@@ -88,6 +93,9 @@
   @include mq(tab) {
     width: 124px;
     text-align: center;
+  }
+  @include mq(desk) {
+    width: 116px;
   }
 }
 .date {
@@ -111,6 +119,14 @@
   letter-spacing: 0.04em;
 
   color: #e7192e;
+  @include mq(tab) {
+    margin-right: 22px;
+  }
+  @include mq(desk) {
+    width: 104px;
+    margin-right: 43px;
+    text-align: center;
+  }
 }
 .amountIncome {
   margin-right: 20px;
@@ -122,6 +138,14 @@
   letter-spacing: 0.04em;
 
   color: var(--green);
+  @include mq(tab) {
+    margin-right: 22px;
+  }
+  @include mq(desk) {
+    width: 104px;
+    text-align: center;
+    margin-right: 43px;
+  }
 }
 .btn {
   background-color: transparent;
