@@ -61,7 +61,7 @@ const transactionsSlice = createSlice({
     },
     [getExpenseThunk.fulfilled]: (state, { payload }) => {
       state.expenses = payload.expenses;
-      state.expenseCategories = payload.monthsStats;
+      state.monthsExpenses = payload.monthsStats;
       state.isLoading = false;
     },
     [getExpenseThunk.rejected]: (state, { payload }) => {
@@ -74,7 +74,7 @@ const transactionsSlice = createSlice({
       state.error = null;
     },
     [getIncomeThunk.fulfilled]: (state, { payload }) => {
-      state.incomes = payload.expenses;
+      state.incomes = payload.incomes;
       state.monthsIncomes = payload.monthsStats;
       state.isLoading = false;
     },

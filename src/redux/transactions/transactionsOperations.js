@@ -4,9 +4,10 @@ import * as api from '../../utils/api';
 /* ==============ADD INCOME ================ */
 export const addIncomeThunk = createAsyncThunk(
   'transaction/addIncome',
-  async (obj, { rejectWithValue }) => {
+  async (obj, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.addIncome(obj);
+      dispatch(getIncomeThunk());
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -17,9 +18,10 @@ export const addIncomeThunk = createAsyncThunk(
 /* ==============ADD EXPENSE ================ */
 export const addExpenseThunk = createAsyncThunk(
   'transaction/addExpense',
-  async (obj, { rejectWithValue }) => {
+  async (obj, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.addExpense(obj);
+      dispatch(getExpenseThunk());
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
