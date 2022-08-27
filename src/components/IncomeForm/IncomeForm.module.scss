@@ -2,25 +2,19 @@
 
 .formBox {
   display: flex;
+
   flex-direction: column;
-  padding: 20px;
+  padding: 20px 0px;
 
-  @include mq(desk){
-    flex-direction: row;
+  @include mq(tab) {
+    padding: 0;
+    height: 44px;
+    width: 460px;
+    margin-bottom: 50px;
   }
-}
 
-.btnBack {
-  width: 45px;
-  margin-bottom: 22px;
-  border: none;
-  background-color: transparent;
-
-  transform: translate;
-  transition: transform var(--transition);
-
-  &:hover {
-    transform: translate(-5px);
+  @include mq(desk) {
+    flex-direction: row;
   }
 }
 
@@ -28,16 +22,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 280px;
 
   @include mq(tab) {
     flex-direction: row;
-    margin-bottom: 50px;
-    width: 280px;
   }
 
   @include mq(desk) {
-   margin-right:0px 32px 0px 0px;
+    margin-right: 0px 32px 0px 0px;
   }
 }
 
@@ -66,7 +57,7 @@
   }
 
   @include mq(desk) {
-    width: 298px; 
+    width: 298px;
   }
 }
 
@@ -125,7 +116,6 @@
   }
 
   @include mq(desk) {
-   
   }
 }
 
@@ -144,7 +134,6 @@
   }
 
   @include mq(desk) {
-  
   }
 }
 
@@ -165,7 +154,6 @@
   }
 
   @include mq(desk) {
-   
   }
 }
 
@@ -183,7 +171,6 @@
   }
 
   @include mq(desk) {
-    
   }
 }
 
@@ -224,12 +211,33 @@
   @include mq(tab) {
     flex-direction: row;
   }
-
 }
 
-.box{
-@include mq(desk) {
-  height: 44px;
+.box {
+  @include mq(desk) {
+    height: 44px;
+    min-width: 900px;
+    max-width: 1550px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.btnBox {
+  width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mq(desk){
+    width: 284px;
+  }
 }
+
+.incForCont {
+  display: flex;
+  justify-content: center;
+  @include mq(desk) {
+    display: flex;
+  }
 }
