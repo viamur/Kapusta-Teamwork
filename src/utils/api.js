@@ -34,25 +34,13 @@ const getIncomeCategories = async credentials =>
   await axios.get('transaction/income-categories');
 const getExpenseCategories = async credentials =>
   await axios.get('transaction/expense-categories');
-const getPeriodTransactions = async date =>
-  await axios.get(`transaction/period-data?date=${date}`);
 
-// const getTransactionReportApi = async () => {
-//   // axios.defaults.headers.common.Authorization =
-//   // 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzA2NDYzMGRiN2E4MTA4MTQwMzBiMzAiLCJzaWQiOiI2MzA4YzQ3NGRiN2E4MTA4MTQwMzBlYjIiLCJpYXQiOjE2NjE1MTg5NjQsImV4cCI6MTY2MTUyMjU2NH0.H0SpaGZQBSJJpe511xP4CcJkIysKcRZ_aNgQGYZDgoQ';
-//   return axios
-//     .get('/transaction/period-data', {
-//       params: {
-//         date: '2022-07',
-//       },
-//     })
-//     .then(response => {
-//       // console.log(response.data);
-//       return response.data;
-//     });
-// };
+const getPeriodTransactions = async date => {
+  return await axios.get(`transaction/period-data?date=${date}`);
+};
 
 /* user */
+
 const updateBalance = async credentials =>
   await axios.patch('user/balance', credentials);
 const getUser = async () => await axios.get('user');
