@@ -1,7 +1,7 @@
 import Container from 'components/Container/Container';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getPeriodTransactions } from '../../utils/api';
+//import { getPeriodTransactions } from '../../utils/api';
 import ReportsHeader from '../ReportsHeader/ReportsHeader';
 import ReportsCategories from '../ReportsCategories/ReportsCategories';
 
@@ -12,14 +12,17 @@ export default function Reports() {
   const [expenses, setExpenses] = useState({});
   // const []
 
-  useEffect(() => {
-    getPeriodTransactions('2022-07')
-      .then(res => {
-        setIncomes(res.data.incomes);
-        setExpenses(res.data.expenses);
-      })
-      .catch(error => console.log(error));
-  }, []);
+
+  // useEffect(() => {
+  //   getPeriodTransactions()
+  //     .then(res => {
+  //       setIncomes(res.incomes);
+  //       setExpenses(res.expenses);
+  //     })
+  //     .catch(error => console.log(error));
+  // }, []);
+
+
   return (
     <>
       {console.log(incomes)}

@@ -1,12 +1,13 @@
 import ProductCategoryFilter from 'components/ProductCategoryFilter/ProductCategoryFilter';
-import GooBack from 'components/GooBack/GooBack';
+// import GooBack from 'components/GooBack/GooBack';
 import icon from '../../images/icon.svg';
 import s from './IncomeForm.module.scss';
 
 const IncomeForm = () => {
   return (
+    <div className={s.incForCont}>
+   {/* <GooBack/> */}
     <div className={s.box}>
-   <GooBack/>
         <div className={s.formBox}>
       <form className={s.form}>
         <label>
@@ -21,7 +22,7 @@ const IncomeForm = () => {
         <div className={s.numberBox}>
           <label>
             <input
-              type="text"
+              type="number"
               name="number"
               placeholder="00.00 UAH"
               className={s.inputNumber}
@@ -43,6 +44,7 @@ const IncomeForm = () => {
             clear
           </button>
         </div>
+    </div>
     </div>
   );
 };

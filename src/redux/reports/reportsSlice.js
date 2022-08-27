@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getPeriod } from '../../utils/reportsApi';
+import { getPeriod } from '../reports/reportsOperation';
 
 const initialState = {
-  data: {},
+  incomes: {},
+  expenses: {},
   error: null,
   isLoading: false,
 };
@@ -18,7 +19,9 @@ const reports = createSlice({
     }),
     [getPeriod.fulfilled]: (state, { payload }) => ({
       ...state,
-      data: payload,
+      expenses: payload.expenses,
+      incomes: payload.incomes,
+
       error: null,
       isLoading: false,
     }),
