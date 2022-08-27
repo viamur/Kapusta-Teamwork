@@ -12,6 +12,7 @@ export default function Reports() {
   const [expenses, setExpenses] = useState({});
   // const []
 
+
   // useEffect(() => {
   //   getPeriodTransactions()
   //     .then(res => {
@@ -21,12 +22,16 @@ export default function Reports() {
   //     .catch(error => console.log(error));
   // }, []);
 
+
   return (
-    <div style={{ backgroundColor: '#eee' }}>
-      <Container>
-        <ReportsHeader incomes={incomes} expenses={expenses} />
-        <ReportsCategories incomes={incomes} expenses={expenses} />
-      </Container>
-    </div>
+    <>
+      {console.log(incomes)}
+      <div style={{ backgroundColor: '#eee' }}>
+        <Container>
+          <ReportsHeader incomes={incomes} expenses={expenses} />
+          <ReportsCategories incomes={incomes} expenses={expenses} />
+        </Container>
+      </div>
+    </>
   );
 }
