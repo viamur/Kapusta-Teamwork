@@ -1,0 +1,50 @@
+.table {
+  width: 624px;
+}
+.wrap {
+  display: flex;
+  height: 38px;
+  padding-left: 20px;
+  padding-right: 90px;
+  background-color: var(--grey);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.date,
+.desc,
+.category,
+.sum {
+  display: flex;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: var(--black);
+}
+.date {
+  width: 70px;
+  margin-right: 40px;
+  text-align: left;
+}
+.desc {
+  width: 100px;
+  margin-right: 70px;
+  text-align: left;
+}
+.category {
+  width: 128px;
+  justify-content: center;
+}
+.sum {
+  width: 108px;
+  justify-content: flex-end;
+}
+// удалить потом!!!
+.vremeno {
+  background-color: white;
+  padding: 40px;
+}

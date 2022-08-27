@@ -1,8 +1,7 @@
-import { useMediaQuery } from 'react-responsive';
-import Balance from 'components/Balance/Balance';
+import { useEffect } from 'react';
 import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import {
   expenseCategoriesThunk,
   getExpenseThunk,
@@ -17,6 +16,12 @@ import {
   getTransactionsIncomes,
   getTransactionsIsLoading,
 } from 'redux/transactions/transactionsSelector';
+import Balance from 'components/Balance/Balance';
+import MyDate from 'components/MyDate/MyDate';
+import TransactionsMobBtn from '../../components/TransactionsMobBtn/TransactionsMobBtn';
+import s from './TransactionsPage.module.scss';
+import TransactionsList from 'components/TransactionsList/TransactionsList';
+import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 
 const dat = {
   'Доп. доход': 'dop dohod',
@@ -81,8 +86,22 @@ const TransactionsPage = () => {
 
   return (
     <>
-      {mob && !pageExpenses && !pageIncome && <Balance />}
-      {!mob && <Balance />}
+      {mob && !pageExpenses && !pageIncome && (
+        <>
+          <Balance />
+          <div className={s.data}>
+            <MyDate />
+          </div>
+          <TransactionsTable mob={mob} />
+          <TransactionsMobBtn />
+        </>
+      )}
+      {!mob && (
+        <>
+          <Balance />
+          <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
+        </>
+      )}
 
       {/* изменять данные снизу только! */}
       {!mob && (

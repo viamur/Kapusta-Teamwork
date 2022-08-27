@@ -1,0 +1,33 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.link {
+  height: 53px;
+  width: 100%;
+  background-color: var(--grey);
+  color: var(--black);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  &:hover,
+  &:focus {
+    color: var(--white);
+    background-color: var(--accent-color);
+  }
+}
+.link:first-child {
+  margin-right: 4px;
+}
