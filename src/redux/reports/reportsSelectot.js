@@ -1,10 +1,9 @@
-const incomesMonthSelector = ({ reports }) => reports.data.incomes;
-const expensesMonthSelector = ({ reports }) => reports.data.expenses;
+const incomesMonthSelector = ({ reports }) => reports.incomes.incomesData;
+const expensesMonthSelector = ({ reports }) => reports.expenses.expensesData;
 
-const totalIncomesMonthSelector = ({ reports }) =>
-  reports.data.incomes.incomeTotal;
+const totalIncomesMonthSelector = ({ reports }) => reports.incomes.incomeTotal;
 const totalExpensesMonthSelector = ({ reports }) =>
-  reports.data.expenses.expenseTotal;
+  reports.expenses.expenseTotal;
 
 const isLoadingSelector = ({ reports }) => reports.isLoading;
 const errorSelector = ({ reports }) => reports.error;

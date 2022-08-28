@@ -1,0 +1,170 @@
+@import '../../sass/mixin';
+.list {
+  background-color: var(--white);
+  overflow: auto;
+  @include mq(tab) {
+    height: 344px;
+    border: 2px solid var(--grey);
+    border-top: none;
+  }
+}
+/* Works on Chrome, Edge, and Safari */
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: var(--grey);
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 7px;
+  height: 46px;
+  @include mq(tab) {
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 27px;
+  }
+  @include mq(desk) {
+    padding-right: 40px;
+  }
+}
+.item:not(:last-child) {
+  border-bottom: 1px solid var(--grey);
+  @include mq(tab) {
+    border-bottom: 2px solid var(--grey);
+  }
+}
+.wrapA {
+  display: flex;
+  flex-direction: column;
+  @include mq(tab) {
+    flex-direction: row;
+  }
+}
+.wrapB {
+  display: flex;
+}
+.desc {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+
+  color: var(--descr-gray);
+
+  margin-bottom: 3px;
+  @include mq(tab) {
+    margin-bottom: 0px;
+    line-height: 1.16;
+    font-weight: 400;
+    width: 168px;
+    overflow: hidden;
+    margin-right: 7px;
+  }
+  @include mq(desk) {
+    margin-right: 55px;
+  }
+}
+
+.date,
+.category {
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.12;
+  letter-spacing: 0.04em;
+
+  color: var(--descr-gray);
+  @include mq(tab) {
+    font-size: 12px;
+    line-height: 1.16;
+  }
+}
+.category {
+  margin-left: auto;
+  @include mq(tab) {
+    width: 124px;
+    text-align: center;
+  }
+  @include mq(desk) {
+    width: 116px;
+  }
+}
+.date {
+  margin-right: 20px;
+  @include mq(tab) {
+    width: 84px;
+    margin-right: 25px;
+  }
+}
+.wrapC {
+  display: flex;
+  align-items: center;
+}
+.amountExpense {
+  margin-right: 20px;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  text-align: right;
+  letter-spacing: 0.04em;
+
+  color: #e7192e;
+  @include mq(tab) {
+    margin-right: 22px;
+  }
+  @include mq(desk) {
+    width: 104px;
+    margin-right: 43px;
+    text-align: center;
+  }
+}
+.amountIncome {
+  margin-right: 20px;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  text-align: right;
+  letter-spacing: 0.04em;
+
+  color: var(--green);
+  @include mq(tab) {
+    margin-right: 22px;
+  }
+  @include mq(desk) {
+    width: 104px;
+    text-align: center;
+    margin-right: 43px;
+  }
+}
+.btn {
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  padding: 7px;
+
+  width: 32px;
+  height: 32px;
+}
+.btn:hover,
+.btn:focus {
+  background-color: var(--grey);
+}
+.loader {
+  // @include mq(tab) {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // }
+}

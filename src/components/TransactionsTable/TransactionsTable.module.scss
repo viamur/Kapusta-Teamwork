@@ -1,0 +1,76 @@
+@import '../../sass/mixin';
+
+.table {
+  width: 624px;
+  @include mq(desk) {
+    width: 746px;
+  }
+}
+.wrap {
+  display: flex;
+  height: 38px;
+  padding-left: 20px;
+  padding-right: 90px;
+  background-color: var(--grey);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  @include mq(desk) {
+    padding-left: 28px;
+    padding-right: 118px;
+  }
+}
+.date,
+.desc,
+.category,
+.sum {
+  display: flex;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: var(--black);
+}
+.date {
+  width: 70px;
+  margin-right: 40px;
+  text-align: left;
+  @include mq(desk) {
+    width: 87px;
+    margin-right: 21px;
+  }
+}
+.desc {
+  width: 100px;
+  margin-right: 70px;
+  text-align: left;
+  @include mq(desk) {
+    width: 129px;
+    margin-right: 56px;
+  }
+}
+.category {
+  width: 128px;
+  justify-content: center;
+  @include mq(desk) {
+    width: 179px;
+    margin-right: 17px;
+  }
+}
+.sum {
+  width: 108px;
+  justify-content: flex-end;
+  @include mq(desk) {
+    justify-content: center;
+  }
+}
+// удалить потом!!!
+.vremeno {
+  background-color: white;
+  @include mq(tab) {
+    padding: 40px;
+  }
+}
