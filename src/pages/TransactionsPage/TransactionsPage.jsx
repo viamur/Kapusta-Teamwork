@@ -1,5 +1,11 @@
 import { useEffect } from 'react';
-import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -23,6 +29,7 @@ import s from './TransactionsPage.module.scss';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 import GooBack from 'components/GooBack/GooBack';
+import Summary from 'components/Summary/Summary';
 
 const TransactionsPage = () => {
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
@@ -105,18 +112,25 @@ const TransactionsPage = () => {
                 >
                   Expenses
                 </NavLink>
-                <NavLink className={pageIncome ? s.linkActive : s.link} to={'/transactions/income'}>
+                <NavLink
+                  className={pageIncome ? s.linkActive : s.link}
+                  to={'/transactions/income'}
+                >
                   income
                 </NavLink>
               </nav>
               <p>ТУТ ФОРМА паддинги сам регулируй</p>
               <div className={s.tableAndSummery}>
-                <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
-                {desk && <p>ТУТ БУДЕТ SUMMARY</p>}
+                <TransactionsTable
+                  mob={mob}
+                  pageIncome={pageIncome}
+                  pageExpenses={pageExpenses}
+                />
+                {desk && <Summary />}
               </div>
             </div>
           </div>
-          {!desk && !mob && <p>ТУТ БУДЕТ SUMMARY</p>}
+          {!desk && !mob && <Summary />}
         </>
       )}
     </>
