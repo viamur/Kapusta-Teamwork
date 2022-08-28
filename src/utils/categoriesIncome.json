@@ -1,10 +1,12 @@
 [
   {
-    "ru": "Доп. доход",
-    "en": "AddIncome"
+    "ru": "З/П",
+    "en": "Salary",
+    "icon": "Salary"
   },
   {
-    "ru": "З/П",
-    "en": "Salary"
+    "ru": "Доп. доход",
+    "en": "Additional Income",
+    "icon": "AddIncome"
   }
 ]

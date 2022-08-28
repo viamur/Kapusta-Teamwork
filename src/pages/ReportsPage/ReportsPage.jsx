@@ -1,12 +1,12 @@
 import Balance from 'components/Balance/Balance';
 import Reports from 'components/Reports/Reports';
-// import IncomeForm from 'components/IncomeForm/IncomeForm';
+import IncomeForm from 'components/IncomeForm/IncomeForm';
 // import CategoryList from '../../components/CategoryList/CategoryList';
 
 const ReportsPage = () => {
   return (
     <>
-       {/* <IncomeForm/> */}
+       <IncomeForm/>
       <Balance />
       <Reports />
       {/* <CategoryList /> */}
