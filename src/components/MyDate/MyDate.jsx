@@ -6,9 +6,11 @@ import { useState } from 'react';
 import './MyDate.scss';
 import CalendarIcon from './CalendarIcon';
 
-export default function MyDate() {
+export default function MyDate(dateHandle) {
   const [date, setDate] = useState(new Date());
-
+  
+  dateHandle = date
+  console.log(date);
   return (
     <div>
       <form>

@@ -7,7 +7,6 @@ export const getPeriod = createAsyncThunk(
     console.log('gdgdhfh', date);
     try {
       const { data } = await getPeriodTransactions(date);
-      console.log('dhfh', data);
       return data;
     } catch (err) {
       return rejectWithValue(err);
