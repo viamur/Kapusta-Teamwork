@@ -7,7 +7,8 @@ import ReportsCategories from '../ReportsCategories/ReportsCategories';
 import {
   incomesMonthSelector,
   expensesMonthSelector,
-} from '../../redux/reports/reportsSelectot';
+} from '../../redux/reports/reportsSelector';
+import { useSelector } from 'react-redux';
 
 // import s from './Reports.module.scss';
 
