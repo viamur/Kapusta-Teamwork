@@ -1,8 +1,10 @@
 .my-date-picker {
+  // background-color: #000;
   font-family: 'Roboto Bold', sans-serif;
   color: #52555f;
   font-weight: 900;
   font-size: 12px;
+
   .react-date-picker__wrapper {
     flex-direction: row-reverse;
     border: none;
@@ -13,14 +15,11 @@
   }
   .react-date-picker__inputGroup__input {
     pointer-events: none;
+    color: #52555f;
+    font-weight: 900;
+    font-size: 12px;
+  }
+  .react-date-picker__inputGroup__day:focus {
+    outline: none;
   }
 }
-
-// .ant-picker,
-// .ant-picker:hover,
-// .ant-picker-focused {
-//   border: none !important;
-//   box-shadow: none;
-// }
-// .ant-picker-input {
-// }
