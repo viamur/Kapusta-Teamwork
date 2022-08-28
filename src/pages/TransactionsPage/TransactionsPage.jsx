@@ -24,7 +24,7 @@ import s from './TransactionsPage.module.scss';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 import GooBack from 'components/GooBack/GooBack';
-import category from '../../utils/categoryTranslate.json';
+import Summary from 'components/Summary/Summary';
 
 const TransactionsPage = () => {
   const [currentDate, setcurrentDate] = useState(new Date());
@@ -116,11 +116,11 @@ const TransactionsPage = () => {
               <IncomeForm />
               <div className={s.tableAndSummery}>
                 <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
-                {desk && <p>ТУТ БУДЕТ SUMMARY</p>}
+                {desk && <Summary />}
               </div>
             </div>
           </div>
-          {!desk && !mob && <p>ТУТ БУДЕТ SUMMARY</p>}
+          {!desk && !mob && <Summary />}
         </>
       )}
     </>

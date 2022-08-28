@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import Select from 'react-select';
 import { useMediaQuery } from 'react-responsive';
 import { options, optionsTypeTrats, castomOptions } from './filterOptions';
 import MyDate from 'components/MyDate/MyDate';
-// import GooBack from 'components/GooBack/GooBack';
 import icon from '../../images/icon.svg';
-
 import {
   addIncomeThunk,
   addExpenseThunk,
 } from '../../redux/transactions/transactionsOperations';
-
 import s from './IncomeForm.module.scss';
 
 const IncomeForm = () => {
@@ -22,13 +19,12 @@ const IncomeForm = () => {
   const [sum, setSum] = useState('');
   const [productCategory, setProductCategory] = useState('');
 
- 
   //! формування  дати
   const month = currentDate.getMonth() + 1;
   const [year, setYear] = useState(currentDate.getFullYear());
   const [selectedDate, setSelectedDate] = useState(
     month.toString().padStart(2, '0')
-  );
+    );
 
   //! данні для запиту
   const date = `${year}-${selectedDate}-${currentDate.getDate()}`;
