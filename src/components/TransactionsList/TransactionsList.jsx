@@ -9,7 +9,6 @@ import Modal from 'components/Modal/Modal';
 const TransactionsList = ({ data, mob }) => {
   const isLoading = useSelector(getTransactionsIsLoading);
   const [showModal, setShowModal] = useState(false);
-  console.log()
   return (
     <ul className={s.list}>
       {isLoading ? (
