@@ -57,21 +57,6 @@ export const options = {
 
 const labels = ['Transport'];
 
-// "monthStats": {
-//     "Январь" : "January",
-//     "Февраль" : "February",
-//     "Март" : "March",
-//     "Апрель" : "April",
-//     "Май" : "May",
-//     "Июнь" : "June",
-//     "Июль" : "July",
-//     "Август" : "August",
-//     "Сентябрь" : "September",
-//     "Октябрь" : "October",
-//     "Ноябрь" : "November",
-//     "Декабрь" : "December"
-//   }
-
 export const data = {
   labels,
   datasets: [
@@ -91,17 +76,3 @@ export default function ChartCategory() {
     </div>
   );
 }
-
-// [
-//   'Продукты' : 'Products',
-//   'Алкоголь' : 'Alcohol',
-//   'Развлечения' : 'Entertainment',
-//   'Здоровье' : 'Health',
-//   'Транспорт' : 'Transport',
-//   'Всё для дома' : 'Housing',
-//   'Техника' : 'Technique',
-//   'Коммуналка и связь' : 'Communal, communications',
-//   'Спорт и хобби' : 'Sports, hobbies',
-//   'Образование' : 'Education',
-//   'Прочее' : 'Other',
-// ];
