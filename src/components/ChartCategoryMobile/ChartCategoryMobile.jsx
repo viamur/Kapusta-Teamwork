@@ -72,7 +72,7 @@ export const data = {
 export default function ChartCategoryMobile() {
   return (
     <div className={s.backgroundChartCategoryMobile}>
-      <Bar options={options} data={data} />
+      <Bar className={s.canvasMobile} options={options} data={data} />
     </div>
   );
 }
