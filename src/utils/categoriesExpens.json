@@ -1,46 +1,57 @@
 [
   {
     "ru": "Продукты",
-    "en": "Products"
+    "en": "Products",
+    "icon": "Products"
   },
   {
     "ru": "Алкоголь",
-    "en": "Alcohol"
+    "en": "Alcohol",
+    "icon": "Alcohol"
   },
   {
     "ru": "Развлечения",
-    "en": "Entertainment"
+    "en": "Entertainment",
+    "icon": "Entertainment"
   },
   {
     "ru": "Здоровье",
-    "en": "Health"
+    "en": "Health",
+    "icon": "Health"
   },
   {
     "ru": "Транспорт",
-    "en": "Transport"
+    "en": "Transport",
+    "icon": "Transport"
   },
   {
     "ru": "Всё для дома",
-    "en": "Housing"
+    "en": "Housing",
+    "icon": "Housing"
   },
   {
     "ru": "Техника",
-    "en": "Technique"
+    "en": "Technique",
+    "icon": "Technique"
   },
   {
     "ru": "Коммуналка и связь",
-    "en": "Communal, communications"
+    "en": "Communal, Communication",
+    "icon": "CommunalAndCommunication"
   },
   {
     "ru": "Спорт и хобби",
-    "en": "Sports, hobbies"
+    "en": "Sports, Hobbies",
+    "icon": "SportsAndHobbies"
   },
   {
     "ru": "Образование",
-    "en": "Education"
+    "en": "Education",
+    "icon": "Education"
   },
   {
     "ru": "Прочее",
-    "en": "Other"
+    "en": "Other",
+    "icon": "Other"
   }
 ]
