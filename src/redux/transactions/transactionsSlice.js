@@ -130,5 +130,5 @@ const transactionsSlice = createSlice({
   },
 });
 
-export default transactionsSlice.reducer;
 export const { updateBalance } = transactionsSlice.actions;
+export default transactionsSlice.reducer;
