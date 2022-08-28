@@ -1,11 +1,15 @@
 import Loader from 'components/Loader/Loader';
+import { useState, useCallback  } from 'react';
 import { useSelector } from 'react-redux';
 import { getTransactionsIsLoading } from 'redux/transactions/transactionsSelector';
 import icon from '../../images/icon.svg';
 import s from './TransactionsList.module.scss';
+import Modal from 'components/Modal/Modal';
 
 const TransactionsList = ({ data, mob }) => {
   const isLoading = useSelector(getTransactionsIsLoading);
+  const [showModal, setShowModal] = useState(false);
+  console.log()
   return (
     <ul className={s.list}>
       {isLoading ? (
@@ -47,6 +51,14 @@ const TransactionsList = ({ data, mob }) => {
                       <use href={`${icon}#icon-delete1`} />
                     </svg>
                   </button>
+                     {showModal && (
+        <Modal
+          ChildComponent
+          title={"Are you sure?"}
+          setShowModal={setShowModal}
+          cb={`${icon}#icon-delete1`}
+        />
+      )}
                 </div>
               </>
             )}

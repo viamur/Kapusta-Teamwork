@@ -20,7 +20,7 @@
   font-size: 12px;
   line-height: 14px;
   padding: 12px 26px;
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
   border-radius: 16px;
   border: none;
   letter-spacing: 0.02em;
@@ -31,7 +31,7 @@
   transition-property: transform, color, background-color;
   transition: var(--transition);
 
-   &:hover {
+  &:hover {
     transform: scale(1.05);
     background-color: var(--accent-color);
     color: var(--white);
@@ -55,7 +55,7 @@
   transition-property: transform, color, background-color;
   transition: var(--transition);
 
-   &:hover {
+  &:hover {
     transform: scale(1.05);
     background-color: var(--accent-color);
     color: var(--white);
@@ -75,18 +75,26 @@
 }
 
 .modalClose {
+  display: flex;
+  align-items: center;
+  stroke: var(--descr-gray);
+  padding: 6px;
   top: 20px;
   right: 20px;
-  display: block;
   position: absolute;
   border: none;
-  box-shadow: none;
-  background-color: inherit;
+  cursor: pointer;
+  border-radius: 50%;
+  box-sizing: inherit;
+  background-color: var(--white);
+  transition-property: fill, border;
+  transition: var(--transition);
 
   &:hover,
   &:focus {
-    box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
-    fill: #ff751d;
+    transform: rotate(-360deg);
+    border: 1px solid var(--accent-color);
+    fill: var(--accent-color);
   }
 }
 
