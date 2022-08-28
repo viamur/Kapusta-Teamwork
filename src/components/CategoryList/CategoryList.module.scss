@@ -54,6 +54,7 @@
   width: 93px;
   text-align: center;
   margin-bottom: 40px;
+  max-width: 100px;
   @include mq(tab) {
     width: auto;
   }
@@ -63,6 +64,20 @@
   @include mq(tab) {
     margin-right: 20px;
   }
+}
+.categoryListItem:hover,
+.categoryListItem:focus {
+  fill: var(--accent-color);
+  cursor: pointer;
+  .borderForHover {
+    transform: scale(1.05);
+    background-color: var(--persik);
+    color: var(--white);
+  }
+}
+.borderForHover {
+  background-color: var(--grey);
+  // background-color: red;
 }
 
 .categoryListContainer {
@@ -74,16 +89,16 @@
 }
 
 .iconFill {
-  fill: #071f41;
+  // fill: #071f41;
   margin: 5px;
   z-index: 9;
   position: relative;
 }
 
-.iconFill:hover,
-.iconFill:focus {
-  fill: var(--accent-color);
-}
+// .iconFill:hover,
+// .iconFill:focus {
+//   fill: var(--accent-color);
+// }
 
 .discriptionItem,
 .priceItem {
@@ -100,7 +115,41 @@
   position: relative;
 }
 
-.borderForIcon {
+.borderForIconSalary {
+  position: absolute;
+  bottom: 15%;
+  width: 52.68px;
+  height: 46px;
+  border-radius: 20px;
+  left: 19%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 57%;
+    width: 52.68px;
+    height: 46px;
+    border-radius: 20px;
+    left: 44.3%;
+  }
+}
+.borderForIconAddIncome {
+  position: absolute;
+  bottom: 15%;
+  width: 52.68px;
+  height: 46px;
+  border-radius: 20px;
+  left: 19%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 57%;
+    width: 52.68px;
+    height: 46px;
+    border-radius: 20px;
+    left: 52.2%;
+    // top: 38%;
+  }
+}
+
+.borderForIconProducts {
   position: absolute;
   bottom: 15%;
   width: 52.68px;
@@ -127,7 +176,7 @@
   @include mq(tab) {
     position: absolute;
     bottom: 8%;
-    width: 51.27px;
+    width: 59.27px;
     height: 46.41px;
     border-radius: 20px;
     left: 10%;
@@ -249,7 +298,7 @@
     width: 59px;
     height: 46.41px;
     border-radius: 20px;
-    left: 5%;
+    // left: 5%;
   }
 }
 
@@ -285,15 +334,4 @@
     border-radius: 20px;
     left: 4%;
   }
-}
-
-.borderForHover {
-  background-color: var(--grey);
-  // background-color: red;
-}
-
-.borderForHover:hover {
-  transform: scale(1.05);
-  background-color: var(--persik);
-  color: var(--white);
 }
