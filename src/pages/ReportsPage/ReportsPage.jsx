@@ -6,7 +6,6 @@ import IncomeForm from 'components/IncomeForm/IncomeForm';
 const ReportsPage = () => {
   return (
     <>
-       <IncomeForm/>
       <Balance />
       <Reports />
       {/* <CategoryList /> */}
