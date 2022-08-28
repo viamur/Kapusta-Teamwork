@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -24,12 +24,10 @@ import s from './TransactionsPage.module.scss';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 import GooBack from 'components/GooBack/GooBack';
-
+import category from '../../utils/categoryTranslate.json';
 
 const TransactionsPage = () => {
-
-  const [currentDate, setcurrentDate] =useState(new Date())
-
+  const [currentDate, setcurrentDate] = useState(new Date());
 
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
   const desk = useMediaQuery({ query: '(min-width: 1279.5px)' });
@@ -96,7 +94,7 @@ const TransactionsPage = () => {
       {mob && (pageExpenses || pageIncome) && (
         <>
           <GooBack />
-          <IncomeForm/>
+          <IncomeForm />
         </>
       )}
       {!mob && (
@@ -115,7 +113,7 @@ const TransactionsPage = () => {
                   income
                 </NavLink>
               </nav>
-              <IncomeForm/>
+              <IncomeForm />
               <div className={s.tableAndSummery}>
                 <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
                 {desk && <p>ТУТ БУДЕТ SUMMARY</p>}

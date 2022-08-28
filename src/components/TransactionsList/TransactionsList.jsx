@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getTransactionsIsLoading } from 'redux/transactions/transactionsSelector';
 import icon from '../../images/icon.svg';
 import s from './TransactionsList.module.scss';
+import category from '../../utils/categoryTranslate.json';
 
 const TransactionsList = ({ data, mob }) => {
   const isLoading = useSelector(getTransactionsIsLoading);
@@ -23,7 +24,7 @@ const TransactionsList = ({ data, mob }) => {
                       <p className={s.desc}>{el.description}</p>
                       <div className={s.wrapB}>
                         <p className={s.date}>{el.date}</p>
-                        <p className={s.category}>{el.category}</p>
+                        <p className={s.category}>{category[el.category]}</p>
                       </div>
                     </>
                   ) : (
@@ -32,7 +33,7 @@ const TransactionsList = ({ data, mob }) => {
                         <p className={s.date}>{el.date}</p>
                         <p className={s.desc}>{el.description}</p>
                       </div>
-                      <p className={s.category}>{el.category}</p>
+                      <p className={s.category}>{category[el.category]}</p>
                     </>
                   )}
                 </div>
