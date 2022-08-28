@@ -44,7 +44,6 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-around;
-  // margin: 20px;
 
   @include mq(tab) {
     height: 268px;
@@ -90,8 +89,6 @@
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  // display: flex;
-  // justify-content: center;
 }
 
 .borderForIconRelative {
