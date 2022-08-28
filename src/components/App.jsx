@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
+
 import AuthPage from '../pages/AuthPage/AuthPage';
 import { getAuthToken } from 'redux/auth/AuthSelectors';
 import { getAuthUser } from 'redux/auth/authOperations';
 import TransactionsPage from '../pages/TransactionsPage/TransactionsPage';
 import ReportsPage from '../pages/ReportsPage/ReportsPage';
+
+//  const [forModal, setForModal] = useState({});
 
 export const App = () => {
   const dispatch = useDispatch();
