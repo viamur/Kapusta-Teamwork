@@ -1,5 +1,5 @@
-const incomesMonthSelector = ({ reports }) => reports.incomes.incomesData;
-const expensesMonthSelector = ({ reports }) => reports.expenses.expensesData;
+const incomesMonthSelector = ({ reports }) => reports.incomes;
+const expensesMonthSelector = ({ reports }) => reports.expenses;
 
 const totalIncomesMonthSelector = ({ reports }) => reports.incomes.incomeTotal;
 const totalExpensesMonthSelector = ({ reports }) =>

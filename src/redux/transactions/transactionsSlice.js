@@ -33,7 +33,7 @@ const transactionsSlice = createSlice({
     },
     [addIncomeThunk.fulfilled]: (state, { payload }) => {
       state.balance = payload.newBalance;
-      state.incomes = [...state.incomes, payload.transaction];
+      state.incomes = [...state.incomes, { ...payload.transaction, expense: false }];
       state.isLoading = false;
     },
     [addIncomeThunk.rejected]: (state, { payload }) => {
@@ -47,7 +47,7 @@ const transactionsSlice = createSlice({
     },
     [addExpenseThunk.fulfilled]: (state, { payload }) => {
       state.balance = payload.newBalance;
-      state.expenses = [...state.incomes, payload.transaction];
+      state.expenses = [...state.incomes, { ...payload.transaction, expense: true }];
       state.isLoading = false;
     },
     [addExpenseThunk.rejected]: (state, { payload }) => {
@@ -60,7 +60,7 @@ const transactionsSlice = createSlice({
       state.error = null;
     },
     [getExpenseThunk.fulfilled]: (state, { payload }) => {
-      state.expenses = payload.expenses;
+      state.expenses = payload.expenses.map(el => ({ ...el, expense: true }));
       state.monthsExpenses = payload.monthsStats;
       state.isLoading = false;
     },
@@ -74,7 +74,7 @@ const transactionsSlice = createSlice({
       state.error = null;
     },
     [getIncomeThunk.fulfilled]: (state, { payload }) => {
-      state.incomes = payload.incomes;
+      state.incomes = payload.incomes.map(el => ({ ...el, expense: false }));
       state.monthsIncomes = payload.monthsStats;
       state.isLoading = false;
     },

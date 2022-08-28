@@ -24,18 +24,11 @@
   background-color: #ffffff;
 
   @include mq(tab) {
-    margin: 0 auto;
-    width: 704px;
-    height: 348px;
     margin-top: 32px;
     margin-bottom: 40px;
     border-radius: 30px;
     background-color: #ffffff;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-  }
-
-  @include mq(desk) {
-    width: 1034px;
   }
 }
 
@@ -44,24 +37,24 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-around;
+  // margin: 20px;
 
   @include mq(tab) {
-    height: 268px;
     display: flex;
     flex-wrap: wrap;
+    align-content: center;
     justify-content: center;
-    align-items: stretch;
-    align-content: space-between;
-    padding-top: 60px;
-    padding-bottom: 20px;
+    align-items: flex-start;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
   }
 }
 
 .categoryListItem {
   width: 93px;
   text-align: center;
-  margin-bottom: 40px;
-  position: relative;
+  margin-bottom: 20px;
+  max-width: 100px;
   @include mq(tab) {
     width: auto;
   }
@@ -69,8 +62,22 @@
 
 .categoryListItem:not(:last-child) {
   @include mq(tab) {
-    margin-right: 25px;
+    margin-right: 20px;
   }
+}
+.categoryListItem:hover,
+.categoryListItem:focus {
+  fill: var(--accent-color);
+  cursor: pointer;
+  .borderForHover {
+    transform: scale(1.05);
+    background-color: var(--persik);
+    color: var(--white);
+  }
+}
+.borderForHover {
+  background-color: var(--grey);
+  // background-color: red;
 }
 
 .categoryListContainer {
@@ -78,9 +85,20 @@
   margin: 0 auto;
   @include mq(tab) {
     max-width: 623px;
-    max-height: 268px;
   }
 }
+
+.iconFill {
+  // fill: #071f41;
+  margin: 5px;
+  z-index: 9;
+  position: relative;
+}
+
+// .iconFill:hover,
+// .iconFill:focus {
+//   fill: var(--accent-color);
+// }
 
 .discriptionItem,
 .priceItem {
@@ -89,26 +107,58 @@
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  // display: flex;
+  // justify-content: center;
 }
 
 .borderForIconRelative {
   position: relative;
 }
 
-.borderForHover {
-  background-color: #f5f6fb;
-}
-
-.borderForIconProducts {
+.borderForIconSalary {
   position: absolute;
-  bottom: 25%;
+  bottom: 15%;
   width: 52.68px;
   height: 46px;
   border-radius: 20px;
   left: 19%;
-
   @include mq(tab) {
-    bottom: 22%;
+    position: absolute;
+    bottom: 57%;
+    width: 52.68px;
+    height: 46px;
+    border-radius: 20px;
+    left: 44.3%;
+  }
+}
+.borderForIconAddIncome {
+  position: absolute;
+  bottom: 15%;
+  width: 52.68px;
+  height: 46px;
+  border-radius: 20px;
+  left: 19%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 57%;
+    width: 52.68px;
+    height: 46px;
+    border-radius: 20px;
+    left: 52.2%;
+    // top: 38%;
+  }
+}
+
+.borderForIconProducts {
+  position: absolute;
+  bottom: 15%;
+  width: 52.68px;
+  height: 46px;
+  border-radius: 20px;
+  left: 19%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 17%;
     width: 52.68px;
     height: 46px;
     border-radius: 20px;
@@ -118,61 +168,65 @@
 
 .borderForIconAlcohol {
   position: absolute;
-  bottom: 22%;
+  bottom: 13%;
   width: 59px;
   height: 46px;
   border-radius: 20px;
   left: 14%;
   @include mq(tab) {
-    bottom: 17%;
-    width: 51.27px;
+    position: absolute;
+    bottom: 8%;
+    width: 59.27px;
     height: 46.41px;
     border-radius: 20px;
-    left: 0%;
+    left: 10%;
   }
 }
 
 .borderForIconEntertainment {
   position: absolute;
-  bottom: 22%;
-  width: 59px;
-  height: 46px;
-  border-radius: 20px;
-  left: 21%;
-  @include mq(tab) {
-    bottom: 20%;
-    width: 58.4px;
-    height: 46.41px;
-    border-radius: 20px;
-    left: 21%;
-  }
-}
-
-.borderForIconHealth {
-  position: absolute;
-  bottom: 23%;
-  width: 59px;
-  height: 46px;
-  border-radius: 20px;
-  left: 18%;
-  @include mq(tab) {
-    bottom: 21%;
-    width: 52.68px;
-    height: 46.41px;
-    border-radius: 20px;
-    left: 2%;
-  }
-}
-
-.borderForIconTransport {
-  position: absolute;
-  bottom: 24%;
+  bottom: 16%;
   width: 59px;
   height: 46px;
   border-radius: 20px;
   left: 17%;
   @include mq(tab) {
-    bottom: 18%;
+    position: absolute;
+    bottom: 9%;
+    width: 58.4px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 20%;
+  }
+}
+
+.borderForIconHealth {
+  position: absolute;
+  bottom: 14%;
+  width: 59px;
+  height: 46px;
+  border-radius: 20px;
+  left: 18%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 9%;
+    width: 52.68px;
+    height: 46.41px;
+    border-radius: 20px;
+    left: 10%;
+  }
+}
+
+.borderForIconTransport {
+  position: absolute;
+  bottom: 13%;
+  width: 59px;
+  height: 46px;
+  border-radius: 20px;
+  left: 17%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 9%;
     width: 51.98px;
     height: 46.41px;
     border-radius: 20px;
@@ -182,45 +236,48 @@
 
 .borderForIconHousing {
   position: absolute;
-  bottom: 24%;
+  bottom: 13%;
   width: 59px;
   height: 46px;
   border-radius: 20px;
   left: 17%;
   @include mq(tab) {
-    bottom: 19%;
+    position: absolute;
+    bottom: 11%;
     width: 59px;
     height: 46.41px;
     border-radius: 20px;
-    left: -2%;
+    left: 5%;
   }
 }
 
 .borderForIconTechnique {
   position: absolute;
-  bottom: 35%;
+  bottom: 14%;
   width: 59px;
   height: 46px;
   border-radius: 20px;
   left: 18%;
   @include mq(tab) {
-    bottom: 30%;
+    position: absolute;
+    bottom: 6%;
     width: 59px;
     height: 46.41px;
     border-radius: 20px;
-    left: 7%;
+    left: 6%;
   }
 }
 
 .borderForIconCommunalAndCommunication {
   position: absolute;
-  bottom: 33%;
+  bottom: 15%;
   width: 59px;
   height: 46px;
   border-radius: 20px;
   left: 17%;
   @include mq(tab) {
-    bottom: 28%;
+    position: absolute;
+    bottom: 8%;
     width: 59px;
     height: 46.41px;
     border-radius: 20px;
@@ -230,29 +287,31 @@
 
 .borderForIconSportsAndHobbies {
   position: absolute;
-  bottom: 33%;
-  width: 59px;
-  height: 46px;
-  border-radius: 20px;
-  left: 16%;
-  @include mq(tab) {
-    bottom: 29%;
-    width: 59px;
-    height: 46.41px;
-    border-radius: 20px;
-    left: -2%;
-  }
-}
-
-.borderForIconEducation {
-  position: absolute;
-  bottom: 24%;
+  bottom: 15%;
   width: 59px;
   height: 46px;
   border-radius: 20px;
   left: 18%;
   @include mq(tab) {
-    bottom: 28%;
+    position: absolute;
+    bottom: 7%;
+    width: 59px;
+    height: 46.41px;
+    border-radius: 20px;
+    // left: 5%;
+  }
+}
+
+.borderForIconEducation {
+  position: absolute;
+  bottom: 14%;
+  width: 59px;
+  height: 46px;
+  border-radius: 20px;
+  left: 18%;
+  @include mq(tab) {
+    position: absolute;
+    bottom: 7%;
     width: 59px;
     height: 46.41px;
     border-radius: 20px;
@@ -262,35 +321,17 @@
 
 .borderForIconOther {
   position: absolute;
-  bottom: 23%;
+  bottom: 14%;
   width: 59px;
   height: 46px;
   border-radius: 20px;
   left: 18%;
   @include mq(tab) {
-    bottom: 28%;
+    position: absolute;
+    bottom: 7%;
     width: 59px;
     height: 46.41px;
     border-radius: 20px;
-    left: -5%;
+    left: 4%;
   }
-}
-
-.iconFill {
-  fill: #071f41;
-  margin: 5px 0px 5px 0px;
-  z-index: 2;
-  position: relative;
-}
-
-.iconFill:hover {
-  fill: var(--accent-color);
-}
-
-.iconFill:hover ~ .borderForHover {
-  background-color: var(--persik);
-}
-
-.borderForHover {
-  background-color: var(--grey);
 }

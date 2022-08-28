@@ -1,8 +1,7 @@
-import { useMediaQuery } from 'react-responsive';
-import Balance from 'components/Balance/Balance';
+import { useEffect,useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import {
   expenseCategoriesThunk,
   getExpenseThunk,
@@ -17,20 +16,23 @@ import {
   getTransactionsIncomes,
   getTransactionsIsLoading,
 } from 'redux/transactions/transactionsSelector';
+import Balance from 'components/Balance/Balance';
+import MyDate from 'components/MyDate/MyDate';
+import IncomeForm from 'components/IncomeForm/IncomeForm';
+import TransactionsMobBtn from '../../components/TransactionsMobBtn/TransactionsMobBtn';
+import s from './TransactionsPage.module.scss';
+import TransactionsList from 'components/TransactionsList/TransactionsList';
+import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
+import GooBack from 'components/GooBack/GooBack';
 
-const dat = {
-  'Доп. доход': 'dop dohod',
-  'З/П': 'Z/P',
-};
 
-const product = {
-  Продукты: 'Product',
-  Транспорт: 'Transport',
-  Здоровье: 'Zdorove',
-  'Спорт и хобби': 'Sport i Hobby',
-};
 const TransactionsPage = () => {
+
+  const [currentDate, setcurrentDate] =useState(new Date())
+
+
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
+  const desk = useMediaQuery({ query: '(min-width: 1279.5px)' });
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -81,30 +83,46 @@ const TransactionsPage = () => {
 
   return (
     <>
-      {mob && !pageExpenses && !pageIncome && <Balance />}
-      {!mob && <Balance />}
-
-      {/* изменять данные снизу только! */}
-      {!mob && (
+      {mob && !pageExpenses && !pageIncome && (
         <>
-          <NavLink style={{ fontSize: '20px' }} to={'/transactions/income'}>
-            Incomes ccылка от дестопа
-          </NavLink>
-          <NavLink style={{ fontSize: '20px' }} to={'/transactions/expenses'}>
-            expenses ссылка от дестопа
-          </NavLink>
+          <Balance />
+          <div className={s.data}>
+            <MyDate date={currentDate} />
+          </div>
+          <TransactionsTable mob={mob} />
+          <TransactionsMobBtn />
         </>
       )}
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
+      {mob && (pageExpenses || pageIncome) && (
         <>
-          {pageIncome &&
-            incomesData &&
-            incomesData.map(el => <p key={el['_id']}>{dat[el.category]} </p>)}
-          {pageExpenses &&
-            expensesData &&
-            expensesData.map(el => <p key={el['_id']}>{product[el.category]}</p>)}
+          <GooBack />
+          <IncomeForm/>
+        </>
+      )}
+      {!mob && (
+        <>
+          <Balance />
+          <div className={s.transactions}>
+            <div className={s.wrap}>
+              <nav className={s.nav}>
+                <NavLink
+                  className={pageExpenses ? s.linkActive : s.link}
+                  to={'/transactions/expenses'}
+                >
+                  Expenses
+                </NavLink>
+                <NavLink className={pageIncome ? s.linkActive : s.link} to={'/transactions/income'}>
+                  income
+                </NavLink>
+              </nav>
+              <IncomeForm/>
+              <div className={s.tableAndSummery}>
+                <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
+                {desk && <p>ТУТ БУДЕТ SUMMARY</p>}
+              </div>
+            </div>
+          </div>
+          {!desk && !mob && <p>ТУТ БУДЕТ SUMMARY</p>}
         </>
       )}
     </>
