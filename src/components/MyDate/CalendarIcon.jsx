@@ -3,7 +3,7 @@ import icon from '../../images/icon.svg';
 
 const CalendarIcon = () => {
   return (
-    <svg width={24} height={24}>
+    <svg width={20} height={20}>
       <use href={`${icon}#icon-calendar`} />
     </svg>
   );
