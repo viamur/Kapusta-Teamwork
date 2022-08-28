@@ -1,15 +1,19 @@
+@import '../../sass/mixin';
+
 .backgroundChartCategory {
-  margin-top: 32px;
-  margin-bottom: 40px;
+  width: 704px;
+  margin: 0 auto;
+  padding: 50px 50px 44px 50px;
   border-radius: 30px;
   background-color: #ffffff;
-  padding-top: 50px;
+  box-shadow: 0px 10px 60px rgb(170 178 197 / 20%);
+
+  @include mq(desk) {
+    width: 1034px;
+  }
 }
 
 canvas {
-  display: block;
-  box-sizing: border-box;
-  height: 328px;
-  text-align: center;
   margin: 0 auto;
+  width: 605px;
 }
