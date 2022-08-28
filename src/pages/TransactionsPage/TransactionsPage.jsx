@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -18,13 +18,19 @@ import {
 } from 'redux/transactions/transactionsSelector';
 import Balance from 'components/Balance/Balance';
 import MyDate from 'components/MyDate/MyDate';
+import IncomeForm from 'components/IncomeForm/IncomeForm';
 import TransactionsMobBtn from '../../components/TransactionsMobBtn/TransactionsMobBtn';
 import s from './TransactionsPage.module.scss';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 import GooBack from 'components/GooBack/GooBack';
 
+
 const TransactionsPage = () => {
+
+  const [currentDate, setcurrentDate] =useState(new Date())
+
+
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
   const desk = useMediaQuery({ query: '(min-width: 1279.5px)' });
   const location = useLocation();
@@ -81,7 +87,7 @@ const TransactionsPage = () => {
         <>
           <Balance />
           <div className={s.data}>
-            <MyDate />
+            <MyDate date={currentDate} />
           </div>
           <TransactionsTable mob={mob} />
           <TransactionsMobBtn />
@@ -90,7 +96,7 @@ const TransactionsPage = () => {
       {mob && (pageExpenses || pageIncome) && (
         <>
           <GooBack />
-          <p>тут форма</p>
+          <IncomeForm/>
         </>
       )}
       {!mob && (
@@ -109,7 +115,7 @@ const TransactionsPage = () => {
                   income
                 </NavLink>
               </nav>
-              <p>ТУТ ФОРМА паддинги сам регулируй</p>
+              <IncomeForm/>
               <div className={s.tableAndSummery}>
                 <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
                 {desk && <p>ТУТ БУДЕТ SUMMARY</p>}

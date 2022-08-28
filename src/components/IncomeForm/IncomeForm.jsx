@@ -1,29 +1,37 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Select from 'react-select';
 import { useMediaQuery } from 'react-responsive';
-import { options, castomOptions } from './filterOptions';
+import { options, optionsTypeTrats, castomOptions } from './filterOptions';
 import MyDate from 'components/MyDate/MyDate';
 // import GooBack from 'components/GooBack/GooBack';
 import icon from '../../images/icon.svg';
 
 import {
-  expenseCategoriesThunk,
-  incomeCategoriesThunk,
+  addIncomeThunk,
+  addExpenseThunk,
 } from '../../redux/transactions/transactionsOperations';
 
 import s from './IncomeForm.module.scss';
 
-const IncomeForm = ({dateHandle}) => {
+const IncomeForm = () => {
+  const [currentDate, setcurrentDate] = useState(new Date());
   const [product, setProduct] = useState('');
   const [sum, setSum] = useState('');
   const [productCategory, setProductCategory] = useState('');
 
-  console.log(dateHandle);
+ 
+  //! формування  дати
+  const month = currentDate.getMonth() + 1;
+  const [year, setYear] = useState(currentDate.getFullYear());
+  const [selectedDate, setSelectedDate] = useState(
+    month.toString().padStart(2, '0')
+  );
 
-  // const date=;
+  //! данні для запиту
+  const date = `${year}-${selectedDate}-${currentDate.getDate()}`;
   const description = product;
   const category = productCategory.id;
   const amount = Number(sum);
@@ -34,12 +42,9 @@ const IncomeForm = ({dateHandle}) => {
     query: '(min-width: 768px)',
   });
 
-  const { pathname } = useLocation();
-  const transtype = pathname.slice(1);
-
-  //? const { transType } = useParams();
-  //? const pageIncome = transType === 'income';
-  //? const pageExpenses = transType === 'expenses';
+  const { transType } = useParams();
+  const pageIncome = transType === 'income';
+  const pageExpenses = transType === 'expenses';
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -63,21 +68,21 @@ const IncomeForm = ({dateHandle}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const transaction = { description, category, amount };
+    const transaction = { description, amount, date, category };
 
-    //  const transaction = { product, productId, sumNumber };
-
-    console.log(transaction);
-
-    transtype === 'income'
-      ? dispatch(incomeCategoriesThunk(transaction))
-      : dispatch(expenseCategoriesThunk(transaction));
+    if (pageIncome) {
+      dispatch(addIncomeThunk(transaction));
+    } else if (pageExpenses) {
+      dispatch(addExpenseThunk(transaction));
+    }
     resetForm();
   };
 
   return (
     <div className={s.incForCont}>
-      {isDesktopOrLaptop && <MyDate dateHandle={dateHandle} />}
+      {isDesktopOrLaptop && (
+        <MyDate setDate={setcurrentDate} date={currentDate} />
+      )}
       <div className={s.box}>
         <div className={s.formBox}>
           <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
@@ -95,7 +100,7 @@ const IncomeForm = ({dateHandle}) => {
               <Select
                 className={s.selected}
                 placeholder="Product"
-                options={options}
+                options={pageIncome ? optionsTypeTrats : options}
                 styles={castomOptions}
                 defaultValue={productCategory}
                 onChange={setProductCategory}
