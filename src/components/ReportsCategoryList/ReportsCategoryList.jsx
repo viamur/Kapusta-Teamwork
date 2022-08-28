@@ -3,13 +3,18 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import categoriesExpens from '../../utils/categoriesExpens.json';
 import categoriesIncome from '../../utils/categoriesIncome.json';
+import icon from '../../images/icon.svg';
+import s from '../CategoryList/CategoryList.module.scss';
 
-export default function ReportsCategoryList({ incomes, expenses, test }) {
+export default function ReportsCategoryList({
+  incomes,
+  expenses,
+  changeState,
+}) {
   const [expensesArr, setExpensesArr] = useState([]);
   const [incomesArr, setIncomesArr] = useState([]);
 
   const getTransleteExpensesCategory = () => {
-    console.log(expenses);
     return categoriesExpens.map(el => ({
       ...el,
       data: expenses.expensesData[el.ru] || { total: 0 },
@@ -23,46 +28,56 @@ export default function ReportsCategoryList({ incomes, expenses, test }) {
   };
 
   useEffect(() => {
-    if (Object.keys(expenses).length)
+    if (Object.keys(expenses).length) {
       setExpensesArr(getTransleteExpensesCategory(expenses));
-    console.log(expenses);
-    console.log(expensesArr);
+      console.log(expensesArr);
+    }
   }, [expenses]);
 
   useEffect(() => {
     if (Object.keys(incomes).length)
       setIncomesArr(getTransleteIncomesCategory(incomes));
-    console.log(incomes);
-    console.log(incomesArr);
-  }, [expenses]);
+  }, [incomes]);
 
   return (
-    <>
-      {test ? (
-        <div>
-          <ul>
-            {expensesArr.map((el, id) => (
-              <li key={id}>
-                <span>{el.data.total} - </span>
-                <span>ICON - </span>
-                <span>{el.en} </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <div className={s.categoryListContainer}>
+      {changeState ? (
+        <ul className={s.categoryList}>
+          {expensesArr.map((el, id) => (
+            <li key={id} className={s.categoryListItem}>
+              <p className={s.priceItem}>{el.data.total.toFixed(2)} </p>
+              <div className={s.borderForIconRelative}>
+                <div
+                  className={`${s['borderForIcon' + el.icon]} 
+                   ${s.borderForHover}
+                   `}
+                ></div>
+                <svg className={s.iconFill} width={56} height={56}>
+                  <use href={`${icon}#icon-${el.icon}`} />
+                </svg>
+              </div>
+              <p className={s.discriptionItem}>{el.en}</p>
+            </li>
+          ))}
+        </ul>
       ) : (
-        <div>
-          <ul>
-            {incomesArr.map((el, id) => (
-              <li key={id}>
-                <span>!!!!!! - </span>
-                <span>ICON - </span>
-                <span>!!!</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className={s.categoryList}>
+          {incomesArr.map((el, id) => (
+            <li key={id} className={s.categoryListItem}>
+              <p className={s.priceItem}>{el.data.total.toFixed(2)} </p>
+              <div
+                className={`${s['borderForIcon' + el.icon]} 
+                   ${s.borderForHover}
+                   `}
+              ></div>
+              <svg className={s.iconFill} width={56} height={56}>
+                <use href={`${icon}#icon-${el.icon}`} />
+              </svg>
+              <span className={s.discriptionItem}>{el.en}</span>
+            </li>
+          ))}
+        </ul>
       )}
-    </>
+    </div>
   );
 }

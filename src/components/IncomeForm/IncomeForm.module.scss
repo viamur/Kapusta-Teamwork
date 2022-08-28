@@ -29,6 +29,7 @@
 
   @include mq(desk) {
     margin-right: 0px 32px 0px 0px;
+  
   }
 }
 
@@ -58,6 +59,7 @@
 
   @include mq(desk) {
     width: 298px;
+   
   }
 }
 
@@ -239,6 +241,7 @@
   justify-content: center;
   @include mq(desk) {
     display: flex;
+    
   }
 }
 
@@ -259,6 +262,7 @@
   }
   @include mq(desk) {
     width: 178px;
+    
   }
 }
 
