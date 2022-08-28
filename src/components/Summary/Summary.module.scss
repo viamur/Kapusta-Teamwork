@@ -2,7 +2,8 @@
   border-radius: 25px;
   //   background: #f5f6fb;
   background: #2540c64e;
-  width: 213px;
+  width: 225px;
+  padding: 10px 0;
 }
 .summaryTitle {
   width: 213px;
@@ -20,7 +21,6 @@
   color: #000000;
 }
 .summaryItem {
-  width: 213px;
   padding: 12px;
   font-style: normal;
   font-weight: 400;
@@ -44,11 +44,15 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-
+  margin-left: auto;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
   color: #52555f;
 
   text-align: right;
+}
+.summaryList {
+  height: 360px;
+  overflow: auto;
 }
