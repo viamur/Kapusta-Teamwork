@@ -22,20 +22,11 @@ import TransactionsMobBtn from '../../components/TransactionsMobBtn/Transactions
 import s from './TransactionsPage.module.scss';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
+import GooBack from 'components/GooBack/GooBack';
 
-const dat = {
-  'Доп. доход': 'dop dohod',
-  'З/П': 'Z/P',
-};
-
-const product = {
-  Продукты: 'Product',
-  Транспорт: 'Transport',
-  Здоровье: 'Zdorove',
-  'Спорт и хобби': 'Sport i Hobby',
-};
 const TransactionsPage = () => {
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
+  const desk = useMediaQuery({ query: '(min-width: 1279.5px)' });
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -96,34 +87,36 @@ const TransactionsPage = () => {
           <TransactionsMobBtn />
         </>
       )}
+      {mob && (pageExpenses || pageIncome) && (
+        <>
+          <GooBack />
+          <p>тут форма</p>
+        </>
+      )}
       {!mob && (
         <>
           <Balance />
-          <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
-        </>
-      )}
-
-      {/* изменять данные снизу только! */}
-      {!mob && (
-        <>
-          <NavLink style={{ fontSize: '20px' }} to={'/transactions/income'}>
-            Incomes ccылка от дестопа
-          </NavLink>
-          <NavLink style={{ fontSize: '20px' }} to={'/transactions/expenses'}>
-            expenses ссылка от дестопа
-          </NavLink>
-        </>
-      )}
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          {pageIncome &&
-            incomesData &&
-            incomesData.map(el => <p key={el['_id']}>{dat[el.category]} </p>)}
-          {pageExpenses &&
-            expensesData &&
-            expensesData.map(el => <p key={el['_id']}>{product[el.category]}</p>)}
+          <div className={s.transactions}>
+            <div className={s.wrap}>
+              <nav className={s.nav}>
+                <NavLink
+                  className={pageExpenses ? s.linkActive : s.link}
+                  to={'/transactions/expenses'}
+                >
+                  Expenses
+                </NavLink>
+                <NavLink className={pageIncome ? s.linkActive : s.link} to={'/transactions/income'}>
+                  income
+                </NavLink>
+              </nav>
+              <p>ТУТ ФОРМА паддинги сам регулируй</p>
+              <div className={s.tableAndSummery}>
+                <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
+                {desk && <p>ТУТ БУДЕТ SUMMARY</p>}
+              </div>
+            </div>
+          </div>
+          {!desk && !mob && <p>ТУТ БУДЕТ SUMMARY</p>}
         </>
       )}
     </>

@@ -70,5 +70,7 @@
 // удалить потом!!!
 .vremeno {
   background-color: white;
-  padding: 40px;
+  @include mq(tab) {
+    padding: 40px;
+  }
 }

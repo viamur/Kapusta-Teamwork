@@ -1,5 +1,77 @@
+@import '../../sass/mixin';
+
 .data {
   display: flex;
   justify-content: center;
   padding-bottom: 40px;
+}
+.transactions {
+  @include mq(tab) {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+.wrap {
+  @include mq(tab) {
+    background-color: var(--white);
+    padding: 24px 40px 42px 40px;
+    margin: 0 auto;
+    position: relative;
+
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 0px 30px 30px 30px;
+  }
+}
+.nav {
+  @include mq(tab) {
+    position: absolute;
+    display: flex;
+    top: -40px;
+    left: 0;
+  }
+}
+.link {
+  @include mq(tab) {
+    height: 40px;
+    width: 138px;
+    background-color: #fafbfd;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+}
+.linkActive {
+  @include mq(tab) {
+    height: 40px;
+    width: 138px;
+    background-color: #fefefe;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+  }
+}
+.tableAndSummery {
+  @include mq(desk) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 }
