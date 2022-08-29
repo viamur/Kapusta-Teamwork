@@ -53,6 +53,7 @@
   text-align: center;
   margin-bottom: 20px;
   max-width: 100px;
+
   @include mq(tab) {
     width: auto;
   }
@@ -63,6 +64,7 @@
     margin-right: 20px;
   }
 }
+.categoryListItem.isActive,
 .categoryListItem:hover,
 .categoryListItem:focus {
   fill: var(--accent-color);
