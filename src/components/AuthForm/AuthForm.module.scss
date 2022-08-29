@@ -34,7 +34,9 @@
   color: var(--black);
 }
 .inputpassword:not(:placeholder-shown) {
-  font-size: 48px;
+  @include mq(tab) {
+    font-size: 48px;
+  }
 }
 .input::placeholder,
 .inputpassword::placeholder {

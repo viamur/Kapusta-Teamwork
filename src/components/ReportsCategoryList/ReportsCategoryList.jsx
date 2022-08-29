@@ -43,7 +43,12 @@ export default function ReportsCategoryList({
                 onClick={() => setCurCategory(el)}
                 className={s.categoryListItem}
               >
-                <p className={s.priceItem}>{el.data.total.toFixed(2)} </p>
+                <p className={s.priceItem}>
+                  {el.data.total &&
+                    el.data.total
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + '.00'}{' '}
+                </p>
                 <div className={s.borderForIconRelative}>
                   <div
                     className={`${s['borderForIcon' + el.icon]} 

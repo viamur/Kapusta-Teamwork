@@ -54,9 +54,13 @@ const TransactionsList = ({ data, mob }) => {
                 </div>
                 <div className={s.wrapC}>
                   {el.expense ? (
-                    <p className={s.amountExpense}>{`- ${el.amount}.00 uah.`}</p>
+                    <p className={s.amountExpense}>{`- ${el.amount
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}.00 uah.`}</p>
                   ) : (
-                    <p className={s.amountIncome}>{` ${el.amount}.00 uah.`}</p>
+                    <p className={s.amountIncome}>{` ${el.amount
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}.00 uah.`}</p>
                   )}
 
                   <button
