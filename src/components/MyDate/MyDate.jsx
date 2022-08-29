@@ -3,7 +3,7 @@ import DatePicker from 'react-date-picker';
 import { useState } from 'react';
 import './MyDate.scss';
 import CalendarIcon from './CalendarIcon';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updadeDate } from 'redux/transactions/transactionsSlice';
 import moment from 'moment';
 

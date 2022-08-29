@@ -32,11 +32,13 @@ export default function ReportsCategoryList({
       setExpensesArr(getTransleteExpensesCategory(expenses));
       console.log(expensesArr);
     }
+    // eslint-disable-next-line
   }, [expenses]);
 
   useEffect(() => {
     if (Object.keys(incomes).length)
       setIncomesArr(getTransleteIncomesCategory(incomes));
+      // eslint-disable-next-line
   }, [incomes]);
 
   return (
