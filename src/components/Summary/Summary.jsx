@@ -23,17 +23,13 @@ const Summary = () => {
     if (pageExpenses && expenses) {
       const expensesArr = Object.entries(expenses);
 
-      const filteredExpenses = expensesArr.filter(
-        (el, index) => index <= currentDate.current
-      );
+      const filteredExpenses = expensesArr.filter((el, index) => index <= currentDate.current);
       setData(filteredExpenses);
       return;
     }
     if (pageIncome && incomes) {
       const incomesArr = Object.entries(incomes);
-      const filteredExpenses = incomesArr.filter(
-        (el, index) => index <= currentDate.current
-      );
+      const filteredExpenses = incomesArr.filter((el, index) => index <= currentDate.current);
       setData(filteredExpenses);
       return;
     }
@@ -48,7 +44,7 @@ const Summary = () => {
             <li key={index} className={s.summaryItem}>
               <p>{`${translateMonths[test1].name}`}</p>
               <p className={s.summarySumm}>
-                {test2 === 'N/A' ? '00' : test2}
+                {test2 === 'N/A' ? '00' : test2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                 .00 uah
               </p>
             </li>

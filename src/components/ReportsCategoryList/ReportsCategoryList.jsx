@@ -15,8 +15,7 @@ export default function ReportsCategoryList({
   const [categoriesArr, setCategoriesArr] = useState([]);
 
   const getTransleteCategories = () => {
-    const categoriesOptions =
-      transType === 'expenses' ? categoriesExpens : categoriesIncome;
+    const categoriesOptions = transType === 'expenses' ? categoriesExpens : categoriesIncome;
     return categoriesOptions.map(el => ({
       ...el,
       data: categories[transType + 'Data'][el.ru] || { total: 0 },
@@ -35,12 +34,11 @@ export default function ReportsCategoryList({
     <div className={s.categoryListContainer}>
       <ul className={s.categoryList}>
         {categoriesArr.map((el, id) => (
-          <li
-            key={id}
-            onClick={() => setCurCategory(el)}
-            className={s.categoryListItem}
-          >
-            <p className={s.priceItem}>{el.data.total.toFixed(2)} </p>
+          <li key={id} onClick={() => setCurCategory(el)} className={s.categoryListItem}>
+            <p className={s.priceItem}>
+              {el.data.total &&
+                el.data.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + '.00'}{' '}
+            </p>
             <div className={s.borderForIconRelative}>
               <div
                 className={`${s['borderForIcon' + el.icon]} 

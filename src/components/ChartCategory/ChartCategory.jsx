@@ -13,17 +13,32 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
 
 export default function ChartCategory({ expenses, incomes, curCategory }) {
-  ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+  ChartJS.register(CategoryScale, ChartDataLabels, LinearScale, BarElement, Title, Tooltip, Legend);
 
   const options = {
     indexAxis: 'x',
     responsive: true,
+    layout: {
+      padding: {
+        top: 30,
+      },
+    },
     plugins: {
       legend: {
         display: false,
       },
       title: {
         display: false,
+      },
+      datalabels: {
+        color: '#52555F',
+        anchor: 'end',
+        align: 'end',
+        offset: 5,
+        font: {
+          size: '12',
+        },
+        formatter: value => `${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} UAH`,
       },
     },
 
@@ -40,6 +55,9 @@ export default function ChartCategory({ expenses, incomes, curCategory }) {
         },
       },
       y: {
+        ticks: {
+          display: false,
+        },
         grid: {
           color: '#F5F6FB',
           borderColor: 'transparent',
@@ -50,18 +68,7 @@ export default function ChartCategory({ expenses, incomes, curCategory }) {
     },
   };
 
-  const Транспорт = {
-    total: 4000,
-    СТО: 3500,
-    Мойка: 500,
-    Бензин: 1500,
-    Масло: 500,
-    Фильтры: 1500,
-    Чистка: 1500,
-  };
-
   const labels = Object.keys(curCategory.data).filter(el => el !== 'total');
-  console.log(labels);
 
   const data = {
     labels,
@@ -71,6 +78,7 @@ export default function ChartCategory({ expenses, incomes, curCategory }) {
         data: labels.map(element => curCategory.data[element]),
         backgroundColor: ['#FF751D', '#FED9BF', '#FED9BF'],
         borderRadius: 10,
+        maxBarThickness: 38,
       },
     ],
   };

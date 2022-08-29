@@ -9,31 +9,41 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
 
-export default function ChartCategoryMobile({
-  expenses,
-  incomes,
-  curCategory,
-}) {
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+export default function ChartCategoryMobile({ expenses, incomes, curCategory }) {
+  ChartJS.register(CategoryScale, ChartDataLabels, LinearScale, BarElement, Title, Tooltip, Legend);
 
   const options = {
     indexAxis: 'y',
     responsive: true,
+    layout: {
+      padding: {
+        right: 30,
+      },
+    },
     plugins: {
       legend: {
         display: false,
       },
       title: {
         display: false,
+      },
+      datalabels: {
+        color: '#52555F',
+        anchor: 'end',
+        align: 'end',
+        labels: {
+          title: {
+            align: 'top',
+          },
+        },
+        offset: 5,
+        font: {
+          size: '12',
+        },
+        formatter: value => `${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} UAH`,
       },
     },
 
@@ -42,6 +52,9 @@ export default function ChartCategoryMobile({
 
     scales: {
       x: {
+        ticks: {
+          display: false,
+        },
         display: true,
         grid: {
           color: 'transparent',
@@ -71,6 +84,7 @@ export default function ChartCategoryMobile({
         data: labels.map(element => curCategory.data[element]),
         backgroundColor: ['#FF751D', '#FED9BF', '#FED9BF'],
         borderRadius: 10,
+        maxBarThickness: 15,
       },
     ],
   };
