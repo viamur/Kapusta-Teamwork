@@ -5,7 +5,11 @@ import s from '../CategoryList/CategoryList.module.scss';
 import icon from '../../images/icon.svg';
 import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryList';
 
-export default function ReportsCategories({ incomes, expenses }) {
+export default function ReportsCategories({
+  incomes,
+  expenses,
+  setCurCategory,
+}) {
   const [pickedState, setPickedState] = useState('EXPENSES');
   // const [changeState, setChangeState] = useState(true);
 
@@ -34,6 +38,7 @@ export default function ReportsCategories({ incomes, expenses }) {
       <ReportsCategoryList
         categories={categories}
         transType={pickedState.toLowerCase()}
+        setCurCategory={setCurCategory}
       />
     </div>
   );

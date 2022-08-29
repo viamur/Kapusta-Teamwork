@@ -99,7 +99,6 @@ const IncomeForm = () => {
                 options={pageIncome ? optionsTypeTrats : options}
                 value={productCategory}
                 styles={isDesktopOrLaptop ? castomOptionsTablet : castomOptions}
-                // defaultValue={productCategory}
                 onChange={setProductCategory}
               />
 

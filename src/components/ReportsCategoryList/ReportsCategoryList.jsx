@@ -10,6 +10,7 @@ export default function ReportsCategoryList({
   categories,
 
   transType,
+  setCurCategory,
 }) {
   const [categoriesArr, setCategoriesArr] = useState([]);
 
@@ -34,7 +35,11 @@ export default function ReportsCategoryList({
     <div className={s.categoryListContainer}>
       <ul className={s.categoryList}>
         {categoriesArr.map((el, id) => (
-          <li key={id} className={s.categoryListItem}>
+          <li
+            key={id}
+            onClick={() => setCurCategory(el)}
+            className={s.categoryListItem}
+          >
             <p className={s.priceItem}>{el.data.total.toFixed(2)} </p>
             <div className={s.borderForIconRelative}>
               <div
