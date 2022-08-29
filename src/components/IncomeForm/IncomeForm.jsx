@@ -98,7 +98,7 @@ const IncomeForm = () => {
                 placeholder={pageIncome ? 'My resources ' : 'Product category'}
                 options={pageIncome ? optionsTypeTrats : options}
                 styles={isDesktopOrLaptop ? castomOptionsTablet : castomOptions}
-                defaultValue={productCategory}
+                value={productCategory}
                 onChange={setProductCategory}
               />
 
