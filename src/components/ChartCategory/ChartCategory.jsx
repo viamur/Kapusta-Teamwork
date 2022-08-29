@@ -1,6 +1,5 @@
 import s from './ChartCategory.module.scss';
 import React from 'react';
-// import { useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,27 +10,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-// import categoriesExpens from '../../utils/categoriesExpens.json';
 
-export default function ChartCategory(expenses, incomes) {
-  // const [expensesArr, setExpensesArr] = useState([]);
-  // // const [incomesArr, setIncomesArr] = useState([]);
-
-  // const getTransleteExpensesCategory = () => {
-  //   // console.log(expenses.expensesData);
-  //   return categoriesExpens.map(el => ({
-  //     ...el,
-  //     data: expenses.expensesData[el.ru] || { total: 0 },
-  //   }));
-  // };
-
-  // useEffect(() => {
-  //   if (Object.keys(expenses).length) {
-  //     setExpensesArr(getTransleteExpensesCategory(expenses));
-  //     // console.log(incomesArr);
-  //   }
-  // }, [expenses]);
-
+export default function ChartCategory({ expenses, incomes, curCategory }) {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -86,7 +66,7 @@ export default function ChartCategory(expenses, incomes) {
     Чистка: 1500,
   };
 
-  const labels = Object.keys(Транспорт).filter(el => el !== 'total');
+  const labels = Object.keys(curCategory.data).filter(el => el !== 'total');
   console.log(labels);
 
   const data = {
@@ -94,7 +74,7 @@ export default function ChartCategory(expenses, incomes) {
     datasets: [
       {
         label: '',
-        data: labels.map(element => Транспорт[element]),
+        data: labels.map(element => curCategory.data[element]),
         backgroundColor: ['#FF751D', '#FED9BF', '#FED9BF'],
         borderRadius: 10,
       },
