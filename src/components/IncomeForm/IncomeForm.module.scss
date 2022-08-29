@@ -1,7 +1,6 @@
 @import '../../sass/mixin';
 .formBox {
   display: flex;
-
   flex-direction: column;
   padding: 20px 0px;
 
@@ -30,10 +29,9 @@
     flex-direction: row;
   }
 
-  & input{
+  & input {
     outline: none;
   }
-
 }
 
 .input {
@@ -120,9 +118,6 @@
     margin-top: 0;
     margin-bottom: 0px;
   }
-
-  @include mq(desk) {
-  }
 }
 
 .image {
@@ -138,9 +133,6 @@
     padding: 0px 20px 0px 0px;
     border-color: #f5f6fb;
     flex-direction: row;
-  }
-
-  @include mq(desk) {
   }
 }
 
@@ -159,9 +151,6 @@
   @include mq(tab) {
     flex-direction: row;
   }
-
-  @include mq(desk) {
-  }
 }
 
 .btnText {
@@ -175,9 +164,6 @@
 
   @include mq(tab) {
     flex-direction: row;
-  }
-
-  @include mq(desk) {
   }
 }
 
@@ -216,8 +202,8 @@
     margin-right: 20px;
   }
 
-  &:first-child{
-    @include mq(tab){
+  &:first-child {
+    @include mq(tab) {
       margin-left: 50px;
     }
   }
