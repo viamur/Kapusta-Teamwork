@@ -65,7 +65,7 @@ export default function ReportsCategoryList({
                 <p className={s.discriptionItem}>{el.en}</p>
               </li>
             ))
-          : "You don't have oprrations on this period"}
+          : "You don't have operations on this period"}
       </ul>
     </div>
   );
