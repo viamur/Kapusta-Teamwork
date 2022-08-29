@@ -11,6 +11,7 @@ import {
   castomOptions,
   castomOptionsTablet,
 } from './filterOptions';
+
 import MyDate from 'components/MyDate/MyDate';
 import icon from '../../images/icon.svg';
 import {
@@ -25,15 +26,10 @@ const IncomeForm = () => {
   const [sum, setSum] = useState('');
   const [productCategory, setProductCategory] = useState('');
 
-  //! формування  дати
-  const month = currentDate.getMonth() + 1;
-  const [year, setYear] = useState(currentDate.getFullYear());
-  const [selectedDate, setSelectedDate] = useState(
-    month.toString().padStart(2, '0')
-  );
+ 
 
   //! данні для запиту
-  const date = `${year}-${selectedDate}-${currentDate.getDate()}`;
+  const date = currentDate;
   const description = product;
   const category = productCategory.id;
   const amount = sum;
@@ -84,7 +80,7 @@ const IncomeForm = () => {
     <div className={s.incForCont}>
               <div className={s.MyDate}>
                 {isDesktopOrLaptop && (
-                  <MyDate setDate={setcurrentDate} date={currentDate} />
+                  <MyDate />
                 )}
               </div>
       <div className={s.box}>
