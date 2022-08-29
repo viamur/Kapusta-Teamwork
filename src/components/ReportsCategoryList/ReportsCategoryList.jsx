@@ -65,14 +65,16 @@ export default function ReportsCategoryList({
           {incomesArr.map((el, id) => (
             <li key={id} className={s.categoryListItem}>
               <p className={s.priceItem}>{el.data.total.toFixed(2)} </p>
-              <div
-                className={`${s['borderForIcon' + el.icon]} 
+              <div className={s.borderForIconRelative}>
+                <div
+                  className={`${s['borderForIcon' + el.icon]} 
                    ${s.borderForHover}
                    `}
-              ></div>
-              <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-${el.icon}`} />
-              </svg>
+                ></div>
+                <svg className={s.iconFill} width={56} height={56}>
+                  <use href={`${icon}#icon-${el.icon}`} />
+                </svg>
+              </div>
               <span className={s.discriptionItem}>{el.en}</span>
             </li>
           ))}
