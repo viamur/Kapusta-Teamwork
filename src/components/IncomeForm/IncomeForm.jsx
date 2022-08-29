@@ -19,6 +19,7 @@ import {
   addExpenseThunk,
 } from '../../redux/transactions/transactionsOperations';
 import { getTransactionsDate } from '../../redux/transactions/transactionsSelector';
+import { toast } from 'react-toastify';
 import s from './IncomeForm.module.scss';
 
 const IncomeForm = () => {
@@ -52,12 +53,6 @@ const IncomeForm = () => {
     }
   };
 
-  const resetForm = () => {
-    setProduct('');
-    setProductCategory('');
-    setSum('');
-  };
-
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -66,7 +61,23 @@ const IncomeForm = () => {
     const amount = Number(sum);
     const transaction = { description, amount, date, category };
 
-    if (!sum || !product) return;
+    if (!product) {
+      toast.warn('Enter a description of the transaction!');
+      return;
+    }
+
+    if (!productCategory) {
+      toast.warn('Select a product name!');
+      return;
+    }
+    if (!sum) {
+      toast.warn('Enter the transaction amount!');
+      return;
+    }
+    if (!sum || !productCategory || !product) {
+      resetForm();
+      return;
+    }
 
     if (pageIncome) {
       dispatch(addIncomeThunk(transaction));
@@ -74,6 +85,11 @@ const IncomeForm = () => {
       dispatch(addExpenseThunk(transaction));
     }
     resetForm();
+  };
+  const resetForm = () => {
+    setProduct('');
+    setProductCategory('');
+    setSum('');
   };
 
   return (
@@ -108,7 +124,7 @@ const IncomeForm = () => {
                   name="sum"
                   allowLeadingZeros={true}
                   //  thousandSeparator={'.'}
-                   decimalScale={0}
+                  decimalScale={0}
                   placeholder={isDesktopOrLaptop ? '00.00 ' : '00.00 UAH'}
                   fixedDecimalScale={true}
                   allowNegative={false}
