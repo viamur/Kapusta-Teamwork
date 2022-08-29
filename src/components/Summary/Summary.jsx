@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import NumberFormat from 'react-number-format';
+import translateMonths from './month';
 import { useParams } from 'react-router-dom';
 
-import data from './month.json';
 import s from './Summary.module.scss';
 
 import * as selectors from '../../redux/transactions/transactionsSelector';
@@ -35,10 +34,10 @@ const Summary = () => {
       <h4 className={s.summaryTitle}>Summary</h4>
       <ul className={s.summaryList}>
         {data
-          .filter(([test1, test2]) => test2 !== 'N/A')
+          // .filter(([test1, test2]) => test2 !== 'N/A')
           .map(([test1, test2], index) => (
             <li key={index} className={s.summaryItem}>
-              <p>{test1}</p>
+              <p>{`${translateMonths[test1].name}`}</p>
               <p className={s.summarySumm}>{test2} .00 uah</p>
             </li>
           ))}
