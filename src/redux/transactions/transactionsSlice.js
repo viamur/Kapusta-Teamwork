@@ -24,7 +24,11 @@ const initialState = {
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
-  reducers: {},
+  reducers: {
+    updateBalance(state, { payload }) {
+      return { ...state, balance: payload };
+    },
+  },
   extraReducers: {
     /* ==============ADD INCOME ================ */
     [addIncomeThunk.pending]: (state, _) => {
@@ -126,4 +130,5 @@ const transactionsSlice = createSlice({
   },
 });
 
+export const { updateBalance } = transactionsSlice.actions;
 export default transactionsSlice.reducer;

@@ -1,12 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  Link,
-  NavLink,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
-
+import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -116,20 +109,13 @@ const TransactionsPage = () => {
                 >
                   Expenses
                 </NavLink>
-                <NavLink
-                  className={pageIncome ? s.linkActive : s.link}
-                  to={'/transactions/income'}
-                >
+                <NavLink className={pageIncome ? s.linkActive : s.link} to={'/transactions/income'}>
                   income
                 </NavLink>
               </nav>
               <IncomeForm />
               <div className={s.tableAndSummery}>
-                <TransactionsTable
-                  mob={mob}
-                  pageIncome={pageIncome}
-                  pageExpenses={pageExpenses}
-                />
+                <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
                 {desk && <Summary />}
               </div>
             </div>

@@ -1,4 +1,4 @@
-import s from './ChartCategory.module.scss';
+import s from './ChartCategoryMobile.module.scss';
 import React from 'react';
 import {
   Chart as ChartJS,
@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 export const options = {
-  indexAxis: 'x',
+  indexAxis: 'y',
   responsive: true,
   plugins: {
     legend: {
@@ -46,7 +46,7 @@ export const options = {
     },
     y: {
       grid: {
-        color: '#F5F6FB',
+        color: 'transparent',
         borderColor: 'transparent',
         tickColor: 'transparent',
         lineWidth: 2,
@@ -63,16 +63,16 @@ export const data = {
     {
       label: '',
       data: labels.map(() => 5000),
-      backgroundColor: ['#FF751D'],
+      backgroundColor: ['#FF751D', '#FED9BF', '#FED9BF'],
       borderRadius: 10,
     },
   ],
 };
 
-export default function ChartCategory() {
+export default function ChartCategoryMobile() {
   return (
-    <div className={s.backgroundChartCategory}>
-      <Bar className={s.canvas} options={options} data={data} />
+    <div className={s.backgroundChartCategoryMobile}>
+      <Bar className={s.canvasMobile} options={options} data={data} />
     </div>
   );
 }

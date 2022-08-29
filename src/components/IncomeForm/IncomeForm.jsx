@@ -2,9 +2,15 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import NumberFormat from 'react-number-format';
 import Select from 'react-select';
 import { useMediaQuery } from 'react-responsive';
-import { options, optionsTypeTrats, castomOptions } from './filterOptions';
+import {
+  options,
+  optionsTypeTrats,
+  castomOptions,
+  castomOptionsTablet,
+} from './filterOptions';
 import MyDate from 'components/MyDate/MyDate';
 import icon from '../../images/icon.svg';
 import {
@@ -24,13 +30,13 @@ const IncomeForm = () => {
   const [year, setYear] = useState(currentDate.getFullYear());
   const [selectedDate, setSelectedDate] = useState(
     month.toString().padStart(2, '0')
-    );
+  );
 
   //! данні для запиту
   const date = `${year}-${selectedDate}-${currentDate.getDate()}`;
   const description = product;
   const category = productCategory.id;
-  const amount = Number(sum);
+  const amount = sum;
 
   const dispatch = useDispatch();
 
@@ -76,47 +82,53 @@ const IncomeForm = () => {
 
   return (
     <div className={s.incForCont}>
-      {isDesktopOrLaptop && (
-        <MyDate setDate={setcurrentDate} date={currentDate} />
-      )}
+              <div className={s.MyDate}>
+                {isDesktopOrLaptop && (
+                  <MyDate setDate={setcurrentDate} date={currentDate} />
+                )}
+              </div>
       <div className={s.box}>
         <div className={s.formBox}>
           <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
-            <label>
-              <input
-                type="text"
-                name="product"
-                value={product}
-                placeholder="Product description"
-                className={s.input}
-                onChange={handleInputChange}
-              />
-            </label>
-            <div className={s.filterBox}>
-              <Select
-                className={s.selected}
-                placeholder="Product"
-                options={pageIncome ? optionsTypeTrats : options}
-                styles={castomOptions}
-                defaultValue={productCategory}
-                onChange={setProductCategory}
-              />
-            </div>
-            <div className={s.numberBox}>
+            <div className={s.IncomeForm}>
+
               <label>
                 <input
-                  type="number"
-                  name="sum"
-                  value={sum}
-                  placeholder="00.00 UAH"
-                  className={s.inputNumber}
+                  type="text"
+                  name="product"
+                  value={product}
+                  placeholder="Product description"
+                  className={s.input}
                   onChange={handleInputChange}
                 />
               </label>
-              <div className={s.image}>
-                <svg width={20} height={20}>
-                  <use href={`${icon}#icon-calculator`} />
-                </svg>
+
+              <Select
+                placeholder={pageIncome ? 'My resources ' : 'Product category'}
+                options={pageIncome ? optionsTypeTrats : options}
+                styles={isDesktopOrLaptop ? castomOptionsTablet : castomOptions}
+                defaultValue={productCategory}
+                onChange={setProductCategory}
+              />
+
+              <div className={s.numberBox}>
+                <NumberFormat
+                  className={s.inputSum}
+                  name="sum"
+                  allowLeadingZeros={true}
+                  thousandSeparator={' '}
+                  decimalScale={2}
+                  placeholder={isDesktopOrLaptop ? '00.00 ' : '00.00 UAH'}
+                  fixedDecimalScale={true}
+                  allowNegative={false}
+                  onChange={handleInputChange}
+                  value={sum}
+                />
+                <div className={s.image}>
+                  <svg width={20} height={20}>
+                    <use href={`${icon}#icon-calculator`} />
+                  </svg>
+                </div>
               </div>
             </div>
             <div className={s.btnBox}>
@@ -135,3 +147,8 @@ const IncomeForm = () => {
 };
 
 export default IncomeForm;
+
+// : (provided, state) => ({
+//   ...provided,
+
+// }),
