@@ -97,8 +97,8 @@ const IncomeForm = () => {
               <Select
                 placeholder={pageIncome ? 'My resources ' : 'Product category'}
                 options={pageIncome ? optionsTypeTrats : options}
-                styles={isDesktopOrLaptop ? castomOptionsTablet : castomOptions}
                 value={productCategory}
+                styles={isDesktopOrLaptop ? castomOptionsTablet : castomOptions}
                 onChange={setProductCategory}
               />
 
