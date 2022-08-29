@@ -8,11 +8,13 @@ import {
   incomeCategoriesThunk,
   removeTransactionThunk,
 } from './transactionsOperations';
+import moment from 'moment';
 
 const initialState = {
   balance: null,
-  expenses: null,
-  incomes: null,
+  date: moment(new Date()).format('YYYY-MM-DD'),
+  expenses: [],
+  incomes: [],
   monthsExpenses: null,
   monthsIncomes: null,
   expenseCategories: null,
@@ -27,6 +29,9 @@ const transactionsSlice = createSlice({
   reducers: {
     updateBalance(state, { payload }) {
       return { ...state, balance: payload };
+    },
+    updadeDate(state, { payload }) {
+      state.date = payload;
     },
   },
   extraReducers: {
@@ -130,5 +135,5 @@ const transactionsSlice = createSlice({
   },
 });
 
-export const { updateBalance } = transactionsSlice.actions;
+export const { updateBalance, updadeDate } = transactionsSlice.actions;
 export default transactionsSlice.reducer;

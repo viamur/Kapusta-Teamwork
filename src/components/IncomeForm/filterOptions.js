@@ -38,7 +38,8 @@ export const castomOptions = {
 
   placeholder: (provided, state) => ({
     ...provided,
-
+    margin:'0px 0px 0px -0.5px',
+    height:' 40px',
     fontWeight: '400',
     fontSize: '12px ',
     lineHeight: '14px',
@@ -50,6 +51,7 @@ export const castomOptions = {
 
   input: (provided, state) => ({
     ...provided,
+    marginLeft:'0px',
     fontWeight: '400',
     fontSize: '12px ',
     lineHeight: '14px',
@@ -114,6 +116,7 @@ export const castomOptionsTablet = {
 
   input: (provided, state) => ({
     ...provided,
+    height:' 40px',
     fontWeight: '400',
     fontSize: '12px ',
     lineHeight: '14px',

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import NumberFormat from 'react-number-format';
 import Select from 'react-select';
@@ -11,32 +11,22 @@ import {
   castomOptions,
   castomOptionsTablet,
 } from './filterOptions';
+
 import MyDate from 'components/MyDate/MyDate';
 import icon from '../../images/icon.svg';
 import {
   addIncomeThunk,
   addExpenseThunk,
 } from '../../redux/transactions/transactionsOperations';
+import { getTransactionsDate } from '../../redux/transactions/transactionsSelector';
 import s from './IncomeForm.module.scss';
 
 const IncomeForm = () => {
-  const [currentDate, setcurrentDate] = useState(new Date());
   const [product, setProduct] = useState('');
   const [sum, setSum] = useState('');
   const [productCategory, setProductCategory] = useState('');
 
-  //! формування  дати
-  const month = currentDate.getMonth() + 1;
-  const [year, setYear] = useState(currentDate.getFullYear());
-  const [selectedDate, setSelectedDate] = useState(
-    month.toString().padStart(2, '0')
-  );
-
-  //! данні для запиту
-  const date = `${year}-${selectedDate}-${currentDate.getDate()}`;
-  const description = product;
-  const category = productCategory.id;
-  const amount = sum;
+  const date = useSelector(getTransactionsDate);
 
   const dispatch = useDispatch();
 
@@ -70,7 +60,13 @@ const IncomeForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    const description = product;
+    const category = productCategory.id;
+    const amount = Number(sum);
     const transaction = { description, amount, date, category };
+
+    if (!sum || !product) return;
 
     if (pageIncome) {
       dispatch(addIncomeThunk(transaction));
@@ -82,16 +78,11 @@ const IncomeForm = () => {
 
   return (
     <div className={s.incForCont}>
-              <div className={s.MyDate}>
-                {isDesktopOrLaptop && (
-                  <MyDate setDate={setcurrentDate} date={currentDate} />
-                )}
-              </div>
+      <div className={s.MyDate}>{isDesktopOrLaptop && <MyDate />}</div>
       <div className={s.box}>
         <div className={s.formBox}>
           <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
             <div className={s.IncomeForm}>
-
               <label>
                 <input
                   type="text"
@@ -106,8 +97,9 @@ const IncomeForm = () => {
               <Select
                 placeholder={pageIncome ? 'My resources ' : 'Product category'}
                 options={pageIncome ? optionsTypeTrats : options}
+                value={productCategory}
                 styles={isDesktopOrLaptop ? castomOptionsTablet : castomOptions}
-                defaultValue={productCategory}
+                // defaultValue={productCategory}
                 onChange={setProductCategory}
               />
 
@@ -117,7 +109,7 @@ const IncomeForm = () => {
                   name="sum"
                   allowLeadingZeros={true}
                   thousandSeparator={' '}
-                  decimalScale={2}
+                  decimalScale={0}
                   placeholder={isDesktopOrLaptop ? '00.00 ' : '00.00 UAH'}
                   fixedDecimalScale={true}
                   allowNegative={false}
@@ -147,8 +139,3 @@ const IncomeForm = () => {
 };
 
 export default IncomeForm;
-
-// : (provided, state) => ({
-//   ...provided,
-
-// }),
