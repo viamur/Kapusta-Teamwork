@@ -7,12 +7,14 @@ import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryL
 
 export default function ReportsCategories({ incomes, expenses }) {
   const [pickedState, setPickedState] = useState('EXPENSES');
-  const [changeState, setChangeState] = useState(true);
+  // const [changeState, setChangeState] = useState(true);
 
   const togglePickedState = () => {
     setPickedState(prev => (prev === 'EXPENSES' ? 'INCOMES' : 'EXPENSES'));
-    setChangeState(prev => (prev = !changeState));
+    // setChangeState(prev => (prev = !changeState));gi
   };
+  const categories = pickedState === 'EXPENSES' ? expenses : incomes;
+
   // console.log(changeState);
   return (
     <div className={s.backgroundCategoryList}>
@@ -30,9 +32,8 @@ export default function ReportsCategories({ incomes, expenses }) {
         </button>
       </div>
       <ReportsCategoryList
-        changeState={changeState}
-        incomes={incomes}
-        expenses={expenses}
+        categories={categories}
+        transType={pickedState.toLowerCase()}
       />
     </div>
   );
