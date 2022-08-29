@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import translateMonths from './month';
-import num from './zero.json';
 import { useParams } from 'react-router-dom';
 
 import s from './Summary.module.scss';
