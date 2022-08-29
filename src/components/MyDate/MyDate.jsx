@@ -6,19 +6,20 @@ import { useState } from 'react';
 import './MyDate.scss';
 import CalendarIcon from './CalendarIcon';
 
-export default function MyDate({ setDate, date }) {
+export default function MyDate() {
   return (
     <div>
-      <form>
+      
         <DatePicker
           className="my-date-picker"
-          onChange={setDate}
-          value={date}
+          onChange={''}
+          value={''}
           clearIcon=""
           format="dd.MM.yyyy"
           calendarIcon={<CalendarIcon />}
-        />
-      </form>
+          />
+        
+      
     </div>
   );
 }

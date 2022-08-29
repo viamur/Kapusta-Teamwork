@@ -92,7 +92,7 @@ const TransactionsPage = () => {
         <>
           <Balance />
           <div className={s.data}>
-            <MyDate date={currentDate} />
+            <MyDate />
           </div>
           <TransactionsTable mob={mob} />
           <TransactionsMobBtn />
@@ -101,7 +101,7 @@ const TransactionsPage = () => {
       {mob && (pageExpenses || pageIncome) && (
         <>
           <GooBack />
-          <IncomeForm />
+          <IncomeForm data={currentDate} />
         </>
       )}
       {!mob && (

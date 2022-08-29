@@ -211,6 +211,12 @@
     margin-right: 20px;
   }
 
+  &:first-child{
+    @include mq(tab){
+      margin-left: 50px;
+    }
+  }
+
   @include mq(tab) {
     width: 125px;
     flex-direction: row;
@@ -232,6 +238,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include mq(tab) {
+    justify-content: flex-start;
+  }
 
   @include mq(desk) {
     width: 284px;
