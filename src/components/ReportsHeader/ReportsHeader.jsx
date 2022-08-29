@@ -7,13 +7,21 @@ export default function ReportsHeader({ incomes, expenses }) {
       <div className={`${s.total} ${s.total__expenses}`}>
         <p>
           Expenses:
-          <span>{expenses.expenseTotal} uah</span>
+          <span>
+            {expenses.expenseTotal &&
+              expenses.expenseTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
+            UAH
+          </span>
         </p>
       </div>
       <div className={`${s.total} ${s.total__incomes}`}>
         <p>
           Income:
-          <span>{incomes.incomeTotal} uah</span>
+          <span>
+            {incomes.incomeTotal &&
+              incomes.incomeTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
+            UAH
+          </span>
         </p>
       </div>
     </div>
