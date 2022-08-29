@@ -1,12 +1,18 @@
 import Loader from 'components/Loader/Loader';
 import { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { getTransactionsIsLoading } from 'redux/transactions/transactionsSelector';
+import {
+  getTransactionsDate,
+  getTransactionsIsLoading,
+} from 'redux/transactions/transactionsSelector';
 import icon from '../../images/icon.svg';
 import s from './TransactionsList.module.scss';
 import Modal from 'components/Modal/Modal';
 import { removeTransactionThunk } from 'redux/transactions/transactionsOperations';
 import category from '../../utils/categoryTranslate.json';
+import { useEffect } from 'react';
+
+const LENGTH_DATA = 20;
 
 const TransactionsList = ({ data, mob }) => {
   const isLoading = useSelector(getTransactionsIsLoading);
@@ -48,9 +54,7 @@ const TransactionsList = ({ data, mob }) => {
                 </div>
                 <div className={s.wrapC}>
                   {el.expense ? (
-                    <p
-                      className={s.amountExpense}
-                    >{`- ${el.amount}.00 uah.`}</p>
+                    <p className={s.amountExpense}>{`- ${el.amount}.00 uah.`}</p>
                   ) : (
                     <p className={s.amountIncome}>{` ${el.amount}.00 uah.`}</p>
                   )}
