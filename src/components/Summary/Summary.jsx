@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import translateMonths from './month';
 import { useParams } from 'react-router-dom';
@@ -17,15 +17,24 @@ const Summary = () => {
   const incomes = useSelector(selectors.getTransactionsMonthsIncomes);
   const expenses = useSelector(selectors.getTransactionsMonthsExpenses);
 
+  const currentDate = useRef(new Date().getMonth());
+
   useEffect(() => {
     if (pageExpenses && expenses) {
       const expensesArr = Object.entries(expenses);
-      setData(expensesArr);
+
+      const filteredExpenses = expensesArr.filter(
+        (el, index) => index <= currentDate.current
+      );
+      setData(filteredExpenses);
       return;
     }
     if (pageIncome && incomes) {
       const incomesArr = Object.entries(incomes);
-      setData(incomesArr);
+      const filteredExpenses = incomesArr.filter(
+        (el, index) => index <= currentDate.current
+      );
+      setData(filteredExpenses);
       return;
     }
   }, [pageExpenses, pageIncome, incomes, expenses]);
@@ -39,7 +48,8 @@ const Summary = () => {
             <li key={index} className={s.summaryItem}>
               <p>{`${translateMonths[test1].name}`}</p>
               <p className={s.summarySumm}>
-                {test2 === 'N/A' ? '00' : test2} .00 uah
+                {test2 === 'N/A' ? '00' : test2}
+                .00 uah
               </p>
             </li>
           ))}
