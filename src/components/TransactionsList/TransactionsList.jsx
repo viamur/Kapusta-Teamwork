@@ -1,12 +1,19 @@
 import Loader from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
-import { getTransactionsIsLoading } from 'redux/transactions/transactionsSelector';
+import {
+  getTransactionsDate,
+  getTransactionsIsLoading,
+} from 'redux/transactions/transactionsSelector';
 import icon from '../../images/icon.svg';
 import s from './TransactionsList.module.scss';
 import category from '../../utils/categoryTranslate.json';
+import { useEffect } from 'react';
+
+const LENGTH_DATA = 20;
 
 const TransactionsList = ({ data, mob }) => {
   const isLoading = useSelector(getTransactionsIsLoading);
+
   return (
     <ul className={s.list}>
       {isLoading ? (

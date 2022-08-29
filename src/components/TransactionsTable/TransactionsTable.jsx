@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
+  getTransactionsDate,
   getTransactionsExpenses,
   getTransactionsIncomes,
 } from 'redux/transactions/transactionsSelector';
@@ -59,25 +60,25 @@ const TransactionsTable = ({ mob, pageIncome, pageExpenses }) => {
 
   const incomesData = useSelector(getTransactionsIncomes);
   const expensesData = useSelector(getTransactionsExpenses);
+  const dateList = useSelector(getTransactionsDate);
+  // const dateList = '2022-08-30';
 
   useEffect(() => {
     if (mob && incomesData && expensesData) {
-      const newData = [...incomesData, ...expensesData].sort((a, b) =>
-        b.date.localeCompare(a.date)
-      );
+      const newData = [...incomesData, ...expensesData].filter(el => el.date === dateList);
       setData(newData);
       return;
     }
     if (!mob && pageIncome && incomesData) {
-      const length = LENGTH_DATA - incomesData.length;
-      const data = [...incomesData].sort((a, b) => b.date.localeCompare(a.date));
+      const data = [...incomesData].filter(el => el.date === dateList);
+      const length = LENGTH_DATA - data.length;
       const newData = length > 0 ? [...data, ...Array(length).fill(null)] : data;
       setData(newData);
       return;
     }
     if (!mob && pageExpenses && expensesData) {
-      const length = LENGTH_DATA - expensesData.length;
-      const data = [...expensesData].sort((a, b) => b.date.localeCompare(a.date));
+      const data = [...expensesData].filter(el => el.date === dateList);
+      const length = LENGTH_DATA - data.length;
       const newData = length > 0 ? [...data, ...Array(length).fill(null)] : data;
       setData(newData);
       return;
