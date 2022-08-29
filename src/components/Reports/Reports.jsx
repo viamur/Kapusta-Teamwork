@@ -36,6 +36,7 @@ export default function Reports() {
       <div>
         <ReportsHeader incomes={incomes} expenses={expenses} />
         <ReportsCategories
+          curCategory={curCategory}
           setCurCategory={setCurCategory}
           incomes={incomes}
           expenses={expenses}

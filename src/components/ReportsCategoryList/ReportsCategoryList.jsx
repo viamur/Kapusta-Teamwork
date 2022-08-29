@@ -10,6 +10,7 @@ export default function ReportsCategoryList({
   categories,
 
   transType,
+  curCategory,
   setCurCategory,
 }) {
   const [categoriesArr, setCategoriesArr] = useState([]);
@@ -41,7 +42,9 @@ export default function ReportsCategoryList({
               <li
                 key={id}
                 onClick={() => setCurCategory(el)}
-                className={s.categoryListItem}
+                className={`${s.categoryListItem} ${
+                  curCategory?.en === el?.en ? s.isActive : ''
+                }`}
               >
                 <p className={s.priceItem}>
                   {el.data.total &&

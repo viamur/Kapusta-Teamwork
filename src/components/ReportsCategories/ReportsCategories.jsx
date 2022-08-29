@@ -8,6 +8,7 @@ import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryL
 export default function ReportsCategories({
   incomes,
   expenses,
+  curCategory,
   setCurCategory,
 }) {
   const [pickedState, setPickedState] = useState('EXPENSES');
@@ -38,6 +39,7 @@ export default function ReportsCategories({
       <ReportsCategoryList
         categories={categories}
         transType={pickedState.toLowerCase()}
+        curCategory={curCategory}
         setCurCategory={setCurCategory}
       />
     </div>
