@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -27,7 +33,7 @@ import GooBack from 'components/GooBack/GooBack';
 import Summary from 'components/Summary/Summary';
 
 const TransactionsPage = () => {
-  const [currentDate, setcurrentDate] = useState(new Date());
+ 
 
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
   const desk = useMediaQuery({ query: '(min-width: 1279.5px)' });
@@ -77,6 +83,7 @@ const TransactionsPage = () => {
         expensesData.legth === 0 && dispatch(getExpenseThunk());
       }
     }
+    // eslint-disable-next-line
   }, [transType, email]);
 
   return (
@@ -92,10 +99,10 @@ const TransactionsPage = () => {
         </>
       )}
       {mob && (pageExpenses || pageIncome) && (
-        <>
+        <div className={s.mobMrgin}>
           <GooBack />
-          <IncomeForm data={currentDate} />
-        </>
+          <IncomeForm  />
+        </div>
       )}
       {!mob && (
         <>
@@ -109,13 +116,20 @@ const TransactionsPage = () => {
                 >
                   Expenses
                 </NavLink>
-                <NavLink className={pageIncome ? s.linkActive : s.link} to={'/transactions/income'}>
+                <NavLink
+                  className={pageIncome ? s.linkActive : s.link}
+                  to={'/transactions/income'}
+                >
                   income
                 </NavLink>
               </nav>
               <IncomeForm />
               <div className={s.tableAndSummery}>
-                <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
+                <TransactionsTable
+                  mob={mob}
+                  pageIncome={pageIncome}
+                  pageExpenses={pageExpenses}
+                />
                 {desk && <Summary />}
               </div>
             </div>
