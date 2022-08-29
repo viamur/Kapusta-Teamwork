@@ -29,6 +29,11 @@
   @include mq(desk) {
     flex-direction: row;
   }
+
+  & input{
+    outline: none;
+  }
+
 }
 
 .input {
@@ -211,7 +216,14 @@
     margin-right: 20px;
   }
 
+  &:first-child{
+    @include mq(tab){
+      margin-left: 50px;
+    }
+  }
+
   @include mq(tab) {
+    background-color: transparent;
     width: 125px;
     flex-direction: row;
   }
@@ -232,6 +244,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include mq(tab) {
+    justify-content: flex-start;
+  }
 
   @include mq(desk) {
     width: 284px;
@@ -292,7 +308,7 @@
 
   @include mq(tab) {
     border-radius: 0;
-    padding: 0px 0px 0px 0px;
+    padding: 0px 8px 0px 0px;
     width: 70px;
     border-left: none;
     border-right: none;

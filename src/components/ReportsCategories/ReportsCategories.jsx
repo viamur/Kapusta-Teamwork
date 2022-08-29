@@ -4,21 +4,16 @@ import { useState } from 'react';
 import s from '../CategoryList/CategoryList.module.scss';
 import icon from '../../images/icon.svg';
 import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryList';
-import ChartCategory from '../../components/ChartCategory/ChartCategory';
-import ChartCategoryMobile from '../../components/ChartCategoryMobile/ChartCategoryMobile';
-import { useMediaQuery } from 'react-responsive';
 
 export default function ReportsCategories({ incomes, expenses }) {
   const [pickedState, setPickedState] = useState('EXPENSES');
-  const [changeState, setChangeState] = useState(true);
-  const isMobile = useMediaQuery({
-    query: '(min-width: 767px)',
-  });
+  // const [changeState, setChangeState] = useState(true);
 
   const togglePickedState = () => {
     setPickedState(prev => (prev === 'EXPENSES' ? 'INCOMES' : 'EXPENSES'));
-    setChangeState(prev => (prev = !changeState));
+    // setChangeState(prev => (prev = !changeState));gi
   };
+  const categories = pickedState === 'EXPENSES' ? expenses : incomes;
 
   // console.log(changeState);
   return (
@@ -37,15 +32,9 @@ export default function ReportsCategories({ incomes, expenses }) {
         </button>
       </div>
       <ReportsCategoryList
-        changeState={changeState}
-        incomes={incomes}
-        expenses={expenses}
+        categories={categories}
+        transType={pickedState.toLowerCase()}
       />
-      {isMobile ? (
-        <ChartCategory incomes={incomes} expenses={expenses} />
-      ) : (
-        <ChartCategoryMobile incomes={incomes} expenses={expenses} />
-      )}
     </div>
   );
 }

@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -27,7 +33,7 @@ import GooBack from 'components/GooBack/GooBack';
 import Summary from 'components/Summary/Summary';
 
 const TransactionsPage = () => {
-  const [currentDate, setcurrentDate] = useState(new Date());
+ 
 
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
   const desk = useMediaQuery({ query: '(min-width: 1279.5px)' });
@@ -48,13 +54,13 @@ const TransactionsPage = () => {
 
   useEffect(() => {
     if (email) {
-      if (!mob & pageIncome) {
-        !incomesData && dispatch(getIncomeThunk());
+      if (!mob && pageIncome) {
+        incomesData.length === 0 && dispatch(getIncomeThunk());
         !incomesCategories && dispatch(incomeCategoriesThunk());
         return;
       }
-      if (!mob & pageExpenses) {
-        !expensesData && dispatch(getExpenseThunk());
+      if (!mob && pageExpenses) {
+        expensesData.length === 0 && dispatch(getExpenseThunk());
         !expensesCategories && dispatch(expenseCategoriesThunk());
         return;
       }
@@ -73,10 +79,11 @@ const TransactionsPage = () => {
         if (pageExpenses) {
           !expensesCategories && dispatch(expenseCategoriesThunk());
         }
-        !incomesData && dispatch(getIncomeThunk());
-        !expensesData && dispatch(getExpenseThunk());
+        incomesData.legth === 0 && dispatch(getIncomeThunk());
+        expensesData.legth === 0 && dispatch(getExpenseThunk());
       }
     }
+    // eslint-disable-next-line
   }, [transType, email]);
 
   return (
@@ -85,17 +92,17 @@ const TransactionsPage = () => {
         <>
           <Balance />
           <div className={s.data}>
-            <MyDate date={currentDate} />
+            <MyDate />
           </div>
           <TransactionsTable mob={mob} />
           <TransactionsMobBtn />
         </>
       )}
       {mob && (pageExpenses || pageIncome) && (
-        <>
+        <div className={s.mobMrgin}>
           <GooBack />
-          <IncomeForm />
-        </>
+          <IncomeForm  />
+        </div>
       )}
       {!mob && (
         <>
@@ -109,13 +116,20 @@ const TransactionsPage = () => {
                 >
                   Expenses
                 </NavLink>
-                <NavLink className={pageIncome ? s.linkActive : s.link} to={'/transactions/income'}>
+                <NavLink
+                  className={pageIncome ? s.linkActive : s.link}
+                  to={'/transactions/income'}
+                >
                   income
                 </NavLink>
               </nav>
               <IncomeForm />
               <div className={s.tableAndSummery}>
-                <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
+                <TransactionsTable
+                  mob={mob}
+                  pageIncome={pageIncome}
+                  pageExpenses={pageExpenses}
+                />
                 {desk && <Summary />}
               </div>
             </div>

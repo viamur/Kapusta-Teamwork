@@ -37,7 +37,6 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-around;
-  // margin: 20px;
 
   @include mq(tab) {
     display: flex;
@@ -45,8 +44,6 @@
     align-content: center;
     justify-content: center;
     align-items: flex-start;
-    // padding-top: 20px;
-    // padding-bottom: 20px;
   }
 }
 
@@ -89,16 +86,10 @@
 }
 
 .iconFill {
-  // fill: #071f41;
   margin: 5px;
   z-index: 9;
   position: relative;
 }
-
-// .iconFill:hover,
-// .iconFill:focus {
-//   fill: var(--accent-color);
-// }
 
 .discriptionItem,
 .priceItem {
@@ -107,8 +98,6 @@
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  // display: flex;
-  // justify-content: center;
 }
 
 .borderForIconRelative {
@@ -117,35 +106,34 @@
 
 .borderForIconSalary {
   position: absolute;
-  bottom: 15%;
   width: 52.68px;
   height: 46px;
   border-radius: 20px;
-  left: 19%;
+  bottom: 10%;
+  left: 21%;
   @include mq(tab) {
     position: absolute;
-    bottom: 57%;
     width: 52.68px;
     height: 46px;
     border-radius: 20px;
-    left: 44.3%;
+    bottom: 10%;
+    left: 9%;
   }
 }
 .borderForIconAddIncome {
   position: absolute;
-  bottom: 15%;
   width: 52.68px;
   height: 46px;
   border-radius: 20px;
-  left: 19%;
+  bottom: 10%;
+  left: 21%;
   @include mq(tab) {
     position: absolute;
-    bottom: 57%;
     width: 52.68px;
     height: 46px;
     border-radius: 20px;
-    left: 52.2%;
-    // top: 38%;
+    bottom: 10%;
+    left: 23%;
   }
 }
 
