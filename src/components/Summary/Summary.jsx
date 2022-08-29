@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import translateMonths from './month';
+import num from './zero.json';
 import { useParams } from 'react-router-dom';
 
 import s from './Summary.module.scss';
@@ -38,7 +39,9 @@ const Summary = () => {
           .map(([test1, test2], index) => (
             <li key={index} className={s.summaryItem}>
               <p>{`${translateMonths[test1].name}`}</p>
-              <p className={s.summarySumm}>{test2} .00 uah</p>
+              <p className={s.summarySumm}>
+                {test2 === 'N/A' ? '00' : test2} .00 uah
+              </p>
             </li>
           ))}
       </ul>
