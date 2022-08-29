@@ -30,7 +30,7 @@ export default function ReportsCategoryList({
   useEffect(() => {
     if (Object.keys(expenses).length) {
       setExpensesArr(getTransleteExpensesCategory(expenses));
-      console.log(expensesArr);
+      console.log(incomesArr);
     }
   }, [expenses]);
 

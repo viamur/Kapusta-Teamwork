@@ -4,15 +4,22 @@ import { useState } from 'react';
 import s from '../CategoryList/CategoryList.module.scss';
 import icon from '../../images/icon.svg';
 import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryList';
+import ChartCategory from '../../components/ChartCategory/ChartCategory';
+import ChartCategoryMobile from '../../components/ChartCategoryMobile/ChartCategoryMobile';
+import { useMediaQuery } from 'react-responsive';
 
 export default function ReportsCategories({ incomes, expenses }) {
   const [pickedState, setPickedState] = useState('EXPENSES');
   const [changeState, setChangeState] = useState(true);
+  const isMobile = useMediaQuery({
+    query: '(min-width: 767px)',
+  });
 
   const togglePickedState = () => {
     setPickedState(prev => (prev === 'EXPENSES' ? 'INCOMES' : 'EXPENSES'));
     setChangeState(prev => (prev = !changeState));
   };
+
   // console.log(changeState);
   return (
     <div className={s.backgroundCategoryList}>
@@ -34,6 +41,11 @@ export default function ReportsCategories({ incomes, expenses }) {
         incomes={incomes}
         expenses={expenses}
       />
+      {isMobile ? (
+        <ChartCategory incomes={incomes} expenses={expenses} />
+      ) : (
+        <ChartCategoryMobile incomes={incomes} expenses={expenses} />
+      )}
     </div>
   );
 }
