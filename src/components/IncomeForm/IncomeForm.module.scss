@@ -1,5 +1,4 @@
 @import '../../sass/mixin';
-
 .formBox {
   display: flex;
 
@@ -24,12 +23,11 @@
   align-items: center;
 
   @include mq(tab) {
-    flex-direction: row;
+    flex-direction: column;
   }
 
   @include mq(desk) {
-    margin-right: 0px 32px 0px 0px;
-  
+    flex-direction: row;
   }
 }
 
@@ -55,11 +53,12 @@
     width: 185px;
     border-radius: 25px 0px 0px;
     flex-direction: row;
+    border-right: none;
+    border-color: #f5f6fb;
   }
 
   @include mq(desk) {
     width: 298px;
-   
   }
 }
 
@@ -124,7 +123,7 @@
 .image {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border-radius: 0px 25px 25px 0px;
   background-color: transparent;
   border: 2px solid #ffffff;
@@ -132,6 +131,7 @@
 
   @include mq(tab) {
     padding: 0px 20px 0px 0px;
+    border-color: #f5f6fb;
     flex-direction: row;
   }
 
@@ -191,12 +191,13 @@
   background: #f5f6fb;
   color: #52555f;
   box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
-
-  transition-property: transform, color, background-color;
+  border: 2px solid #ffffff;
+  transition-property: transform, border-color, color, background-color;
   transition: var(--transition);
 
   &:hover {
     transform: scale(1.05);
+    border-color: rgb(228, 83, 30);
     background-color: var(--accent-color);
     color: var(--white);
   }
@@ -210,7 +211,14 @@
     margin-right: 20px;
   }
 
+  &:first-child{
+    @include mq(tab){
+      margin-left: 50px;
+    }
+  }
+
   @include mq(tab) {
+    width: 125px;
     flex-direction: row;
   }
 }
@@ -231,43 +239,94 @@
   align-items: center;
   justify-content: center;
 
+  @include mq(tab) {
+    justify-content: flex-start;
+  }
+
   @include mq(desk) {
     width: 284px;
+  }
+}
+
+.IncomeForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mq(tab) {
+    flex-direction: row;
+    margin-bottom: 32px;
+  }
+  @include mq(desk) {
+    margin-bottom: 0;
   }
 }
 
 .incForCont {
   display: flex;
   justify-content: center;
-  @include mq(desk) {
-    display: flex;
-    
-  }
-}
-
-.filterBox {
-  width: 280px;
-  height: 44px;
-  padding: 2px 20px;
-  border-radius: 0px 0px 25px 0px;
-  background-color: transparent;
-  border: 2px solid #ffffff;
 
   @include mq(tab) {
-    width: 280px;
-    padding: 2px;
-    border-left: none;
-    border-radius: 0px;
-    flex-direction: row;
+    margin-bottom: 60px;
   }
+
   @include mq(desk) {
-    width: 178px;
-    
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    margin-bottom: 48px;
   }
 }
 
 .selected {
   @include mq(tab) {
     width: 180px;
+  }
+}
+
+.inputSum {
+  padding: 15px 16px 15px 19px;
+
+  background-color: transparent;
+  border: 2px solid var(--white);
+  border-radius: 22px 0px 0px 22px;
+
+  transition: all var(--transition);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  width: 140px;
+  height: 44px;
+  text-align: right;
+
+  @include mq(tab) {
+    border-radius: 0;
+    padding: 0px 0px 0px 0px;
+    width: 70px;
+    border-left: none;
+    border-right: none;
+    border-color: #f5f6fb;
+  }
+}
+
+.inputSum::placeholder {
+  color: var(--black);
+
+  @include mq(tab) {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #c7ccdc;
+  }
+}
+
+.MyDate {
+  margin-top: 10px;
+  margin-right: 44px;
+
+  @include mq(desk) {
+    margin-right: 32px;
   }
 }
