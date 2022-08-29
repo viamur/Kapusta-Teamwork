@@ -39,7 +39,7 @@ const TransactionsTable = ({ mob, pageIncome, pageExpenses }) => {
       setData(newData);
       return;
     }
-  }, [mob, pageExpenses, pageIncome, incomesData, expensesData]);
+  }, [mob, pageExpenses, pageIncome, incomesData, expensesData, dateList]);
 
   return (
     <div className={!mob ? s.table : ''}>
