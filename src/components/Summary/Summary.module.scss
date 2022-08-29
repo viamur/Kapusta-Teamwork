@@ -1,7 +1,8 @@
 .summaryContainer {
-  border-radius: 25px;
+  border-radius: 25px 25px 25px 0;
   //   background: #f5f6fb;
-  background: #2540c64e;
+  background: var(--grey);
+
   width: 225px;
   padding: 10px 0;
 }
