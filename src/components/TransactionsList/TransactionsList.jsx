@@ -5,10 +5,27 @@ import { getTransactionsIsLoading } from 'redux/transactions/transactionsSelecto
 import icon from '../../images/icon.svg';
 import s from './TransactionsList.module.scss';
 import Modal from 'components/Modal/Modal';
+import { removeTransactionThunk } from 'redux/transactions/transactionsOperations';
 
+// document.querySelector('div').onclick = function (e) { const btn = e.target.closest('.btn'); if (!btn) { return; } btn }
+//   btn.parentElement.remove();
+
+//   function removeTransactionThunk(id) {
+//     let index = cart.indexOf(products[id]);
+//     cart.splice(index, 1);
+//     renderCart();
+//     console.log(cart);
+// };
+  
 const TransactionsList = ({ data, mob }) => {
   const isLoading = useSelector(getTransactionsIsLoading);
   const [showModal, setShowModal] = useState(false);
+  const [removeTransactionId, setRemoveTransactionId] = useState(null);
+  const removeTransaction = () => {
+    return removeTransactionThunk(removeTransactionId);
+  } 
+
+
   return (
     <ul className={s.list}>
       {isLoading ? (
@@ -45,9 +62,10 @@ const TransactionsList = ({ data, mob }) => {
                   ) : (
                     <p className={s.amountIncome}>{` ${el.amount}.00 uah.`}</p>
                   )}
-                  <button type="button" className={s.btn}>
+             
+                  <button type="button" className={s.btn} onClick={() => { setShowModal(true); setRemoveTransactionId(el['_id']) }}>
                     <svg width={18} height={18}>
-                      <use href={`${icon}#icon-delete1`} />
+                     <use href={`${icon}#icon-delete1`} />
                     </svg>
                   </button>
                      {showModal && (
@@ -55,7 +73,7 @@ const TransactionsList = ({ data, mob }) => {
           ChildComponent
           title={"Are you sure?"}
           setShowModal={setShowModal}
-          cb={`${icon}#icon-delete1`}
+          cb={removeTransaction}
         />
       )}
                 </div>
