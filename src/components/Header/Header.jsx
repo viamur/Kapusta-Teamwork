@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAuthEmail, getAuthToken } from 'redux/auth/AuthSelectors';
 import { logOut } from 'redux/auth/authOperations';
 import Modal from 'components/Modal/Modal';
-
+import { ToastContainer } from 'react-toastify';
+ import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,16 @@ const Header = () => {
                 <p className={s.exit}>Exit</p>
               )}
             </button>
+            <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
             {showModal && (
         <Modal
           ChildComponent
