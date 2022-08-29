@@ -8,33 +8,45 @@ import {
   incomesMonthSelector,
   expensesMonthSelector,
 } from '../../redux/reports/reportsSelectot';
+import ChartCategory from '../../components/ChartCategory/ChartCategory';
+import ChartCategoryMobile from '../../components/ChartCategoryMobile/ChartCategoryMobile';
+import { useMediaQuery } from 'react-responsive';
 
 // import s from './Reports.module.scss';
 
 export default function Reports() {
   const [incomes, setIncomes] = useState({});
   const [expenses, setExpenses] = useState({});
-  // const []
+  const [curCategory, setCurCategory] = useState(null);
+
   const incomesResponse = useSelector(incomesMonthSelector);
   const expensesResponse = useSelector(expensesMonthSelector);
+
+  const isMobile = useMediaQuery({
+    query: '(min-width: 767px)',
+  });
 
   useEffect(() => {
     if (incomesResponse) setIncomes(incomesResponse);
     if (expensesResponse) setExpenses(expensesResponse);
-
-    // getPeriodTransactions('2022-07')
-    //   .then(res => {
-    //     setIncomes(res.data.incomes);
-    //     setExpenses(res.data.expenses);
-    //   })
-    //   .catch(error => console.log(error));
   }, [expensesResponse, incomesResponse]);
   return (
     <>
       {/* {console.log(incomes)} */}
       <div>
         <ReportsHeader incomes={incomes} expenses={expenses} />
-        <ReportsCategories incomes={incomes} expenses={expenses} />
+        <ReportsCategories
+          setCurCategory={setCurCategory}
+          incomes={incomes}
+          expenses={expenses}
+        />
+
+        {curCategory &&
+          (isMobile ? (
+            <ChartCategory curCategory={curCategory} />
+          ) : (
+            <ChartCategoryMobile curCategory={curCategory} />
+          ))}
       </div>
     </>
   );
