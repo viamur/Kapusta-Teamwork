@@ -13,8 +13,8 @@ import moment from 'moment';
 const initialState = {
   balance: null,
   date: moment(new Date()).format('YYYY-MM-DD'),
-  expenses: null,
-  incomes: null,
+  expenses: [],
+  incomes: [],
   monthsExpenses: null,
   monthsIncomes: null,
   expenseCategories: null,

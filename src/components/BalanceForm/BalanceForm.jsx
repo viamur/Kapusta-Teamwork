@@ -20,6 +20,7 @@ const BalanceForm = ({ isReportsPage }) => {
 
   const getBalanceUser = useSelector(getAuthBalance);
   const getBalance = useSelector(getTransactionsBalance);
+
   useEffect(() => {
     if (!getBalance) dispatch(updateBalance(getBalanceUser));
     if (getBalance === 0 || balance === getBalance) return;
@@ -28,18 +29,20 @@ const BalanceForm = ({ isReportsPage }) => {
 
   const handleChange = e => {
     const value = e.target.value;
-    const sliceValue = value
-      .slice(0, value.length - 4)
-      .split(' ')
-      .join('');
-    const mathRound = Math.round(sliceValue);
-    setBalance(mathRound);
+
+    setBalance(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(newBalance({ newBalance: balance }));
+    const sliceValue = balance
+      .slice(0, balance.length - 4)
+      .split(' ')
+      .join('');
+    const mathRound = Math.round(sliceValue);
+
+    dispatch(newBalance({ newBalance: mathRound }));
   };
   return (
     <div className={isReportsPage ? s.balanceReports : s.balance}>

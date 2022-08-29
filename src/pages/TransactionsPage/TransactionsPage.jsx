@@ -48,13 +48,13 @@ const TransactionsPage = () => {
 
   useEffect(() => {
     if (email) {
-      if (!mob & pageIncome) {
-        !incomesData && dispatch(getIncomeThunk());
+      if (!mob && pageIncome) {
+        incomesData.length === 0 && dispatch(getIncomeThunk());
         !incomesCategories && dispatch(incomeCategoriesThunk());
         return;
       }
-      if (!mob & pageExpenses) {
-        !expensesData && dispatch(getExpenseThunk());
+      if (!mob && pageExpenses) {
+        expensesData.length === 0 && dispatch(getExpenseThunk());
         !expensesCategories && dispatch(expenseCategoriesThunk());
         return;
       }
@@ -73,8 +73,8 @@ const TransactionsPage = () => {
         if (pageExpenses) {
           !expensesCategories && dispatch(expenseCategoriesThunk());
         }
-        !incomesData && dispatch(getIncomeThunk());
-        !expensesData && dispatch(getExpenseThunk());
+        incomesData.legth === 0 && dispatch(getIncomeThunk());
+        expensesData.legth === 0 && dispatch(getExpenseThunk());
       }
     }
   }, [transType, email]);

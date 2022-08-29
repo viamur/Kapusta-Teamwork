@@ -9,50 +9,6 @@ import {
 } from 'redux/transactions/transactionsSelector';
 import s from './TransactionsTable.module.scss';
 
-// const data = [
-//   {
-//     _id: '63069536db7a810814030bc8',
-//     description: 'За выходные',
-//     amount: 5000,
-//     date: '2022-08-25',
-//     category: 'З/П',
-//   },
-//   {
-//     _id: '63069604db7a810814030bcc',
-//     description: 'Реклама',
-//     amount: 700,
-//     date: '2022-08-25',
-//     category: 'Доп. доход',
-//     expense: true,
-//   },
-//   {
-//     _id: '63069611db7a810814030bcd',
-//     description: 'Фриланс',
-//     amount: 500,
-//     date: '2022-08-25',
-//     category: 'Доп. доход',
-//     expense: false,
-//   },
-//   {
-//     _id: '6306961cdb7a810814030bce',
-//     description: 'Фриланс',
-//     amount: 700,
-//     date: '2022-08-25',
-//     category: 'Доп. доход',
-//     expense: false,
-//   },
-//   {
-//     _id: '6308fe9adb7a810814030ff4',
-//     description: 'Income description',
-//     amount: 100,
-//     date: '2020-12-31',
-//     category: 'Доп. доход',
-//     expense: true,
-//   },
-// ];
-// const feake = Array(20).fill(null);
-// const newData = [...data, ...feake];
-
 const LENGTH_DATA = 20;
 
 const TransactionsTable = ({ mob, pageIncome, pageExpenses }) => {
@@ -61,7 +17,7 @@ const TransactionsTable = ({ mob, pageIncome, pageExpenses }) => {
   const incomesData = useSelector(getTransactionsIncomes);
   const expensesData = useSelector(getTransactionsExpenses);
   const dateList = useSelector(getTransactionsDate);
-  // const dateList = '2022-08-30';
+  // const dateList = '2022-08-25';
 
   useEffect(() => {
     if (mob && incomesData && expensesData) {
