@@ -108,8 +108,8 @@ const IncomeForm = () => {
                   className={s.inputSum}
                   name="sum"
                   allowLeadingZeros={true}
-                  thousandSeparator={' '}
-                  decimalScale={0}
+                  //  thousandSeparator={'.'}
+                   decimalScale={0}
                   placeholder={isDesktopOrLaptop ? '00.00 ' : '00.00 UAH'}
                   fixedDecimalScale={true}
                   allowNegative={false}
