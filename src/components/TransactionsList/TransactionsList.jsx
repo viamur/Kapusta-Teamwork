@@ -1,12 +1,21 @@
 import Loader from 'components/Loader/Loader';
+import { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { getTransactionsIsLoading } from 'redux/transactions/transactionsSelector';
 import icon from '../../images/icon.svg';
 import s from './TransactionsList.module.scss';
+import Modal from 'components/Modal/Modal';
+import { removeTransactionThunk } from 'redux/transactions/transactionsOperations';
 import category from '../../utils/categoryTranslate.json';
 
 const TransactionsList = ({ data, mob }) => {
   const isLoading = useSelector(getTransactionsIsLoading);
+  const [showModal, setShowModal] = useState(false);
+  const [removeTransactionId, setRemoveTransactionId] = useState(null);
+  const removeTransaction = () => {
+    return removeTransactionThunk(removeTransactionId);
+  };
+
   return (
     <ul className={s.list}>
       {isLoading ? (
@@ -39,15 +48,33 @@ const TransactionsList = ({ data, mob }) => {
                 </div>
                 <div className={s.wrapC}>
                   {el.expense ? (
-                    <p className={s.amountExpense}>{`- ${el.amount}.00 uah.`}</p>
+                    <p
+                      className={s.amountExpense}
+                    >{`- ${el.amount}.00 uah.`}</p>
                   ) : (
                     <p className={s.amountIncome}>{` ${el.amount}.00 uah.`}</p>
                   )}
-                  <button type="button" className={s.btn}>
+
+                  <button
+                    type="button"
+                    className={s.btn}
+                    onClick={() => {
+                      setShowModal(true);
+                      setRemoveTransactionId(el['_id']);
+                    }}
+                  >
                     <svg width={18} height={18}>
                       <use href={`${icon}#icon-delete1`} />
                     </svg>
                   </button>
+                  {showModal && (
+                    <Modal
+                      ChildComponent
+                      title={'Are you sure?'}
+                      setShowModal={setShowModal}
+                      cb={removeTransaction}
+                    />
+                  )}
                 </div>
               </>
             )}
