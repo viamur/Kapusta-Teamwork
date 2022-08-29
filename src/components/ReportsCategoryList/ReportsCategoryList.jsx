@@ -15,7 +15,8 @@ export default function ReportsCategoryList({
   const [categoriesArr, setCategoriesArr] = useState([]);
 
   const getTransleteCategories = () => {
-    const categoriesOptions = transType === 'expenses' ? categoriesExpens : categoriesIncome;
+    const categoriesOptions =
+      transType === 'expenses' ? categoriesExpens : categoriesIncome;
     return categoriesOptions.map(el => ({
       ...el,
       data: categories[transType + 'Data'][el.ru] || { total: 0 },
@@ -24,7 +25,9 @@ export default function ReportsCategoryList({
 
   useEffect(() => {
     if (Object.keys(categories).length) {
-      setCategoriesArr(getTransleteCategories(categories));
+      setCategoriesArr(
+        getTransleteCategories(categories).filter(el => el.data.total)
+      );
       console.log(categoriesArr);
     }
     // eslint-disable-next-line
@@ -33,25 +36,33 @@ export default function ReportsCategoryList({
   return (
     <div className={s.categoryListContainer}>
       <ul className={s.categoryList}>
-        {categoriesArr.map((el, id) => (
-          <li key={id} onClick={() => setCurCategory(el)} className={s.categoryListItem}>
-            <p className={s.priceItem}>
-              {el.data.total &&
-                el.data.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + '.00'}{' '}
-            </p>
-            <div className={s.borderForIconRelative}>
-              <div
-                className={`${s['borderForIcon' + el.icon]} 
+        {categoriesArr.length
+          ? categoriesArr.map((el, id) => (
+              <li
+                key={id}
+                onClick={() => setCurCategory(el)}
+                className={s.categoryListItem}
+              >
+                <p className={s.priceItem}>
+                  {el.data.total &&
+                    el.data.total
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + '.00'}{' '}
+                </p>
+                <div className={s.borderForIconRelative}>
+                  <div
+                    className={`${s['borderForIcon' + el.icon]} 
                    ${s.borderForHover}
                    `}
-              ></div>
-              <svg className={s.iconFill} width={56} height={56}>
-                <use href={`${icon}#icon-${el.icon}`} />
-              </svg>
-            </div>
-            <p className={s.discriptionItem}>{el.en}</p>
-          </li>
-        ))}
+                  ></div>
+                  <svg className={s.iconFill} width={56} height={56}>
+                    <use href={`${icon}#icon-${el.icon}`} />
+                  </svg>
+                </div>
+                <p className={s.discriptionItem}>{el.en}</p>
+              </li>
+            ))
+          : "You don't have oprrations on this period"}
       </ul>
     </div>
   );
