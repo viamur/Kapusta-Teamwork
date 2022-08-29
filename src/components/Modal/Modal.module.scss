@@ -24,9 +24,10 @@
   position: relative;
   width: 380px;
   height: 194px;
+  z-index: 99999;
   border-radius: 30px;
   padding: 50px 50px 60px 50px;
-  background-color: #ffff;
+  background-color: rgb(255, 255, 255);
   border: 1px solid #000000;
   box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
   display: flex;
