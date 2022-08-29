@@ -4,7 +4,6 @@ import { useState } from 'react';
 import './MyDate.scss';
 import CalendarIcon from './CalendarIcon';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTransactionsDate } from 'redux/transactions/transactionsSelector';
 import { updadeDate } from 'redux/transactions/transactionsSlice';
 import moment from 'moment';
 

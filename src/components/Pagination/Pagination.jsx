@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAuthEmail, getAuthToken } from '../../redux/auth/AuthSelectors';
+import { getAuthEmail } from '../../redux/auth/AuthSelectors';
 import { getPeriod } from '../../redux/reports/reportsOperation';
+import { getAuthBalance } from '../../redux/auth/AuthSelectors';
 import icon from '../../images/icon.svg';
 import s from './Pagination.module.scss';
 
@@ -22,7 +23,8 @@ const month = [
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const accessToken = useSelector(getAuthToken);
+  const authBalance = useSelector(getAuthBalance);
+  // const accessToken = useSelector(getAuthToken);
   const email = useSelector(getAuthEmail);
 
   const [nameMonth, setNameMonth] = useState(
@@ -61,7 +63,7 @@ const Pagination = () => {
     }
     dispatch(getPeriod(selectedDate));
     // eslint-disable-next-line
-  }, [selectedDate, accessToken]);
+  }, [selectedDate, authBalance]);
 
   return (
     <div className={s.pagContainer}>
