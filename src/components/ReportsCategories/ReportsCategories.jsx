@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import s from './ReportsCategories.module.scss';
 import icon from '../../images/icon.svg';
 import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryList';
