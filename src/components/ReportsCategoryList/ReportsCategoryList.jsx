@@ -8,12 +8,15 @@ import s from '../ReportsCategories/ReportsCategories.module.scss';
 
 export default function ReportsCategoryList({
   categories,
-
   transType,
   curCategory,
   setCurCategory,
 }) {
   const [categoriesArr, setCategoriesArr] = useState([]);
+
+  useEffect(() => {
+    categoriesArr[0] ? setCurCategory(categoriesArr[0]) : setCurCategory(null);
+  }, [categoriesArr, setCurCategory]);
 
   const getTransleteCategories = () => {
     const categoriesOptions =
@@ -29,7 +32,7 @@ export default function ReportsCategoryList({
       setCategoriesArr(
         getTransleteCategories(categories).filter(el => el.data.total)
       );
-      console.log(categoriesArr);
+      // console.log(categoriesArr);
     }
     // eslint-disable-next-line
   }, [categories]);
