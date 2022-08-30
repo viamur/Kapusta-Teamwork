@@ -21,6 +21,7 @@ export const App = () => {
     if (token) {
       dispatch(getAuthUser());
     }
+    // eslint-disable-next-line
   }, []);
 
   return (

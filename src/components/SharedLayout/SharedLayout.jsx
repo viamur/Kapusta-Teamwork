@@ -11,7 +11,7 @@ import { getAuthUser } from 'redux/auth/authOperations';
 import { googleAuth } from '../../redux/auth/AuthSlice';
 
 const SharedLayout = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -29,6 +29,7 @@ const SharedLayout = () => {
       }
       token ? navigate('transactions') : navigate('auth');
     }
+    // eslint-disable-next-line
   }, []);
   return (
     <>

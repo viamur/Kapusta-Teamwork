@@ -1,11 +1,5 @@
-import { useEffect, useState } from 'react';
-import {
-  Link,
-  NavLink,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -20,24 +14,19 @@ import {
   getTransactionsExpenses,
   getTransactionsIncomeCategories,
   getTransactionsIncomes,
-  getTransactionsIsLoading,
 } from 'redux/transactions/transactionsSelector';
 import Balance from 'components/Balance/Balance';
 import MyDate from 'components/MyDate/MyDate';
 import IncomeForm from 'components/IncomeForm/IncomeForm';
 import TransactionsMobBtn from '../../components/TransactionsMobBtn/TransactionsMobBtn';
 import s from './TransactionsPage.module.scss';
-import TransactionsList from 'components/TransactionsList/TransactionsList';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 import GooBack from 'components/GooBack/GooBack';
 import Summary from 'components/Summary/Summary';
 
 const TransactionsPage = () => {
- 
-
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
   const desk = useMediaQuery({ query: '(min-width: 1279.5px)' });
-  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -48,7 +37,6 @@ const TransactionsPage = () => {
   const email = useSelector(getAuthEmail);
   const incomesData = useSelector(getTransactionsIncomes);
   const expensesData = useSelector(getTransactionsExpenses);
-  const isLoading = useSelector(getTransactionsIsLoading);
   const incomesCategories = useSelector(getTransactionsIncomeCategories);
   const expensesCategories = useSelector(getTransactionsExpenseCategories);
 
@@ -101,7 +89,7 @@ const TransactionsPage = () => {
       {mob && (pageExpenses || pageIncome) && (
         <div className={s.mobMrgin}>
           <GooBack />
-          <IncomeForm  />
+          <IncomeForm />
         </div>
       )}
       {!mob && (
@@ -116,20 +104,13 @@ const TransactionsPage = () => {
                 >
                   Expenses
                 </NavLink>
-                <NavLink
-                  className={pageIncome ? s.linkActive : s.link}
-                  to={'/transactions/income'}
-                >
+                <NavLink className={pageIncome ? s.linkActive : s.link} to={'/transactions/income'}>
                   income
                 </NavLink>
               </nav>
               <IncomeForm />
               <div className={s.tableAndSummery}>
-                <TransactionsTable
-                  mob={mob}
-                  pageIncome={pageIncome}
-                  pageExpenses={pageExpenses}
-                />
+                <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
                 {desk && <Summary />}
               </div>
             </div>

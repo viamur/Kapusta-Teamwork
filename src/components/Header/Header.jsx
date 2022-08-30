@@ -1,17 +1,16 @@
 import { Link } from 'react-router-dom';
 import icon from '../../images/icon.svg';
 import s from './Header.module.scss';
-import { useState, useCallback  } from 'react';
+import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAuthEmail, getAuthToken } from 'redux/auth/AuthSelectors';
+import { useSelector } from 'react-redux';
+import { getAuthEmail } from 'redux/auth/AuthSelectors';
 import { logOut } from 'redux/auth/authOperations';
 import Modal from 'components/Modal/Modal';
 import { ToastContainer } from 'react-toastify';
- import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
-  const dispatch = useDispatch();
   const email = useSelector(getAuthEmail);
 
   const emailNormaliza = email && email.split('')[0];
@@ -31,11 +30,7 @@ const Header = () => {
           <div className={s.wrap}>
             <span className={s.span}>{emailNormaliza}</span>
             {!mob && <p className={s.name}>{email}</p>}
-            <button
-              type="button"
-              className={s.btn}
-              onClick={() => setShowModal(true)}
-            >
+            <button type="button" className={s.btn} onClick={() => setShowModal(true)}>
               {mob ? (
                 <svg width={16} height={16}>
                   <use href={`${icon}#icon-logout1`} />
@@ -45,23 +40,24 @@ const Header = () => {
               )}
             </button>
             <ToastContainer
-        position="top-right"
-        autoClose={2500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover />
+              position="top-right"
+              autoClose={2500}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
             {showModal && (
-        <Modal
-          ChildComponent
-          title={"Do you really want to leave?"}
-          setShowModal={setShowModal}
-          cb={logOut}
-        />
-      )}
+              <Modal
+                ChildComponent
+                title={'Do you really want to leave?'}
+                setShowModal={setShowModal}
+                cb={logOut}
+              />
+            )}
           </div>
         )}
       </div>

@@ -86,6 +86,7 @@ const refreshToken = createAsyncThunk(
     try {
       api.token.set(refreshToken);
       const { data } = await api.refresh({ sid });
+      api.token.set(data.newAccessToken);
       setTimeout(() => {
         dispatch(cb());
       }, 0);

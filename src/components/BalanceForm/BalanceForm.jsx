@@ -4,10 +4,9 @@ import BalanceModal from 'components/BalanceModal/BalanceModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { getAuthBalance } from 'redux/auth/AuthSelectors';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { newBalance } from 'redux/auth/authOperations';
-import { useLocation } from 'react-router-dom';
 import { getTransactionsBalance } from 'redux/transactions/transactionsSelector';
 import { updateBalance } from 'redux/transactions/transactionsSlice';
 
@@ -15,7 +14,6 @@ const BalanceForm = ({ isReportsPage }) => {
   const [balance, setBalance] = useState();
 
   const dispatch = useDispatch();
-  const mob = useMediaQuery({ query: '(max-width: 768px)' });
   const desk = useMediaQuery({ query: '(min-width: 1280px)' });
 
   const getBalanceUser = useSelector(getAuthBalance);
@@ -25,7 +23,7 @@ const BalanceForm = ({ isReportsPage }) => {
     if (!getBalance) dispatch(updateBalance(getBalanceUser));
     if (getBalance === 0 || balance === getBalance) return;
     setBalance(getBalance);
-  }, [getBalance, getBalanceUser]);
+  }, [getBalance, getBalanceUser, balance, dispatch]);
 
   const handleChange = e => {
     const value = e.target.value;

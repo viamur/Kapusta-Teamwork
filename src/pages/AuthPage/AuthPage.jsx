@@ -1,7 +1,7 @@
 import AuthGoogle from '../../components/AuthForm/AuthGoogle';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import icon from '../../images/icon.svg';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import s from './AuthPage.module.scss';
 import { getAuthIsLoading } from 'redux/auth/AuthSelectors';
