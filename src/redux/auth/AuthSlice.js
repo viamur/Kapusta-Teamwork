@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOutAction } from './authActions';
 import { register, login, refreshToken, logOut, getAuthUser, newBalance } from './authOperations';
-import * as api from '../../utils/api';
 
 const initialState = {
   accessToken: null,
