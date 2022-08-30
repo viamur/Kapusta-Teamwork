@@ -74,7 +74,6 @@ const IncomeForm = () => {
       toast.warn('Enter the transaction amount!');
       return;
     }
-  
 
     if (pageIncome) {
       dispatch(addIncomeThunk(transaction));
@@ -87,7 +86,7 @@ const IncomeForm = () => {
     setProduct('');
     setProductCategory('');
     setSum('');
-    toast.success('The form is cleared!')
+    toast.success('The form is cleared!');
   };
 
   return (

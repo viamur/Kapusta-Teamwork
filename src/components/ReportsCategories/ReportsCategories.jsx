@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-// import s from './ReportsCategories.module.scss';
-import s from '../CategoryList/CategoryList.module.scss';
+import s from './ReportsCategories.module.scss';
 import icon from '../../images/icon.svg';
 import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryList';
 
@@ -18,7 +17,6 @@ export default function ReportsCategories({
 
   const togglePickedState = () => {
     setPickedState(prev => (prev === 'EXPENSES' ? 'INCOMES' : 'EXPENSES'));
-    // setChangeState(prev => (prev = !changeState));gi
   };
   const categories = pickedState === 'EXPENSES' ? expenses : incomes;
 

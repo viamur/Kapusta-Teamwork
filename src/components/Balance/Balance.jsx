@@ -1,5 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
-import icon from '../../images/icon.svg';
+import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import s from './Balance.module.scss';
 import BalanceForm from '../BalanceForm/BalanceForm';
@@ -10,7 +9,6 @@ import GooBack from 'components/GooBack/GooBack';
 const Balance = () => {
   const location = useLocation();
   const mob = useMediaQuery({ query: '(max-width: 767.5px)' });
-  const locationbtnGoBack = location.state?.from ?? '/transactions';
   const isReportsPage = location.pathname.slice(1, 8) === 'reports';
 
   return (

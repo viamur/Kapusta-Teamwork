@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import hendlerError from 'redux/error/handleError';
 import * as api from '../../utils/api';
 
 /* ==============ADD INCOME ================ */
@@ -11,6 +12,9 @@ export const addIncomeThunk = createAsyncThunk(
       dispatch(getIncomeThunk());
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: addIncomeThunk }));
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -25,6 +29,9 @@ export const addExpenseThunk = createAsyncThunk(
       dispatch(getExpenseThunk());
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: addExpenseThunk }));
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -33,12 +40,15 @@ export const addExpenseThunk = createAsyncThunk(
 /* ==============GET EXPENSE ================ */
 export const getExpenseThunk = createAsyncThunk(
   'transaction/getExpense',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.getExpense();
 
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: getExpenseThunk }));
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -47,12 +57,15 @@ export const getExpenseThunk = createAsyncThunk(
 /* ==============GET INCOME ================ */
 export const getIncomeThunk = createAsyncThunk(
   'transaction/getIncome',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.getIncome();
       console.log(data);
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: getIncomeThunk }));
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -61,12 +74,15 @@ export const getIncomeThunk = createAsyncThunk(
 /* ==============DELETE TRANSACTION ================ */
 export const removeTransactionThunk = createAsyncThunk(
   'transaction/remove',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.removeTransaction(id);
       console.log({ ...data, id });
       return { ...data, id };
     } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: removeTransactionThunk }));
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -75,11 +91,14 @@ export const removeTransactionThunk = createAsyncThunk(
 /* ==============INCOME CATEGORIES================ */
 export const incomeCategoriesThunk = createAsyncThunk(
   'transaction/incomeCategories',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.getIncomeCategories();
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: incomeCategoriesThunk }));
+      }, 0);
       return rejectWithValue(error.message);
     }
   }
@@ -88,11 +107,14 @@ export const incomeCategoriesThunk = createAsyncThunk(
 /* ==============EXPENSE CATEGORIES================ */
 export const expenseCategoriesThunk = createAsyncThunk(
   'transaction/expenseCategories',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.getExpenseCategories();
       return data;
     } catch (error) {
+      setTimeout(() => {
+        dispatch(hendlerError({ error, cb: expenseCategoriesThunk }));
+      }, 0);
       return rejectWithValue(error.message);
     }
   }

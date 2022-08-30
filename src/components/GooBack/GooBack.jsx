@@ -11,6 +11,7 @@ const GooBack = ({ title, isReportsPage = false }) => {
 
   useEffect(() => {
     locRef.current = location.state?.from ?? '/transactions';
+    // eslint-disable-next-line
   }, []);
   const handleClick = () => {
     navigate(locRef.current);
