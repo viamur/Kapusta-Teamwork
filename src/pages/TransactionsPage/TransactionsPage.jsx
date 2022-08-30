@@ -63,12 +63,14 @@ const TransactionsPage = () => {
         }
         if (pageIncome) {
           !incomesCategories && dispatch(incomeCategoriesThunk());
+          return;
         }
         if (pageExpenses) {
           !expensesCategories && dispatch(expenseCategoriesThunk());
+          return;
         }
-        incomesData.legth === 0 && dispatch(getIncomeThunk());
-        expensesData.legth === 0 && dispatch(getExpenseThunk());
+        dispatch(getIncomeThunk());
+        dispatch(getExpenseThunk());
       }
     }
     // eslint-disable-next-line
@@ -104,13 +106,20 @@ const TransactionsPage = () => {
                 >
                   Expenses
                 </NavLink>
-                <NavLink className={pageIncome ? s.linkActive : s.link} to={'/transactions/income'}>
+                <NavLink
+                  className={pageIncome ? s.linkActive : s.link}
+                  to={'/transactions/income'}
+                >
                   income
                 </NavLink>
               </nav>
               <IncomeForm />
               <div className={s.tableAndSummery}>
-                <TransactionsTable mob={mob} pageIncome={pageIncome} pageExpenses={pageExpenses} />
+                <TransactionsTable
+                  mob={mob}
+                  pageIncome={pageIncome}
+                  pageExpenses={pageExpenses}
+                />
                 {desk && <Summary />}
               </div>
             </div>
