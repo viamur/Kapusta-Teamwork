@@ -1,0 +1,120 @@
+@import '../../sass/mixin';
+
+.text,
+.textPass {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--black);
+
+  margin-bottom: 12px;
+
+  @include mq(tab) {
+    font-size: 12px;
+    line-height: 1.16;
+  }
+}
+.textPass {
+  margin-top: 32px;
+}
+.input,
+.inputpassword {
+  border-radius: 30px;
+  padding: 17px 19px;
+  background-color: var(--input-grey);
+  border: 1px transparent;
+  width: 100%;
+
+  height: 52px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42;
+  letter-spacing: 0.04em;
+  color: var(--black);
+}
+.inputpassword:not(:placeholder-shown) {
+  @include mq(tab) {
+    font-size: 48px;
+  }
+}
+.input::placeholder,
+.inputpassword::placeholder {
+  color: #a6abb9;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42;
+  letter-spacing: 0.04em;
+}
+.btns {
+  margin-top: 40px;
+}
+.login {
+  margin-right: 8px;
+  color: var(--white);
+  background-color: var(--accent-color);
+  box-shadow: 1px 3px 5px rgba(255, 107, 8, 0.35);
+  @include mq(tab) {
+    margin-right: 14px;
+  }
+}
+.registration {
+  color: var(--descr-gray);
+  background-color: var(--grey);
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+.login,
+.registration {
+  width: 116px;
+  height: 44px;
+
+  border-radius: 16px;
+  border: 1px transparent;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  transition: all var(--transition);
+  @include mq(tab) {
+    width: 122px;
+  }
+}
+.login:hover,
+.login:focus {
+  background-color: var(--red);
+}
+.registration:hover,
+.registration:focus {
+  background-color: var(--descr-gray);
+  color: var(--white);
+}
+.login:focus-visible {
+  outline-color: var(--white);
+}
+.registration:focus-visible {
+  outline-color: var(--accent-color);
+}
+.error {
+  color: var(--red);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+  margin-bottom: -16px;
+}
+
+.errorAuth {
+  color: var(--red);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  margin-top: 16px;
+  margin-bottom: -16px;
+  text-align: center;
+}

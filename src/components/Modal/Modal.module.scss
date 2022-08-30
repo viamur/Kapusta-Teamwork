@@ -1,0 +1,144 @@
+@import '../../sass/mixin';
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 500ms linear, visibility 500ms linear;
+  overflow-y: scroll;
+
+  &.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.is-hidden .modal {
+    transform: translate(-50%);
+    transition: transform 150ms linear;
+  }
+}
+
+.modal {
+  position: relative;
+  width: 300px;
+  height: 194px;
+  z-index: 999;
+  border-radius: 30px;
+  padding: 50px 0px 60px 0px;
+  background-color: rgb(255, 255, 255);
+  // box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  box-shadow: 0px 0px 30px var(--accent-color);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include mq(mob) {
+    padding: 50px 50px 60px 50px;
+    width: 380px;
+  }
+}
+
+.btn {
+  width: 80px;
+  height: 44px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 12px 26px;
+  border-radius: 16px;
+  border: none;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: #f5f6fb;
+  color: #52555f;
+  box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+  transition-property: transform, color, background-color;
+  transition: var(--transition);
+  @include mq(mob) {
+    width: 125px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--accent-color);
+    color: var(--white);
+  }
+}
+
+.btn-accent {
+  width: 80px;
+  height: 44px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  margin-right: 15px;
+  border-radius: 16px;
+  border: none;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: #f5f6fb;
+  color: #52555f;
+  box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+  transition-property: transform, color, background-color;
+  transition: var(--transition);
+  @include mq(mob) {
+    width: 125px;
+  }
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--accent-color);
+    color: var(--white);
+  }
+}
+
+.modalTitle {
+  margin-bottom: 20px;
+  width: 281px;
+  height: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  color: #52555f;
+}
+
+.modalClose {
+  display: flex;
+  align-items: center;
+  stroke: var(--descr-gray);
+  padding: 6px;
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  box-sizing: inherit;
+  background-color: var(--white);
+  transition-property: stroke, border;
+  transition: var(--transition);
+
+  &:hover,
+  &:focus {
+    transform: rotate(-360deg);
+    border: 1px solid var(--accent-color);
+    stroke: var(--accent-color);
+  }
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(49, 49, 49, 0.8);
+  z-index: 10;
+}

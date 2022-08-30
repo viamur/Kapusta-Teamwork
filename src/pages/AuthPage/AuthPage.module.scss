@@ -1,0 +1,116 @@
+@import '../../sass/mixin';
+
+.section {
+  padding-top: 86px;
+  padding-bottom: 105px;
+  margin: 0 auto;
+  width: 280px;
+  @include mq(tab) {
+    padding-top: 80px;
+    padding-bottom: 155px;
+    width: 426px;
+  }
+  @include mq(desk) {
+    width: auto;
+    padding-top: 117px;
+    padding-bottom: 125px;
+    padding-left: 144px;
+  }
+}
+.wrap {
+  @include mq(desk) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.svg {
+  width: 183px;
+  height: 46px;
+  margin-bottom: 4px;
+  @include mq(tab) {
+    width: 306px;
+    height: 78px;
+  }
+  @include mq(desk) {
+    width: 377px;
+    height: 120px;
+    margin-bottom: -10px;
+  }
+}
+.title {
+  margin-bottom: 50px;
+  @include mq(tab) {
+    margin-bottom: 80px;
+  }
+  @include mq(desk) {
+    margin-bottom: 0px;
+  }
+}
+.subtitle {
+  position: relative;
+  left: 12px;
+
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.15;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--descr-gray);
+  @include mq(tab) {
+    left: 55px;
+    font-size: 16px;
+    line-height: 1.18;
+    letter-spacing: 0.18em;
+  }
+}
+.authBlock {
+  padding: 40px 20px;
+  background-color: var(--white);
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+  min-height: 490px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include mq(tab) {
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.2);
+    padding: 56px 84px;
+    min-height: 552px;
+  }
+  @include mq(desk) {
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    width: 426px;
+  }
+}
+.textA {
+  margin-bottom: 16px;
+  text-align: center;
+  width: 220px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  color: var(--descr-gray);
+  @include mq(tab) {
+    width: 250px;
+    margin-bottom: 20px;
+  }
+}
+.textB {
+  margin: 32px 0px 16px 0px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  color: var(--descr-gray);
+  @include mq(tab) {
+    width: 250px;
+    margin-bottom: 20px;
+  }
+}

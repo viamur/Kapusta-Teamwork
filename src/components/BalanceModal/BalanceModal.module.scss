@@ -1,0 +1,46 @@
+@import '../../sass/mixin';
+
+.modal {
+  position: absolute;
+  width: 288px;
+  height: 163px;
+  z-index: 9;
+  cursor: help;
+
+  color: var(--white);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+
+  top: 80px;
+  left: 5px;
+  @include mq(tab) {
+    top: 49px;
+    left: 89px;
+  }
+}
+.bcg {
+  width: 280px;
+  height: 152px;
+  padding: 29px 25px 32px 25px;
+  z-index: 10;
+
+  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  border-radius: 30px;
+}
+.polygon {
+  width: 10px;
+  height: 10px;
+  background-color: #162c5b;
+  position: absolute;
+  top: -5px;
+  left: 68px;
+  rotate: 45deg;
+}
+.textA {
+  margin-bottom: 20px;
+}
+.textB {
+  font-size: 12px;
+  line-height: 1.33;
+}
