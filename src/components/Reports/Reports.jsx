@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-//import { getPeriodTransactions } from '../../utils/api';
 import ReportsHeader from '../ReportsHeader/ReportsHeader';
 import ReportsCategories from '../ReportsCategories/ReportsCategories';
 import {
@@ -11,8 +10,6 @@ import {
 import ChartCategory from '../../components/ChartCategory/ChartCategory';
 import ChartCategoryMobile from '../../components/ChartCategoryMobile/ChartCategoryMobile';
 import { useMediaQuery } from 'react-responsive';
-
-// import s from './Reports.module.scss';
 
 export default function Reports() {
   const [incomes, setIncomes] = useState({});
