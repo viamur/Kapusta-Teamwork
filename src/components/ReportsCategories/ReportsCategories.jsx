@@ -10,8 +10,10 @@ export default function ReportsCategories({
   expenses,
   curCategory,
   setCurCategory,
+  setPickedState,
+  pickedState,
 }) {
-  const [pickedState, setPickedState] = useState('EXPENSES');
+  // const [pickedState, setPickedState] = useState('EXPENSES');
   // const [changeState, setChangeState] = useState(true);
 
   const togglePickedState = () => {

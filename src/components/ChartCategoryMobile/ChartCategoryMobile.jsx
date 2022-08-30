@@ -12,8 +12,20 @@ import {
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
 
-export default function ChartCategoryMobile({ expenses, incomes, curCategory }) {
-  ChartJS.register(CategoryScale, ChartDataLabels, LinearScale, BarElement, Title, Tooltip, Legend);
+export default function ChartCategoryMobile({
+  expenses,
+  incomes,
+  curCategory,
+}) {
+  ChartJS.register(
+    CategoryScale,
+    ChartDataLabels,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  );
 
   const options = {
     indexAxis: 'y',
@@ -43,7 +55,8 @@ export default function ChartCategoryMobile({ expenses, incomes, curCategory }) 
         font: {
           size: '12',
         },
-        formatter: value => `${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} UAH`,
+        formatter: value =>
+          `${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} UAH`,
       },
     },
 

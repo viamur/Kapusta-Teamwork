@@ -15,13 +15,13 @@ import { useMediaQuery } from 'react-responsive';
 // import s from './Reports.module.scss';
 
 export default function Reports() {
-  const [incomes, setIncomes] = useState({});
-  const [expenses, setExpenses] = useState({});
-  const [curCategory, setCurCategory] = useState(null);
-
   const incomesResponse = useSelector(incomesMonthSelector);
   const expensesResponse = useSelector(expensesMonthSelector);
 
+  const [incomes, setIncomes] = useState({});
+  const [expenses, setExpenses] = useState({});
+  const [curCategory, setCurCategory] = useState(null);
+  const [pickedState, setPickedState] = useState('EXPENSES');
   const isMobile = useMediaQuery({
     query: '(min-width: 767px)',
   });
@@ -29,7 +29,10 @@ export default function Reports() {
   useEffect(() => {
     if (incomesResponse) setIncomes(incomesResponse);
     if (expensesResponse) setExpenses(expensesResponse);
-  }, [expensesResponse, incomesResponse]);
+    console.log(incomesResponse);
+    console.log(expensesResponse);
+  }, [expensesResponse, incomesResponse, pickedState]);
+
   return (
     <>
       {/* {console.log(incomes)} */}
@@ -40,6 +43,8 @@ export default function Reports() {
           setCurCategory={setCurCategory}
           incomes={incomes}
           expenses={expenses}
+          setPickedState={setPickedState}
+          pickedState={pickedState}
         />
 
         {curCategory &&
