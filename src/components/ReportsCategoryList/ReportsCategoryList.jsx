@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import categoriesExpens from '../../utils/categoriesExpens.json';
 import categoriesIncome from '../../utils/categoriesIncome.json';
 import icon from '../../images/icon.svg';
-import s from '../CategoryList/CategoryList.module.scss';
+import s from '../ReportsCategories/ReportsCategories.module.scss';
 
 export default function ReportsCategoryList({
   categories,
