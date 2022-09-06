@@ -6,7 +6,6 @@ import * as api from '../../utils/api';
 export const addIncomeThunk = createAsyncThunk(
   'transaction/addIncome',
   async (obj, { rejectWithValue, dispatch }) => {
-    console.log('obj', obj);
     try {
       const { data } = await api.addIncome(obj);
       dispatch(getIncomeThunk());
@@ -60,7 +59,6 @@ export const getIncomeThunk = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.getIncome();
-      console.log(data);
       return data;
     } catch (error) {
       setTimeout(() => {
@@ -77,7 +75,6 @@ export const removeTransactionThunk = createAsyncThunk(
   async (id, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await api.removeTransaction(id);
-      console.log({ ...data, id });
       return { ...data, id };
     } catch (error) {
       setTimeout(() => {

@@ -5,19 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import NumberFormat from 'react-number-format';
 import Select from 'react-select';
 import { useMediaQuery } from 'react-responsive';
-import {
-  options,
-  optionsTypeTrats,
-  castomOptions,
-  castomOptionsTablet,
-} from './filterOptions';
+import { options, optionsTypeTrats, castomOptions, castomOptionsTablet } from './filterOptions';
 
 import MyDate from 'components/MyDate/MyDate';
 import icon from '../../images/icon.svg';
-import {
-  addIncomeThunk,
-  addExpenseThunk,
-} from '../../redux/transactions/transactionsOperations';
+import { addIncomeThunk, addExpenseThunk } from '../../redux/transactions/transactionsOperations';
 import { getTransactionsDate } from '../../redux/transactions/transactionsSelector';
 import { toast } from 'react-toastify';
 import s from './IncomeForm.module.scss';
@@ -104,6 +96,7 @@ const IncomeForm = () => {
                   placeholder="Product description"
                   className={s.input}
                   onChange={handleInputChange}
+                  maxLength={22}
                 />
               </label>
 
