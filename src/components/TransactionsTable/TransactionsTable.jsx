@@ -21,7 +21,9 @@ const TransactionsTable = ({ mob, pageIncome, pageExpenses }) => {
 
   useEffect(() => {
     if (mob && incomesData && expensesData) {
-      const newData = [...incomesData, ...expensesData].filter(el => el.date === dateList);
+      const newData = [...incomesData, ...expensesData]
+        .filter(el => el.date === dateList)
+        .sort((a, b) => b['_id'].localeCompare(a['_id']));
       setData(newData);
       return;
     }

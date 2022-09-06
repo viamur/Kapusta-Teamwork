@@ -52,6 +52,7 @@
 }
 .wrapB {
   display: flex;
+  align-items: center;
 }
 .desc {
   font-weight: 700;
@@ -95,7 +96,7 @@
     text-align: center;
   }
   @include mq(desk) {
-    width: 116px;
+    width: 124px;
   }
 }
 .date {
@@ -123,8 +124,8 @@
     margin-right: 22px;
   }
   @include mq(desk) {
-    width: 104px;
-    margin-right: 43px;
+    width: 115px;
+    margin-right: 30px;
     text-align: center;
   }
 }
@@ -142,9 +143,9 @@
     margin-right: 22px;
   }
   @include mq(desk) {
-    width: 104px;
+    width: 115px;
     text-align: center;
-    margin-right: 43px;
+    margin-right: 30px;
   }
 }
 .btn {

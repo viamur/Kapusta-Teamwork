@@ -6,10 +6,8 @@ const initialState = {
   accessToken: null,
   refreshToken: null,
   sid: null,
-  idUser: null,
   email: null,
   balance: null,
-  transactions: null,
   error: null,
   isLoading: false,
 };
@@ -33,10 +31,8 @@ const slice = createSlice({
       state.accessToken = accessToken;
       state.refreshToken = refreshToken;
       state.sid = sid;
-      state.idUser = userData.id;
       state.email = userData.email;
       state.balance = userData.balance;
-      state.transactions = userData.transactions;
       state.isLoading = false;
     },
     [register.rejected]: (state, { payload }) => {
@@ -53,10 +49,8 @@ const slice = createSlice({
       state.accessToken = accessToken;
       state.refreshToken = refreshToken;
       state.sid = sid;
-      state.idUser = userData.id;
       state.email = userData.email;
       state.balance = userData.balance;
-      state.transactions = userData.transactions;
       state.isLoading = false;
     },
     [login.rejected]: (state, { payload }) => {
@@ -69,10 +63,9 @@ const slice = createSlice({
       state.error = null;
     },
     [getAuthUser.fulfilled]: (state, { payload }) => {
-      const { email, balance, transactions } = payload;
+      const { email, balance } = payload;
       state.email = email;
       state.balance = balance;
-      state.transactions = transactions;
       state.isLoading = false;
     },
     [getAuthUser.rejected]: (state, { payload }) => {

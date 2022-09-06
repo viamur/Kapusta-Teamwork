@@ -33,14 +33,14 @@ const TransactionsList = ({ data, mob }) => {
                       <>
                         <p className={s.desc}>{el.description}</p>
                         <div className={s.wrapB}>
-                          <p className={s.date}>{el.date}</p>
+                          <p className={s.date}>{el.date.split('-').reverse().join('.')}</p>
                           <p className={s.category}>{category[el.category]}</p>
                         </div>
                       </>
                     ) : (
                       <>
                         <div className={s.wrapB}>
-                          <p className={s.date}>{el.date}</p>
+                          <p className={s.date}>{el.date.split('-').reverse().join('.')}</p>
                           <p className={s.desc}>{el.description}</p>
                         </div>
                         <p className={s.category}>{category[el.category]}</p>
@@ -51,11 +51,11 @@ const TransactionsList = ({ data, mob }) => {
                     {el.expense ? (
                       <p className={s.amountExpense}>{`- ${el.amount
                         .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}.00 uah.`}</p>
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}.00 UAH`}</p>
                     ) : (
                       <p className={s.amountIncome}>{` ${el.amount
                         .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}.00 uah.`}</p>
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}.00 UAH`}</p>
                     )}
 
                     <button

@@ -45,11 +45,11 @@
 }
 .desc {
   width: 100px;
-  margin-right: 70px;
+  margin-right: 80px;
   text-align: left;
   @include mq(desk) {
     width: 129px;
-    margin-right: 56px;
+    margin-right: 64px;
   }
 }
 .category {
