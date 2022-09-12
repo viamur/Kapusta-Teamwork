@@ -11,8 +11,6 @@ import { getAuthUser } from 'redux/auth/authOperations';
 import TransactionsPage from '../pages/TransactionsPage/TransactionsPage';
 import ReportsPage from '../pages/ReportsPage/ReportsPage';
 
-//  const [forModal, setForModal] = useState({});
-
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(getAuthToken);

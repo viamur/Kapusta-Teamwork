@@ -1,4 +1,3 @@
-// import { createLogger } from 'redux-logger';
 import authReducer from './auth/AuthSlice';
 import reportsReducer from '../redux/reports/reportsSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -26,11 +25,6 @@ const rootReducer = combineReducers({
   reports: reportsReducer,
   transactions: transactionsSlice,
 });
-
-// const logger = createLogger({
-//   collapsed: (getState, action, logEntry) => !logEntry.error,
-//   timestamp: false,
-// });
 
 const store = configureStore({
   reducer: rootReducer,

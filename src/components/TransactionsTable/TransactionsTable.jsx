@@ -30,14 +30,16 @@ const TransactionsTable = ({ mob, pageIncome, pageExpenses }) => {
     if (!mob && pageIncome && incomesData) {
       const data = [...incomesData].filter(el => el.date === dateList);
       const length = LENGTH_DATA - data.length;
-      const newData = length > 0 ? [...data, ...Array(length).fill(null)] : data;
+      const newData =
+        length > 0 ? [...data, ...Array(length).fill(null)] : data;
       setData(newData);
       return;
     }
     if (!mob && pageExpenses && expensesData) {
       const data = [...expensesData].filter(el => el.date === dateList);
       const length = LENGTH_DATA - data.length;
-      const newData = length > 0 ? [...data, ...Array(length).fill(null)] : data;
+      const newData =
+        length > 0 ? [...data, ...Array(length).fill(null)] : data;
       setData(newData);
       return;
     }

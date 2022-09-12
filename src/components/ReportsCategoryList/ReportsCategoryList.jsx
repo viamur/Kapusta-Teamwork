@@ -32,7 +32,6 @@ export default function ReportsCategoryList({
       setCategoriesArr(
         getTransleteCategories(categories).filter(el => el.data.total)
       );
-      // console.log(categoriesArr);
     }
     // eslint-disable-next-line
   }, [categories]);

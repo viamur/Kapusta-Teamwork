@@ -78,7 +78,7 @@ const IncomeForm = () => {
     setProduct('');
     setProductCategory('');
     setSum('');
-    toast.success('The form is cleared!');
+    toast.success('The operation is completed!');
   };
 
   return (
@@ -113,7 +113,6 @@ const IncomeForm = () => {
                   className={s.inputSum}
                   name="sum"
                   allowLeadingZeros={true}
-                  //  thousandSeparator={'.'}
                   decimalScale={0}
                   placeholder={isDesktopOrLaptop ? '00.00 ' : '00.00 UAH'}
                   fixedDecimalScale={true}

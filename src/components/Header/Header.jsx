@@ -30,7 +30,11 @@ const Header = () => {
           <div className={s.wrap}>
             <span className={s.span}>{emailNormaliza}</span>
             {!mob && <p className={s.name}>{email}</p>}
-            <button type="button" className={s.btn} onClick={() => setShowModal(true)}>
+            <button
+              type="button"
+              className={s.btn}
+              onClick={() => setShowModal(true)}
+            >
               {mob ? (
                 <svg width={16} height={16}>
                   <use href={`${icon}#icon-logout1`} />

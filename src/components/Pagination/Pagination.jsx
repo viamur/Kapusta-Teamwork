@@ -24,7 +24,7 @@ const month = [
 const Pagination = () => {
   const dispatch = useDispatch();
   const authBalance = useSelector(getAuthBalance);
-  // const accessToken = useSelector(getAuthToken);
+
   const email = useSelector(getAuthEmail);
 
   const [nameMonth, setNameMonth] = useState(

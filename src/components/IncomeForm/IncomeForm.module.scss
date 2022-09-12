@@ -33,7 +33,7 @@
   & input {
     font-weight: 400;
     font-size: 15px;
-    line-height: 14px;
+    line-height: 1.1;
     display: flex;
     letter-spacing: 0.02em;
     color: hsl(0, 0%, 20%);
@@ -52,7 +52,7 @@
   &::placeholder {
     font-weight: 400;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.16;
     display: flex;
     align-items: center;
     letter-spacing: 0.02em;
@@ -82,7 +82,7 @@
   &::placeholder {
     font-weight: 700;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.16;
     display: flex;
     align-items: center;
     text-align: right;
@@ -93,7 +93,7 @@
     @include mq(tab) {
       font-weight: 400;
       font-size: 12px;
-      line-height: 14px;
+      line-height: 1.16;
       display: flex;
       align-items: center;
       text-align: center;
@@ -163,7 +163,7 @@
 .btnText {
   font-weight: 400;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 1.16;
   display: flex;
   align-items: center;
   letter-spacing: 0.02em;
@@ -180,7 +180,7 @@
   cursor: pointer;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 1.16;
   padding: 12px 26px;
   border-radius: 16px;
   border: none;
@@ -315,7 +315,7 @@
   @include mq(tab) {
     font-weight: 400;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.16;
     letter-spacing: 0.02em;
     color: #c7ccdc;
   }

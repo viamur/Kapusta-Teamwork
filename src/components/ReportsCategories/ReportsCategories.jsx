@@ -1,25 +1,21 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import s from './ReportsCategories.module.scss';
 import icon from '../../images/icon.svg';
 import ReportsCategoryList from 'components/ReportsCategoryList/ReportsCategoryList';
-
 
 export default function ReportsCategories({
   incomes,
   expenses,
   curCategory,
   setCurCategory,
-  
 }) {
-   const [pickedState, setPickedState] = useState('EXPENSES');
-   
+  const [pickedState, setPickedState] = useState('EXPENSES');
 
   const togglePickedState = () => {
     setPickedState(prev => (prev === 'EXPENSES' ? 'INCOMES' : 'EXPENSES'));
   };
   const categories = pickedState === 'EXPENSES' ? expenses : incomes;
 
- 
   return (
     <div className={s.backgroundCategoryList}>
       <div className={s.expenses}>

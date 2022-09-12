@@ -20,7 +20,8 @@ const AuthForm = () => {
     if (!values.email) {
       errors.email = 'This is a required field';
     } else if (!regexEmail.test(values.email)) {
-      errors.email = 'Email can contain latin letters, numbers, period, hyphen, underscore, @,';
+      errors.email =
+        'Email can contain latin letters, numbers, period, hyphen, underscore, @,';
     } else if (email.indexOf('-') === 0 || email.endsWith('-')) {
       errors.email = 'A hyphen cannot be at the beginning or at the end Email';
     } else if (email.length < 6) {
@@ -111,7 +112,9 @@ const AuthForm = () => {
           onKeyDown={canceler}
           autoComplete="off"
         />
-        {formErrors.password && <p className={s.error}>{formErrors.password}</p>}
+        {formErrors.password && (
+          <p className={s.error}>{formErrors.password}</p>
+        )}
       </label>
       <div className={s.btns}>
         <button type="submit" className={s.login} name="login">

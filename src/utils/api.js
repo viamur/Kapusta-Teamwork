@@ -62,7 +62,6 @@ export {
   getIncomeCategories,
   getExpenseCategories,
   getPeriodTransactions,
-  // getTransactionReportApi,
   /* user */
   updateBalance,
   getUser,

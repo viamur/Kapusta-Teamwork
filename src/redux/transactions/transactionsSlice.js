@@ -42,7 +42,10 @@ const transactionsSlice = createSlice({
     },
     [addIncomeThunk.fulfilled]: (state, { payload }) => {
       state.balance = payload.newBalance;
-      state.incomes = [{ ...payload.transaction, expense: false }, ...state.incomes];
+      state.incomes = [
+        { ...payload.transaction, expense: false },
+        ...state.incomes,
+      ];
       // state.isLoading = false;
     },
     [addIncomeThunk.rejected]: (state, { payload }) => {
@@ -56,7 +59,10 @@ const transactionsSlice = createSlice({
     },
     [addExpenseThunk.fulfilled]: (state, { payload }) => {
       state.balance = payload.newBalance;
-      state.expenses = [{ ...payload.transaction, expense: true }, ...state.incomes];
+      state.expenses = [
+        { ...payload.transaction, expense: true },
+        ...state.incomes,
+      ];
       // state.isLoading = false;
     },
     [addExpenseThunk.rejected]: (state, { payload }) => {
@@ -69,7 +75,9 @@ const transactionsSlice = createSlice({
       state.error = null;
     },
     [getExpenseThunk.fulfilled]: (state, { payload }) => {
-      state.expenses = payload.expenses.reverse().map(el => ({ ...el, expense: true }));
+      state.expenses = payload.expenses
+        .reverse()
+        .map(el => ({ ...el, expense: true }));
       state.monthsExpenses = payload.monthsStats;
       state.isLoading = false;
     },
@@ -83,7 +91,9 @@ const transactionsSlice = createSlice({
       state.error = null;
     },
     [getIncomeThunk.fulfilled]: (state, { payload }) => {
-      state.incomes = payload.incomes.reverse().map(el => ({ ...el, expense: false }));
+      state.incomes = payload.incomes
+        .reverse()
+        .map(el => ({ ...el, expense: false }));
       state.monthsIncomes = payload.monthsStats;
       state.isLoading = false;
     },
